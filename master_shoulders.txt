@@ -1703,6 +1703,15 @@ name: UCSB Punctum Books
 date: 2018.05.31
 minter: https://n2t.net/a/ezid/m/ark/84135/p5
 
+# contact: Miller, Robert
+# contact: Bromley, Hank
+:: ark:/99999/99999fk8
+type: shoulder
+manager: ezid
+#eziduser: incipit
+name: Incipit
+minter:
+
 :: doi:10.21983/P3
 type: shoulder
 manager: ezid

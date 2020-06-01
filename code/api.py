@@ -335,7 +335,7 @@ def getStatus (request):
   if options.get("detailed", False):
     statusLine = _statusLineGenerator(False).next()[7:]
   else:
-    statusLine = "EZID is up"
+    statusLine = "Incipit is up"
   body = ""
   if "subsystems" in options:
     l = options["subsystems"]

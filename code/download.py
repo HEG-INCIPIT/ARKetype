@@ -599,13 +599,13 @@ def _notifyRequestor (r):
       emailAddress = m.group(2).strip()
     else:
       salutation = ""
-    message = ("%sThank you for using EZID to easily create and manage " +\
+    message = ("%sThank you for using Incipit to easily create and manage " +\
       "your identifiers.  The batch download you requested is available " +\
       "at:\n\n" +\
       "%s/download/%s.%s\n\n" +\
       "The download will be deleted in 1 week.\n\n" +\
       "Best,\n" +\
-      "EZID Team\n\n" +\
+      "Incipit Team\n\n" +\
       "This is an automated email.  Please do not reply.\n") %\
       (salutation, _ezidUrl, r.filename, _fileSuffix(r))
     try:
@@ -650,4 +650,3 @@ def _daemonThread ():
     except Exception, e:
       log.otherError("download._daemonThread", e)
       doSleep = True
-

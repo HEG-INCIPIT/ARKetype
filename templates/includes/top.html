@@ -51,11 +51,10 @@
       </div>
    </nav>
 </header>
-{% set incipitNav = menu_user menu_item session %}
 {% if authenticatedUser %}
 <div class="login-menu__container">
    <div class="login-menu">
-      {{incipitNav}}
+      {% menu_user menu_item session|escape %}
    </div>
 </div>
 <p class="vertical-buffer-20"></p>

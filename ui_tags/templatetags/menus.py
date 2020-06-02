@@ -37,7 +37,7 @@ def menu_user(current_func, session):
   for i, menu in enumerate(MENU_USER):
     acc += menu_user_item(menu, session,
       string.split(current_func, '.')[0] == string.split(menu[1], '.')[0])
-  return acc | raw
+  return acc
 
 def menu_user_item(tup, session, is_current):
   u = reverse(tup[1])

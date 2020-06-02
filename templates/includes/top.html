@@ -2,30 +2,30 @@
 {% load menus %}
 
 <div class="header__admin-text">
-&nbsp;
-{% if authenticatedUser %}
-Welcome {{ authenticatedUser.username }}!
-{% endif %}
+   &nbsp;
+   {% if authenticatedUser %}
+   Welcome {{ authenticatedUser.username }}!
+   {% endif %}
 </div>
 
 <header role="banner" class="header">
-  <div class="header__logos">
-    <a class="header__main-logo-link" href="/">
-      <picture>
-        <source srcset="/static/images/logo_small-screen.svg" type="image/svg+xml" media="(max-width: 767px)" />
-        <img src="/static/images/logoIncipit.png" class="header__main-logo-image" alt="HEG - Incipit">
-      </picture>
-    </a>
-    {% host_based_include "includes/localized/_/logo.html" %}
-  </div>
+   <div class="header__logos">
+      <a class="header__main-logo-link" href="/">
+         <picture>
+            <source srcset="/static/images/logo_small-screen.svg" type="image/svg+xml" media="(max-width: 767px)" />
+            <img src="/static/images/logoIncipit.png" class="header__main-logo-image" alt="HEG - Incipit">
+         </picture>
+      </a>
+      {% host_based_include "includes/localized/_/logo.html" %}
+   </div>
 
-  <button type="button" id="js-header__nav-button" class="header__nav-button" aria-controls="js-header__nav">
-    <img src="/static/images/mobile-menu.svg" alt="Show or hide navigation" class="header__nav-button-icon">
-  </button>
+   <button type="button" id="js-header__nav-button" class="header__nav-button" aria-controls="js-header__nav">
+      <img src="/static/images/mobile-menu.svg" alt="Show or hide navigation" class="header__nav-button-icon">
+   </button>
 
-  <nav role="navigation" id="js-header__nav" class="header__nav--selected" aria-hidden="false">
-    <a class="header__nav-item-search" href="/search">Search</a>
-    <details id="header__nav-details-learn" aria-expanded="false">
+   <nav role="navigation" id="js-header__nav" class="header__nav--selected" aria-hidden="false">
+      <a class="header__nav-item-search" href="/search">Search</a>
+      <!--<details id="header__nav-details-learn" aria-expanded="false">
       <summary class="header__nav-item-learn" role="button">Learn</summary>
       <div class="header__subnav-panel">
         <a class="header__nav-subitem" href="{% url "ui_home.learn" %}#01">What Is EZID?</a>
@@ -37,25 +37,25 @@ Welcome {{ authenticatedUser.username }}!
         <a class="header__nav-subitem" href="/doc/apidoc.html">API Guide</a>
         <a class="header__nav-subitem" href="{% url "ui_demo.index" %}">EZID Demo</a>
       </div>
-    </details>
-    <a class="header__nav-item-contact" href="{% url "ui.contact" %}">Contact</a>
-    <div class="header__loginout">
-      {% if authenticatedUser %}
-        <form action="/logout" role="form">
-          <button class="header__loginout-link" aria-label="Logout">Logout</button>
-        </form>
-      {% else %}
-      <button id="js-header__loginout-button" class="header__loginout-link" aria-label="Login">Login</button>
-      {% endif %}
-      {% include "includes/login-modal.html" %}
-    </div>
-  </nav>
+    </details>-->
+      <a class="header__nav-item-contact" href="{% url "ui.contact" %}">Contact</a>
+      <div class="header__loginout">
+         {% if authenticatedUser %}
+         <form action="/logout" role="form">
+            <button class="header__loginout-link" aria-label="Logout">Logout</button>
+         </form>
+         {% else %}
+         <button id="js-header__loginout-button" class="header__loginout-link" aria-label="Login">Login</button>
+         {% endif %}
+         {% include "includes/login-modal.html" %}
+      </div>
+   </nav>
 </header>
 {% if authenticatedUser %}
 <div class="login-menu__container">
-  <div class="login-menu">
-  {% menu_user menu_item session %}
-  </div>
+   <div class="login-menu">
+      {% menu_user menu_item session %}
+   </div>
 </div>
 <p class="vertical-buffer-20"></p>
 {% endif %}

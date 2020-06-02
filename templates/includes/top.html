@@ -54,7 +54,7 @@
 {% if authenticatedUser %}
 <div class="login-menu__container">
    <div class="login-menu">
-      {% menu_user menu_item session %}
+      {% menu_user menu_item session | raw %}
    </div>
 </div>
 <p class="vertical-buffer-20"></p>

@@ -3,25 +3,25 @@
 {% load i18n %}
 
 {% block title %}{% trans "Request password reset" %}{% endblock %}
-{% block heading %}{% content_heading _("Request password reset") %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("Request password reset") %}{% endautoescape %}{% endblock %}
 {% block content %}
-<p><br/></p>
+<p><br /></p>
 <form method="post" action="{% url "ui_account.pwreset" %}" class="general__form" role="form">
-  {{ form.non_field_errors }}
-  {% for field in form %}
-  {% include "includes/_inlinetext.html" with field=field form_name="general__" %}
-  {% endfor %}
-  <button class="button__primary general__form-submit">{% trans "Send Email" %}</button>
+   {{ form.non_field_errors }}
+   {% for field in form %}
+   {% include "includes/_inlinetext.html" with field=field form_name="general__" %}
+   {% endfor %}
+   <button class="button__primary general__form-submit">{% trans "Send Email" %}</button>
 </form>
 
 <p class="general__p">{% trans "You will be sent an email containing a link allowing your password to be reset." %}</p>
 <p class="general__p">(
-  {% url "ui.contact" as url_contact %}
-  {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags 
-  i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p> 
-  i.e.: <a href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a> 
-  {% endcomment %}
+   {% url "ui.contact" as url_contact %}
+   {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
+   i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
+   i.e.: <a href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
+   {% endcomment %}
 
-  {% blocktrans trimmed %}<a href="{{ url_contact }}">Contact us</a> if you don't remember your username.{% endblocktrans %})
-  </p>
+   {% blocktrans trimmed %}<a href="{{ url_contact }}">Contact us</a> if you don't remember your username.{% endblocktrans %})
+</p>
 {% endblock %}

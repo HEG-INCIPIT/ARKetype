@@ -3,33 +3,33 @@
 {% load i18n %}
 
 {% block title %}{% block title-twitter %}{% trans "Login" %}{% endblock %}{% endblock %}
-{% block heading %}{% content_heading _("Login") %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("Login") %}{% endautoescape %}{% endblock %}
 {% block content %}
-<p><br/></p>
+<p><br /></p>
 <form method="post" action="/login" class="general__form" role="form">
-  <input type="hidden" name="next" value="{{ next }}"/>
-  <div class="fcontrol__group-inline general__form-element-group">
-    <label for="username" class="fcontrol__text-label-inline general__form-label">{% trans "Username" %}</label>
-    <input class="fcontrol__text-field-inline" type="text" id="username" name="username" value="{{ username }}"/>
-    <span class="fcontrol__invalid-flag">This field is required</span>
-  </div>
-  <div class="fcontrol__group-inline general__form-element-group">
-    <label for="password" class="fcontrol__text-label-inline general__form-label">{% trans "Password" %}</label>
-    <input class="fcontrol__text-field-inline" type="password" id="password" name="password" value="{{ password }}"/>
-    <span class="fcontrol__invalid-flag">This field is required</span>
-  </div>
+   <input type="hidden" name="next" value="{{ next }}" />
+   <div class="fcontrol__group-inline general__form-element-group">
+      <label for="username" class="fcontrol__text-label-inline general__form-label">{% trans "Username" %}</label>
+      <input class="fcontrol__text-field-inline" type="text" id="username" name="username" value="{{ username }}" />
+      <span class="fcontrol__invalid-flag">This field is required</span>
+   </div>
+   <div class="fcontrol__group-inline general__form-element-group">
+      <label for="password" class="fcontrol__text-label-inline general__form-label">{% trans "Password" %}</label>
+      <input class="fcontrol__text-field-inline" type="password" id="password" name="password" value="{{ password }}" />
+      <span class="fcontrol__invalid-flag">This field is required</span>
+   </div>
 
-  <button class="button__primary general__form-submit">{% trans "Login" %}</button>
+   <button class="button__primary general__form-submit">{% trans "Login" %}</button>
 </form>
- 
+
 {% url "ui.contact" as url_contact %}
 {% url "ui_account.pwreset" as url_pwreset %}
-{% comment %}Translators: Copy HTML tags over and only translate words outside of these tags 
-i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p> 
-i.e.: <a href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a> 
+{% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
+i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
+i.e.: <a href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
 {% endcomment %}
 {% blocktrans trimmed %}
 <p class="general__p">If you do not already have an account, please <a href="{{ url_contact }}">contact us</a></p>
-<p class="general__p">If you have forgotten your password, request <a href="{{ url_pwreset }}">a password reset</a></p>    
+<p class="general__p">If you have forgotten your password, request <a href="{{ url_pwreset }}">a password reset</a></p>
 {% endblocktrans %}
 {% endblock %}

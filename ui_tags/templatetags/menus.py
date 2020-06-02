@@ -37,7 +37,7 @@ def menu_user(current_func, session):
   for i, menu in enumerate(MENU_USER):
     acc += menu_user_item(menu, session,
       string.split(current_func, '.')[0] == string.split(menu[1], '.')[0])
-  return acc
+  return acc | raw
 
 def menu_user_item(tup, session, is_current):
   u = reverse(tup[1])
@@ -57,12 +57,12 @@ def learn_breadcrumb(view_title, parent_dir_title=None, parent_dir_link=None):
     '<li><a href="/">' + unicode(home) + '</a></li>' + \
     '<li><a href="/learn">' + unicode(learn) + '</a></li>'
   if parent_dir_title is not None:
-    if parent_dir_link is None: 
+    if parent_dir_link is None:
       parent_dir_link = ''
     parent_dir_title_tr = _(parent_dir_title)
     codeblock += '<li><a href="/learn/' + unicode(parent_dir_link) + '">' + \
-      unicode(parent_dir_title_tr) + '</a></li>' 
-  codeblock += '<li class="active">' + unicode(view_title) + '</li></ul></div>' 
+      unicode(parent_dir_title_tr) + '</a></li>'
+  codeblock += '<li class="active">' + unicode(view_title) + '</li></ul></div>'
   return codeblock
 
 # Simply determines whether an element should be tagged as active; Only used for topmost nav

@@ -21,7 +21,7 @@ $("#manage-form").find('input[type="radio"], input[type="checkbox"]').removeAttr
    <input name="order_by" type="hidden" value="{{ order_by }}" />
    <input name="sort" type="hidden" value="{{ sort }}" />
    <input name="owner_selected" type="hidden" value="{{ owner_selected }}" />
-   {% column_choices_hidden fields_selected|escape %}
+   {% autoescape off %}{% column_choices_hidden fields_selected %}{% endautoescape %}
    <div class="manage__simple-search">
       <div class="fcontrol__group-stacked">
          <label for="manage__keywords" class="fcontrol__text-label-hidden">{% trans "Search Your Identifiers" %}</label>

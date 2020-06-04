@@ -1,0 +1,24 @@
+language:
+  python
+dist:
+  xenial
+python:
+  - "2.7"
+addons:
+  apt:
+    packages:
+      - libdb5.3-dev
+virtualenv:
+  system_site_packages: true
+install:
+  - pip install --upgrade pip setuptools
+before_script:
+  - ls -l
+  - pip install -r ./requirements.txt
+  - python --version
+  - pip freeze
+  - pip check || true
+  #- ls -la ${HOME}/.minders
+script:
+  - pip install -r requirements.txt
+  - pytest

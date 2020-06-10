@@ -43,8 +43,8 @@ def loadConfig():
   testPrefixes = []
   p = ezidapp.models.getArkTestShoulder()
   testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
-  p = ezidapp.models.getDoiTestShoulder()
-  testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
+  # p = ezidapp.models.getDoiTestShoulder()
+  # testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
   google_analytics_id = config.get("DEFAULT.google_analytics_id")
 
 #loads the templates directory recursively (dir_list is a list)
@@ -316,4 +316,3 @@ def getOwnerOrGroup(ownerkey):
 def isEmptyStr(v):
   """ check for any empty string """
   return False if v is not None and v != '' and not v.isspace() else True
-

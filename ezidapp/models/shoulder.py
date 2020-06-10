@@ -346,10 +346,10 @@ def getArkTestShoulder ():
   # Returns the ARK test shoulder.
   return _shoulders[_arkTestPrefix]
 
-@_lockAndLoad
-def getDoiTestShoulder ():
-  # Returns the DOI test shoulder.
-  return _shoulders[_doiTestPrefix]
+# @_lockAndLoad
+# def getDoiTestShoulder ():
+#   # Returns the DOI test shoulder.
+#   return _shoulders[_doiTestPrefix]
 
 @_lockAndLoad
 def getCrossrefTestShoulder ():

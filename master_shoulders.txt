@@ -234,8 +234,6 @@ manager: ezid
 name: Incipit Ark
 minter:
 
-
-
 # This has a new minter on it.  For temporary ids with no defined
 # expiration date ('8' suggests infinity).
 :: ark:/99999/fk8

@@ -3,22 +3,22 @@
 <div class="row vertical-buffer"></div>
 <!-- div class="container-fluid" -->
 
-  <div class="container-fluid">
+<div class="container-fluid">
 
-<footer class="footer">
+   <footer class="footer">
 
-  <a class="footer__logo-link" href="https://www.hesge.ch/heg/" title="{% trans "Haute École de Gestion" %}"><img class="footer__logo" src="/static/images/logoHEG.jpg" alt="{% trans "Haute École de Gestion" %}"></a>
+      <a class="footer__logo-link" href="https://www.hesge.ch/heg/" title="{% trans "Haute École de Gestion" %}"><img class="footer__logo" src="/static/images/logoHEG.jpg" alt="{% trans "Haute École de Gestion" %}"></a>
 
-  <div class="footer__news">
-{% if feed_cache %}
-    <p class="footer__news-title">{% trans "Latest News from Incipit" %}</p>
-    
-    <!-- Vertical Bootstrap 3 Carousel
+      <div class="footer__news">
+         {% if feed_cache %}
+         <p class="footer__news-title">{% trans "Latest News from Incipit" %}</p>
+
+         <!-- Vertical Bootstrap 3 Carousel
     http://stackoverflow.com/questions/11589816/twitter-bootstrap-carousel-vertical-sliding/11596944 -->
-    <div id="newsCarousel" class="footer__news-feed carousel slide" data-ride="carousel" data-interval="5000">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner vertical" role="listbox">
-    <!--
+         <div id="newsCarousel" class="footer__news-feed carousel slide" data-ride="carousel" data-interval="5000">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner vertical" role="listbox">
+               <!--
     {% for title, link in feed_cache %}
       {% if forloop.first %}
         <p class="item active">
@@ -28,24 +28,24 @@
       {% if link %}
           <a class="footer__news-feed-link" href="{{ link }}">{{ title }}</a>
       {% else %}
-          {{ title }} 
+          {{ title }}
       {% endif %}
         </p>
     {% endfor %}
     -->
+            </div>
+         </div>
+
+         <a href="" class="footer__news-link">View all news</a>
+         {% endif %}
       </div>
-    </div>
 
-    <a href="" class="footer__news-link">View all news</a>
-{% endif %}
-  </div>
+      <div class="footer__icons">
+         <a class="footer__icon-link" href="https://twitter.com/incipit_ark" title="Twitter"><img class="footer__icon" src="/static/images/iconTwitter.svg" alt="Twitter"></a>
+         <a class="footer__icon-link" href="" title="RSS"><img class="footer__icon" src="/static/images/iconRSS.svg" alt="RSS"></a>
+      </div>
 
-  <div class="footer__icons">
-    <a class="footer__icon-link" href="" title="Twitter"><img class="footer__icon" src="/static/images/iconTwitter.svg" alt="Twitter"></a>
-    <a class="footer__icon-link" href="" title="RSS"><img class="footer__icon" src="/static/images/iconRSS.svg" alt="RSS"></a>
-  </div>
+      {% host_based_include "includes/localized/_/footer_fineprint.html" %}
 
-  {% host_based_include "includes/localized/_/footer_fineprint.html" %}
-
-</footer>
+   </footer>
 </div>

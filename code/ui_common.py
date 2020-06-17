@@ -41,8 +41,8 @@ def loadConfig():
   if reload_templates:
     reload_templates = django.conf.settings.RELOAD_TEMPLATES
   testPrefixes = []
-  p = ezidapp.models.getArkTestShoulder()
-  testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
+  # p = ezidapp.models.getArkTestShoulder()
+  # testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
   # p = ezidapp.models.getDoiTestShoulder()
   # testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
   google_analytics_id = config.get("DEFAULT.google_analytics_id")

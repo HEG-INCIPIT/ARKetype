@@ -112,9 +112,9 @@ urlpatterns = i18n_patterns(
     url("^admin/logout/?$", ui_account.logout, name="ui_account.logout"),
     prefix_default_language=False
 )
-    # url(
-    #     "^admin/", include(ezidapp.admin.superuser.urls) # RD
-    # ),
+    url(
+        "^admin/", include(ezidapp.admin.superuser.urls)
+    ),
 # ]
 
 if django.conf.settings.STANDALONE:

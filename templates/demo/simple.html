@@ -6,7 +6,7 @@
 {% block description %}{%trans "Use the EZID demo to create a simple identifier." %}{% endblock %}
 {% block heading %}{% autoescape off %}{% content_heading _("Create a Simple Demo Identifier") %}{% endautoescape %}{% endblock %}
 {% block content %}
-{% learn_breadcrumb _('EZID Demo') %}
+{% autoescape off %}{% learn_breadcrumb _('EZID Demo') %}{% endautoescape %}
 <div class="tab create__tab">
    <input class="tab__input" id="tab-1" type="radio" name="name" checked="checked" aria-checked="true" />
    <label class="tab__label" for="tab-1" tabindex="0">{% trans "Simple" %}</label>

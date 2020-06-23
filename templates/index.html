@@ -65,11 +65,11 @@ return img;
                <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %}> <span>{% shoulder_display p "True" %}</span>
             </label>
             {% endfor %}
-            {% help_icon "choose_id_demo" _("on choosing the type of identifier") %}
+            <!--{% help_icon "choose_id_demo" _("on choosing the type of identifier") %}-->
 
          </div>
 
-         <div class="fieldset-stacked fieldset__top-border home__fieldset" role="group" aria-labelledby="fieldset__2">
+         <div class="fieldset-stacked home__fieldset" role="group" aria-labelledby="fieldset__2">
 
             <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="fieldset-inline__legend-number-1">{% trans "Describe the identified object" %}</div>
 

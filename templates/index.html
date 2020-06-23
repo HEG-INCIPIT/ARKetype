@@ -58,7 +58,7 @@ return img;
 
          <div class="fieldset-inline" role="group" aria-labelledby="fieldset__1">
 
-            <span id="fieldset__1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="fieldset-inline__legend-number-1">{% trans "Choose an identifier type" %}</span>
+            <!--<span id="fieldset__1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="fieldset-inline__legend-number-1">{% trans "Choose an identifier type" %}</span>-->
 
             {% for p in prefixes %}
             <label for="{{p.prefix}}" class="fcontrol__radio-label-inline home__radio-labels">
@@ -71,7 +71,7 @@ return img;
 
          <div class="fieldset-stacked fieldset__top-border home__fieldset" role="group" aria-labelledby="fieldset__2">
 
-            <div id="fieldset__2" aria-label="{% trans "Step 2 - Describe the identified object" %}" class="fieldset-stacked__legend-number-2">{% trans "Describe the identified object" %}</div>
+            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="fieldset-inline__legend-number-1">{% trans "Describe the identified object" %}</div>
 
             <div class="row">
                {{ form.non_field_errors }}

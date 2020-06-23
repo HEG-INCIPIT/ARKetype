@@ -7,7 +7,7 @@
 {% block description %}{%trans "Use the EZID demo to create an advanced identifier." %}{% endblock %}
 {% block heading %}{% autoescape off %}{% content_heading _("Create an Advanced Demo Identifier") %}{% endautoescape %}{% endblock %}
 {% block content %}
-{% learn_breadcrumb _('EZID Demo') %}
+{% autoescape off %}{% learn_breadcrumb _('EZID Demo') %}{% endautoescape %}
 <div class="tab create__tab">
    <!-- This radio button is hidden by CSS -->
    <input class="tab__input" id="tab-1" type="radio" name="name" aria-checked="false" />

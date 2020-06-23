@@ -59,7 +59,7 @@ SEARCH_STORE_SAME_DATABASE = True
 
 DATABASE_ROUTERS = ["settings.routers.Router"]
 
-TIME_ZONE = "America/Los_Angeles"
+TIME_ZONE = "Europe/Zurich"
 TIME_FORMAT_UI_METADATA = "%Y-%m-%d %H:%M:%S"
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")

@@ -232,7 +232,7 @@ type: shoulder
 manager: ezid
 #eziduser: incipit
 name: Incipit Ark
-minter:
+minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/68061/xt3
 
 # This has a new minter on it.  For temporary ids with no defined
 # expiration date ('8' suggests infinity).
@@ -242,7 +242,7 @@ manager: ezid
 #eziduser: apitest
 name: ARK Test (non-expiring)
 date: 2013.07.16
-minter: https://n2t.net/a/ezid/m/ark/99999/fk8
+minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk8
 
 # This shoulder is special-cased in EZID for temporary, expiring ids.
 :: ark:/99999/fk4
@@ -252,4 +252,4 @@ manager: ezid
 name: ARK Test
 date: 2011.06.22
 # RD:
-minter: https://n2t.net/a/ezid/m/ark/99999/fk4
+minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk4

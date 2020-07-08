@@ -253,3 +253,10 @@ name: ARK Test
 date: 2011.06.22
 # RD:
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk4
+
+:: ark:/99999/968061_bb4
+type: shoulder
+manager: ezid
+#eziduser: incipit
+name: Incipit Ark Test
+minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/968061_bb4

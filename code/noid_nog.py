@@ -82,13 +82,15 @@ class Minter (object):
     try:
       cs = _cacheSize
       if len(self.cache) == 0:
+	print(self.url)
         r = urllib2.Request("%s?mint%%20%d" % (self.url, cs))
-        _addAuthorization(r)
+	_addAuthorization(r)
         for i in range(_numAttempts):
           c = None
           try:
             c = urllib2.urlopen(r)
             s = c.readlines()
+	    print(s)
           except:
             if i == _numAttempts-1: raise
           else:

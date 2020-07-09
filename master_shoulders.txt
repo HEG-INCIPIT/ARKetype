@@ -248,9 +248,9 @@ manager: ezid
 name: Incipit Test ARK
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk3
 
-:: ark:/99999/968061_bb4
-type: shoulder
-manager: ezid
+#:: ark:/99999/968061_bb4
+#type: shoulder
+#manager: ezid
 #eziduser: incipit
-name: Incipit Ark
-minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/968061_bb4
+#name: Incipit Ark
+#minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/968061_bb4

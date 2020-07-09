@@ -245,18 +245,16 @@ date: 2013.07.16
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk8
 
 # This shoulder is special-cased in EZID for temporary, expiring ids.
-:: ark:/99999/fk4
+:: ark:/99999/fk3
 type: shoulder
 manager: ezid
 #eziduser: admin
-name: ARK Test
-date: 2011.06.22
-# RD:
-minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk4
+name: Incipit Test ARK
+minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk3
 
 :: ark:/99999/968061_bb4
 type: shoulder
 manager: ezid
 #eziduser: incipit
-name: Incipit Ark Test
+name: Incipit Ark 
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/968061_bb4

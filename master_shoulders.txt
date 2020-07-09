@@ -248,7 +248,7 @@ minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk8
 :: ark:/99999/fk3
 type: shoulder
 manager: ezid
-#eziduser: admin
+#eziduser: ncpt
 name: Incipit Test ARK
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk3
 
@@ -256,5 +256,5 @@ minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk3
 type: shoulder
 manager: ezid
 #eziduser: incipit
-name: Incipit Ark 
+name: Incipit Ark
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/968061_bb4

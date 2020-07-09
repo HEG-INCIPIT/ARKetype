@@ -13,7 +13,7 @@ def index(request):
   d = ui_create.simple_form(request, d)
   result = d['id_gen_result']
   if result == 'edit_page':
-    return uic.render(request, 'index', d)  # ID Creation page 
+    return uic.render(request, 'index', d)  # ID Creation page
   elif result == 'bad_request':
     return uic.badRequest(request)
   elif result.startswith('created_identifier:'):
@@ -67,4 +67,3 @@ def no_menu(request, template_name):
   except:
     return uic.error(request, 404)
   return uic.render(request, 'info/' + template_name, d)
-

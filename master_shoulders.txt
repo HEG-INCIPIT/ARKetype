@@ -233,13 +233,13 @@ manager: ezid
 name: Incipit Ark
 minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/68061/xt3
 
-:: ark:/99999/fk8
-type: shoulder
-manager: ezid
-#eziduser: apitest
-name: ARK Test (non-expiring)
-date: 2013.07.16
-minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk8
+# :: ark:/99999/fk8
+# type: shoulder
+# manager: ezid
+# eziduser: apitest
+# name: ARK Test (non-expiring)
+# date: 2013.07.16
+# minter: https://ids-n2t2-stg.n2t.net/a/ncpt/m/ark/99999/fk8
 
 :: ark:/99999/fk3
 type: shoulder

@@ -61,7 +61,7 @@ return img;
             <!--<span id="fieldset__1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="fieldset-inline__legend">{% trans "Choose an identifier type" %}</span>-->
             {% for p in prefixes %}
             <label for="{{p.prefix}}" class="fcontrol__radio-label-inline home__radio-labels">
-               <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked" type="hidden" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %}> <span>{% shoulder_display p "True" %}</span>
+               <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked" type="hidden" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %}>
             </label>
             {% endfor %}
             <!--{% help_icon "choose_id_demo" _("on choosing the type of identifier") %}-->

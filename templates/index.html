@@ -58,7 +58,7 @@ return img;
 
          <div class="fieldset-inline" role="group" aria-labelledby="fieldset__1">
 
-            <span id="fieldset__1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="fieldset-inline__legend-number-1">{% trans "Choose an identifier type" %}</span>
+            <span id="fieldset__1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="fieldset-inline__legend">{% trans "Choose an identifier type" %}</span>
             {% for p in prefixes %}
             <label for="{{p.prefix}}" class="fcontrol__radio-label-inline home__radio-labels">
                <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %}> <span>{% shoulder_display p "True" %}</span>

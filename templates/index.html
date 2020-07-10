@@ -39,16 +39,16 @@ return img;
          {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
          i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
          i.e.: <a class="don't_translate_classes" href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
-         {% endcomment %}
          {% blocktrans trimmed %}
-         {% comment %}<b>NOTE:</b> This is just a demo.{% endcomment %}
+         <b>NOTE:</b> This is just a demo.
          {% endblocktrans %}
-         {% comment %}&nbsp;&nbsp;{% endcomment %}
+         &nbsp;&nbsp;
          {% if not authenticatedUser %}
          {% blocktrans trimmed %}
-         {% comment %}To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.{% endcomment %}
+         To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
          {% endblocktrans %}
          {% endif %}
+         {% endcomment %}
       </p>
    </div>
 
@@ -100,8 +100,15 @@ return img;
 
             </div>
             <div class="row">
+               {% blocktrans trimmed %}
                <b>NOTE:</b> This is just a demo.
+               {% endblocktrans %}
+               &nbsp;&nbsp;
+               {% if not authenticatedUser %}
+               {% blocktrans trimmed %}
                To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
+               {% endblocktrans %}
+               {% endif %}
             </div>
          </div>
       </form>

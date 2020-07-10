@@ -34,19 +34,19 @@ return img;
 <div class="home__identifier-container">
 
    <div class="home__identifier-lead-box">
-      <p class="home__identifier-lead-heading">{% trans "See how easy it is" %}:</p>
+      <!--<p class="home__identifier-lead-heading">{% trans "See how easy it is" %}:</p>-->
       <p class="home__identifier-lead-note">
          {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
          i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
          i.e.: <a class="don't_translate_classes" href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
          {% endcomment %}
          {% blocktrans trimmed %}
-         <b>NOTE:</b> This is just a demo.
+         {% comment %}<b>NOTE:</b> This is just a demo.{% endcomment %}
          {% endblocktrans %}
-         &nbsp;&nbsp;
+         {% comment %}&nbsp;&nbsp;{% endcomment %}
          {% if not authenticatedUser %}
          {% blocktrans trimmed %}
-         To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
+         {% comment %}To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.{% endcomment %}
          {% endblocktrans %}
          {% endif %}
       </p>
@@ -98,6 +98,10 @@ return img;
                   <button class="home__button-primary">{% trans "Create" %}</button>
                </div>
 
+            </div>
+            <div class="row">
+               <b>NOTE:</b> This is just a demo.
+               To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
             </div>
          </div>
       </form>

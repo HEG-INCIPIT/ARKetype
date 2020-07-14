@@ -277,7 +277,7 @@ th {
   box-sizing: border-box; }
 
 html {
-  font-size: 10px;
+  font-size: 1em;
   -webkit-tap-highlight-color: transparent; }
 
 body {

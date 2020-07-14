@@ -9,21 +9,20 @@
 </div>-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-   <a class="navbar-brand" href="#">
+   <a class="navbar-brand" href="/">
       <img src="/static/images/logoIncipit-white.png" height="30" class="d-inline-block align-top" alt="" loading="lazy">
    </a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
    </button>
    <div class="collapse navbar-collapse" id="navbarText">
-      {% if authenticatedUser %}
       <ul class="navbar-nav mr-auto">
+         {% if authenticatedUser %}
          {% autoescape off %}
          {% menu_user menu_item session %}
          {% endautoescape %}
+         {% endif %}
       </ul>
-      <p class="vertical-buffer-20"></p>
-      {% endif %}
       <span class="navbar-text">
          {% if authenticatedUser %}
          Welcome {{ authenticatedUser.username }}!

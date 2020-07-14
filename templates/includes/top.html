@@ -1,14 +1,57 @@
 {% load layout_extras %}
 {% load menus %}
 
-<div class="header__admin-text">
+<!--<div class="header__admin-text">
    &nbsp;
    {% if authenticatedUser %}
    Welcome {{ authenticatedUser.username }}!
    {% endif %}
-</div>
+</div>-->
 
-<header role="banner" class="header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+   <a class="navbar-brand" href="#">
+      <img src="/static/images/logoIncipit.png-white" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+   </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarText">
+      {% if authenticatedUser %}
+      <div class="login-menu__container">
+         <div class="login-menu">
+            {% autoescape off %}
+            {% menu_user menu_item session %}
+            {% endautoescape %}
+         </div>
+      </div>
+      <p class="vertical-buffer-20"></p>
+      {% endif %}
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+         </li>
+      </ul>
+      <span class="navbar-text">
+         {% if authenticatedUser %}
+         Welcome {{ authenticatedUser.username }}!
+         <form action="/logout" role="form">
+            <button class="header__loginout-link" aria-label="Logout">Logout</button>
+         </form>
+         {% else %}
+         <button id="js-header__loginout-button" class="header__loginout-link" aria-label="Login">Login</button>
+         {% endif %}
+         {% include "includes/login-modal.html" %}
+      </span>
+   </div>
+</nav>
+
+<!--<header role="banner" class="header">
    <div class="header__logos">
       <a class="header__main-logo-link" href="/">
          <picture>
@@ -24,7 +67,7 @@
    </button>
 
    <nav role="navigation" id="js-header__nav" class="header__nav--selected" aria-hidden="false">
-      <!--<a class="header__nav-item-search" href="/search">Search</a>
+      <a class="header__nav-item-search" href="/search">Search</a>
       <details id="header__nav-details-learn" aria-expanded="false">
       <summary class="header__nav-item-learn" role="button">Learn</summary>
       <div class="header__subnav-panel">
@@ -38,7 +81,7 @@
         <a class="header__nav-subitem" href="{% url "ui_demo.index" %}">EZID Demo</a>
       </div>
     </details>
-      <a class="header__nav-item-contact" href="{% url "ui.contact" %}">Contact</a>-->
+      <a class="header__nav-item-contact" href="{% url "ui.contact" %}">Contact</a>
       <div class="header__loginout">
          {% if authenticatedUser %}
          <form action="/logout" role="form">
@@ -51,6 +94,7 @@
       </div>
    </nav>
 </header>
+
 {% if authenticatedUser %}
 <div class="login-menu__container">
    <div class="login-menu">
@@ -61,3 +105,4 @@
 </div>
 <p class="vertical-buffer-20"></p>
 {% endif %}
+-->

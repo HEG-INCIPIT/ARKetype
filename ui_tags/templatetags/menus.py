@@ -41,12 +41,14 @@ def menu_user(current_func, session):
 
 def menu_user_item(tup, session, is_current):
   u = reverse(tup[1])
-  acc = '<a href=\"%s\" ' % u
+
   if is_current:
-    class_name = "login-menu__link--selected"
+    class_name = "nav-item active"
   else:
-    class_name = "login-menu__link"
-  acc += 'class=\"' + class_name + '\">%s</a>' % tup[0]
+    class_name = "nav-item"
+
+  acc = '<li class=\"' + class_name + '\"><a href=\"%s\" ' % u
+  acc += 'class="nav-link">%s</a></li>' % tup[0]
   return acc
 
 @register.simple_tag

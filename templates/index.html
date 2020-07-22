@@ -19,7 +19,9 @@ return img;
 }
 {% endblock %}
 {% block content %}
-<h1 style="display: none;">EZID: {% trans "Identifiers made easy" %}</h1>
+<div class="heading__primary-container">
+   <h1 class="heading__primary-text">Incipit: The Swiss option for creating ARKs</h1>
+</div>
 <!-- Home Banner -->
 <!--
     <div class="home-banner">
@@ -33,8 +35,8 @@ return img;
    -->
 <div class="home__identifier-container">
 
-   <div class="home__identifier-lead-box">
-      <!--<p class="home__identifier-lead-heading">{% trans "See how easy it is" %}:</p>-->
+   <!--<div class="home__identifier-lead-box">
+      <p class="home__identifier-lead-heading">{% trans "See how easy it is" %}:</p>
       <p class="home__identifier-lead-note">
          {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
          i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
@@ -50,7 +52,7 @@ return img;
          {% endif %}
          {% endcomment %}
       </p>
-   </div>
+   </div>-->
 
    <div class="home__identifier-form">
       <form id="create_form" action="{% url "ui_home.index" %}" method="post" class="form-horizontal" role="form">
@@ -101,12 +103,12 @@ return img;
             </div>
             <div class="row">
                {% blocktrans trimmed %}
-               <b>NOTE:</b> This is just a demo.
+               <b>NOTE:</b> This demo created temporary ids!
                {% endblocktrans %}
                &nbsp;&nbsp;
                {% if not authenticatedUser %}
                {% blocktrans trimmed %}
-               To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
+               To create a real identifier, please <a class="link__primary" href="/contact">request an account</a>.
                {% endblocktrans %}
                {% endif %}
             </div>

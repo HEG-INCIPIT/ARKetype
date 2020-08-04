@@ -1,10 +1,10 @@
 {% if messages %}
-<div class="container-gluid">
+<div class="container-fluid">
    {% for m in messages %}
    {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-   <div class="alert alert-error w-50 text-left" role="alert">
+   <div class="alert alert-error w-50 text-left mt-3" role="alert">
       {% else %}
-      <div class="alert alert-success w-50 text-left" role="alert">
+      <div class="alert alert-success w-50 text-left mt-3" role="alert">
          {% endif %}
          {{ m|safe }}
       </div>

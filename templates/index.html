@@ -37,7 +37,9 @@ return img;
 
    <div class="home__identifier-form">
       <form id="create_form" action="{% url "ui_home.index" %}" method="post">
-         <div class="row">{% trans "Create an identifier" %}</div>
+         <div class="row">
+            <div class="text-primary fieldset-inline__legend">{% trans "Create an identifier" %}</div>
+         </div>
          <div class="row">
             <input type="hidden" name="current_profile" id="current_profile" value="{{current_profile.name}}" />
             {% for p in prefixes %}

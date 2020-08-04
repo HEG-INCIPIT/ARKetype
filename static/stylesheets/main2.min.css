@@ -3920,6 +3920,7 @@ tbody.collapse.in {
     color: #007bff;
     font-size: 1.6em;
     font-weight: 700;
+    font-variant:small-caps;
 }
 
 .heading__primary-text:first-letter{

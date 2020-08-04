@@ -72,7 +72,7 @@ return img;
 
          <div class="fieldset-stacked home__fieldset" role="group" aria-labelledby="fieldset__2">
 
-            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="text-primary fieldset-inline__legend">{% trans "Describe the identified object" %}</div>
+            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="text-primary fieldset-inline__legend">{% trans "Test the creation of ARKS via this demo form" %}</div>
 
             <div class="row">
                {{ form.non_field_errors }}
@@ -102,14 +102,10 @@ return img;
 
             </div>
             <div class="row">
-               {% blocktrans trimmed %}
-               <b>NOTE: </b> This demo created temporary ids!
-               {% endblocktrans %}
+               <span><b>NOTE: </b> This demo created temporary ids!</span>
                <br>
                {% if not authenticatedUser %}
-               {% blocktrans trimmed %}
-               To create a real identifier, please <a href="/contact"> request an account</a>.
-               {% endblocktrans %}
+               <span>To create a real identifier, please <a href="/contact"> request an account</a>.</span>
                {% endif %}
             </div>
          </div>

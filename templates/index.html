@@ -72,7 +72,7 @@ return img;
 
          <div class="fieldset-stacked home__fieldset" role="group" aria-labelledby="fieldset__2">
 
-            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="fieldset-inline__legend">{% trans "Describe the identified object" %}</div>
+            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="text-primary fieldset-inline__legend">{% trans "Describe the identified object" %}</div>
 
             <div class="row">
                {{ form.non_field_errors }}
@@ -94,10 +94,10 @@ return img;
                {% endfor %}
 
                <div class="col-md-2 home__create-button">
-                  <a href="{% url "ui_demo.advanced" %}" style="line-height:30px;" class="home__button-primary">{% trans "Advanced" %}</a>
+                  <a href="{% url "ui_demo.advanced" %}" style="line-height:30px;" class="btn btn-primary text-white">{% trans "Advanced" %}</a>
                   <br>
                   <br>
-                  <button class="home__button-primary">{% trans "Create" %}</button>
+                  <button class="btn btn-primary text-white">{% trans "Create" %}</button>
                </div>
 
             </div>

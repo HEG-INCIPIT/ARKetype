@@ -2,14 +2,15 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Access your account</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <form id="js-login-modal__form" method="post" action="/login" class="login-modal__form">
+         <form id="js-login-modal__form" method="post" action="/login" class="login-modal__form">
+            <div class="modal-header">
+               <h5 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Access your account</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+
                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
                <div class="login-modal__form-element fcontrol__group-stacked">
                   <label for="username" class="fcontrol__text-label-hidden">Username</label>
@@ -21,17 +22,16 @@
                   <input id="password" class="fcontrol__text-field-stacked" type="password" name="password" value="{{ password }}" placeholder="Password">
                   <span class="fcontrol__invalid-flag">This field is required</span>
                </div>
-               <div class="login-modal__footer">
-                  <button type="submit" class="login-modal__submit" id="login" name="login">Login</button>
-                  <a href="{% url "ui_account.pwreset" %}" class="login-modal__forgot">Forgot your password?</a>
-               </div>
-               <span class="login-modal__new">New to EZID? <strong><a href="{% url "ui.contact" %}" class="login-modal__sign-up-link">Contact Us.</a></strong></span>
-            </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-         </div>
+               <span class="text-dark">New to EZID?</span>
+               <hr>
+               <a href="{% url "ui.contact" %}" class="login-modal__sign-up-link">Contact Us.</a>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <a href="{% url "ui_account.pwreset" %}" class="btn btn-danger">Forgot your password?</a>
+               <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+         </form>
       </div>
    </div>
 </div>

@@ -55,7 +55,7 @@ return img;
 
             <div id="fieldset__2" aria-label="{% trans "Test the creation of ARKS via this demo form" %}" class="text-primary fieldset-inline__legend">{% trans "Test the creation of ARKS via this demo form" %}</div>
 
-            <div class="row">
+            <div class="">
                {{ form.non_field_errors }}
                {% for field in form %}
                <div class="col-md-5 home__text-field">
@@ -73,22 +73,14 @@ return img;
                   </div>
                </div>
                {% endfor %}
-               <!--
-               <div class="col-md-2 home__create-button">
-                  <a href="{% url "ui_demo.advanced" %}" style="line-height:30px;" class="btn btn-primary text-white">{% trans "Advanced" %}</a>
-                  <br>
-                  <br>
-                  <button class="btn btn-primary text-white">{% trans "Create" %}</button>
-               </div>
-               -->
             </div>
-            <div class="row">
+            <div class="">
                <div class="col text-right">
                   <a href="{% url "ui_demo.advanced" %}" class="btn btn-secondary text-white m-1">{% trans "Advanced" %}</a>
                   <button class="btn btn-primary text-white m-1">{% trans "Create" %}</button>
                </div>
             </div>
-            <div class="row">
+            <div class="">
                <span>
                   <b>NOTE: </b> This demo only creates temporary identifier!
                   {% if not authenticatedUser %}

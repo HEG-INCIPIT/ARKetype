@@ -2757,3 +2757,7 @@ hr {
  */
 .trapper_keeper {
   display: none; }
+
+  #footer-containter {
+      padding: 0;
+  }

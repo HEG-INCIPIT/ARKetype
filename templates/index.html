@@ -51,15 +51,15 @@ return img;
             <div class="col">
                <div class="row">
                   {{ form.non_field_errors }}
-                  <div class="col">
+                  <div class="col form-row ">
                      {% for field in form %}
-                     <div class="fcontrol__group-stacked{% if field.errors %}--invalid{% endif %} w-50">
+                     <div class="fcontrol__group-stacked{% if field.errors %}--invalid{% endif %} col-md-6 mb-3">
                         {% if field|fieldtype == "TextInput" %}
                         <label for="{{ field.id_for_label }}" class="fcontrol__text-label-hidden">{{ field.label }}</label>
-                        {{ field|add_attributes:"fcontrol__text-field-stacked" }}
+                        {{ field|add_attributes:"fcontrol__text-field-stacked form-control" }}
                         {% else %}
                         <label for="{{ field.id_for_label }}" class="fcontrol__select-label-hidden">{{ field.label }}</label>
-                        {{ field|add_attributes:"fcontrol__select" }}
+                        {{ field|add_attributes:"fcontrol__select form-control" }}
                         {% endif %}
                         {% if field.errors %}
                         <span class="fcontrol__invalid-flag">{% for error in field.errors %}{{ error|escape }}{% endfor %}</span>

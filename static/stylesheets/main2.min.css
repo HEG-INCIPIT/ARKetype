@@ -3910,16 +3910,24 @@ tbody.collapse.in {
 .heading__primary-container {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #168b99, #056a7b)
+    /*background: linear-gradient(to bottom, #168b99, #056a7b)*/
 }
 
 .heading__primary-text {
     max-width: 1000px;
     margin: 0 auto;
     padding: .8em 0;
-    color: #fff;
+    color: #007bff;
     font-size: 1.6em;
-    font-weight: 700
+    font-weight: 700;
+}
+
+.heading__primary-text:first-letter{
+   font-size:1.3em;
+}
+
+.heading__primary-text:not(:first-letter){
+   text-decoration: underline;
 }
 
 .heading__pop {

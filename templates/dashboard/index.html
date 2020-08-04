@@ -4,12 +4,12 @@
 
 {% block title %}{%trans "Dashboard" %}{% endblock %}
 {% comment %}Heading hidden, only readable by screen readers{% endcomment %}
-{% block heading %}{% autoescape off %}{% content_heading heading_user_display %}{% endautoescape %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("Dashboard") %}{% endautoescape %}{% endblock %}
 {% block content %}
 <div class="container vertical-buffer-xs">
    {% if display_adminlink %}
    <form action="/admin" role="form">
-      <button class="button__primary">{% trans "Administration" %}&nbsp;<span title="External Link" class="ext-icon"></span></button>
+      <button class="btn btn-primary text-white">{% trans "Administration" %}&nbsp;<span title="External Link" class="ext-icon"></span></button>
    </form>
    <hr />
    {% endif %}

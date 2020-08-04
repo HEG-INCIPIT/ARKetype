@@ -1,3 +1,6 @@
+.home__identifier-container {
+   background: rgba(0,123,255,0.3);
+}
 .btn,
 img {
     vertical-align: middle
@@ -5991,6 +5994,3 @@ abbr {
         font-weight: bold;
         text-transform: uppercase;
     }
-    .home__identifier-container {
-       background: rgba(0,123,255,0.3);
-   }

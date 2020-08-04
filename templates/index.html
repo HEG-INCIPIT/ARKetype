@@ -35,25 +35,6 @@ return img;
    -->
 <div class="home__identifier-container">
 
-   <!--<div class="home__identifier-lead-box">
-      <p class="home__identifier-lead-heading">{% trans "See how easy it is" %}:</p>
-      <p class="home__identifier-lead-note">
-         {% comment %}Translators: Copy HTML tags over and only translate words outside of these tags
-         i.e.: <p>TRANSLATE TEXT WRAPPED BY HTML TAGS</p>
-         i.e.: <a class="don't_translate_classes" href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
-         {% blocktrans trimmed %}
-         <b>NOTE:</b> This is just a demo.
-         {% endblocktrans %}
-         &nbsp;&nbsp;
-         {% if not authenticatedUser %}
-         {% blocktrans trimmed %}
-         To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
-         {% endblocktrans %}
-         {% endif %}
-         {% endcomment %}
-      </p>
-   </div>-->
-
    <div class="home__identifier-form">
       <form id="create_form" action="{% url "ui_home.index" %}" method="post" class="form-horizontal" role="form">
          <input type="hidden" name="current_profile" id="current_profile" value="{{current_profile.name}}" />
@@ -72,7 +53,7 @@ return img;
 
          <div class="fieldset-stacked home__fieldset" role="group" aria-labelledby="fieldset__2">
 
-            <div id="fieldset__2" aria-label="{% trans "Describe the identified object" %}" class="text-primary fieldset-inline__legend">{% trans "Test the creation of ARKS via this demo form" %}</div>
+            <div id="fieldset__2" aria-label="{% trans "Test the creation of ARKS via this demo form" %}" class="text-primary fieldset-inline__legend">{% trans "Test the creation of ARKS via this demo form" %}</div>
 
             <div class="row">
                {{ form.non_field_errors }}

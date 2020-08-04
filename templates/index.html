@@ -103,12 +103,12 @@ return img;
             </div>
             <div class="row">
                {% blocktrans trimmed %}
-               <b>NOTE:</b> This demo created temporary ids!
+               <b>NOTE: </b> This demo created temporary ids!
                {% endblocktrans %}
-               &nbsp;&nbsp;
+               <br>
                {% if not authenticatedUser %}
                {% blocktrans trimmed %}
-               To create a real identifier, please <a class="link__primary" href="/contact">request an account</a>.
+               To create a real identifier, please <a href="/contact"> request an account</a>.
                {% endblocktrans %}
                {% endif %}
             </div>

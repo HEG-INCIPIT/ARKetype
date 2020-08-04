@@ -83,8 +83,10 @@ return img;
                -->
             </div>
             <div class="row">
-               <a href="{% url "ui_demo.advanced" %}" style="line-height:30px;" class="btn btn-primary text-white">{% trans "Advanced" %}</a>
-               <button class="btn btn-primary text-white">{% trans "Create" %}</button>
+               <div class="col">
+                  <a href="{% url "ui_demo.advanced" %}" style="line-height:30px;" class="btn btn-primary text-white m-1">{% trans "Advanced" %}</a>
+                  <button class="btn btn-primary text-white m-1">{% trans "Create" %}</button>
+               </div>
             </div>
             <div class="row">
                <span>

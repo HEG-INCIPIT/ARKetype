@@ -5683,15 +5683,13 @@ abbr {
             -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
             max-width: 1000px;
+            padding: 15px;
             margin: 0 auto
         }
     }
     .home__identifier-lead-box {
         margin: 20px 0 0
     }
-    .home__identifier-container {
-       background: rgba(0,123,255,0.3);
-   }
     @media (min-width:768px) {
         .home__identifier-lead-box {
             width: 120px;
@@ -5993,3 +5991,6 @@ abbr {
         font-weight: bold;
         text-transform: uppercase;
     }
+    .home__identifier-container {
+       background: rgba(0,123,255,0.3);
+   }

@@ -14,16 +14,15 @@
                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
                <div class="login-modal__form-element fcontrol__group-stacked">
                   <label for="username" class="fcontrol__text-label-hidden">Username</label>
-                  <input id="username" class="fcontrol__text-field-stacked" type="text" name="username" value="{{ username }}" placeholder="Username">
+                  <input id="username" class="text-dark fcontrol__text-field-stacked" type="text" name="username" value="{{ username }}" placeholder="Username">
                   <span class="fcontrol__invalid-flag">This field is required</span>
                </div>
                <div class="login-modal__form-element fcontrol__group-stacked">
                   <label for="password" class="fcontrol__text-label-hidden">Password</label>
-                  <input id="password" class="fcontrol__text-field-stacked" type="password" name="password" value="{{ password }}" placeholder="Password">
+                  <input id="password" class="text-dark fcontrol__text-field-stacked" type="password" name="password" value="{{ password }}" placeholder="Password">
                   <span class="fcontrol__invalid-flag">This field is required</span>
                </div>
                <span class="text-dark">New to EZID?</span>
-               <hr>
                <a href="{% url "ui.contact" %}" class="btn btn-secondary">Contact Us.</a>
             </div>
             <div class="modal-footer">

@@ -1,7 +1,7 @@
 {% if messages %}
 {% for m in messages %}
 {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-<div class="container-fluid alert alert-error w-50 text-left mt-3" role="alert">
+<div class="container-fluid alert alert-danger w-50 text-left mt-3" role="alert">
    {% else %}
    <div class="container-fluid alert alert-success w-50 text-left mt-3" role="alert">
       {% endif %}

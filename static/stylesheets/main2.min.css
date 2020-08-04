@@ -3921,14 +3921,12 @@ tbody.collapse.in {
     font-size: 1.6em;
     font-weight: 700;
     font-variant:small-caps;
+    text-decoration: underline;
 }
 
-.heading__primary-text:first-letter{
+.heading__primary-text::first-letter{
    font-size:1.3em;
-}
-
-.heading__primary-text:not(:first-letter){
-   text-decoration: underline;
+   text-decoration: none;
 }
 
 .heading__pop {

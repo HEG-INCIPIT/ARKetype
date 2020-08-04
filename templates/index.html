@@ -83,11 +83,14 @@ return img;
 
             </div>
             <div class="row">
-               <span><b>NOTE: </b> This demo created temporary ids!</span>
-               <br>
-               {% if not authenticatedUser %}
-               <span>To create a real identifier, please <a href="/contact"> request an account</a>.</span>
-               {% endif %}
+               <span>
+                  <b>NOTE: </b> This demo created temporary ids!
+                  {% if not authenticatedUser %}
+                  <br>
+               </span><span>
+                  To create a real identifier, please <a href="/contact"> request an account</a>.
+                  {% endif %}
+               </span>
             </div>
          </div>
       </form>

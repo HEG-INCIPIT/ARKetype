@@ -30,7 +30,7 @@
             <button class="btn btn-light text-primary" aria-label="Logout">Logout</button>
          </form>
          {% else %}
-         <button id="js-header__loginout-button" class="btn btn-light text-primary" aria-label="Login">Login</button>
+         <button id="js-header__loginout-button" class="btn btn-light text-primary" aria-label="Login" data-toggle="modal" data-target="#exampleModal">Login</button>
          {% endif %}
          {% include "includes/login-modal.html" %}
       </span>

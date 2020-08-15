@@ -28,7 +28,7 @@ Name in English: {{ lang.name }}<br />
 Bi-directional: {{ lang.bidi }}<br />
 request.LANGUAGE_CODE: {{ request.LANGUAGE_CODE }}
 -->
-<p class="general__note">{% trans "Have a question, comment, or want to request an Incipit account? Fill out this form and we will get in touch with you." %}</p>
+<p class="general__note text-primary">{% trans "Have a question, comment, or want to request an Incipit account? Fill out this form and we will get in touch with you." %}</p>
 
 <form name="contact" action="{% url "ui.contact" %}" method="post" class="general__form" role="form">
    {{ form.non_field_errors }}

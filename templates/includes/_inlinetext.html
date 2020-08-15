@@ -4,9 +4,9 @@
 Formatting used for typical inline field for a form that is not repeating
 {% endcomment %}
 
-<div class="fcontrol__group-inline{% if field.errors %}--invalid{% endif %} {{ form_name }}form-element-group form-group row">
-   <label for="{{ field.id_for_label }}" class="fcontrol__text-label-inline {{ form_name }}form-label {% if reqd %}fcontrol__label-required{% endif %} col-sm-2 col-form-label">{{ field.label }}</label>
-   <div class="col-sm-10">
+<div class="form-group row">
+   <label for="{{ field.id_for_label }}" class="col-sm-6 col-form-label text-primary">{{ field.label }}</label>
+   <div class="col-sm-6">
       {{ field|add_attributes:"form-control"}}
       {% if field.errors %}
       <span class="fcontrol__invalid-flag">

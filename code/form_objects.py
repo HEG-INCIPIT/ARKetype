@@ -1043,10 +1043,10 @@ class ContactForm(forms.Form):
       error_messages={'required': _("Please fill in a question or comment.")})
     self.fields["hear_about"] = forms.ChoiceField(required=False, choices=REFERRAL_SOURCES,
       label=_("How did you hear about us?"))
-    if self.localized == False:
-      self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the Incipit newsletter"))
     self.fields["question"] = forms.CharField(max_length=200, label=_("Human test: How many drop down menus are in this form?"),
       error_messages={'required': _("Please answer the question")})
+    if self.localized == False:
+      self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the Incipit newsletter"))
 
 ################  Password Reset Landing Page ##########
 

@@ -44,14 +44,13 @@ request.LANGUAGE_CODE: {{ request.LANGUAGE_CODE }}
    {% include "includes/_inlinecheckbox.html" with field=field form_name="general__" %}
    {% endif %}
    {% endfor %}
-
    <div class="form-group row">
-      <label for="url" class="col-sm-6 col-form-label text-primary">Your URL</label>
+      <div class="col-sm-6"></div>
       <div class="col-sm-6">
-         <input id="url" name="url" class="form-control" type="text" placeholder="" maxlength="200" value="" />
+         <button class="btn btn-primary">{% trans "Submit" %}</button>
       </div>
    </div>
-   <button class="button__primary general__form-submit">{% trans "Submit" %}</button>
+
 </form>
 
 {% endblock %}

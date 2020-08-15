@@ -339,6 +339,7 @@ def getLongestMatch (identifier):
 @_lockAndLoad
 def getExactMatch (prefix):
   # Returns the shoulder having prefix 'prefix', or None.
+  print(_shoulders)
   return _shoulders.get(prefix, None)
 
 @_lockAndLoad

@@ -18,10 +18,8 @@ img += imageURLs[randomIndex];
 return img;
 }
 {% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("Incipit: The Swiss option for creating ARKs") %}{% endautoescape %}{% endblock %}
 {% block content %}
-<div class="heading__primary-container">
-   <h1 class="heading__primary-text">Incipit: The Swiss option for creating ARKs</h1>
-</div>
 <!-- Home Banner -->
 <!--
     <div class="home-banner">

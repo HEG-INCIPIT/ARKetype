@@ -15,7 +15,6 @@
          <input id="publish_false" class="fcontrol__radio-button-stacked" type="radio" value="False" name="publish" {% if request.POST.publish == 'False' or request.GET.publish == 'False' %} checked="checked"
             {% endif %}><span>{% trans "Reserved" %}</span>
       </label>
-      {% help_icon "decide_public" _("on making an identifier public or reserved") %}
    </div>
    <div id="harv_index" class="fieldset-inline create__form-element-group" role="group" aria-labelledby="fieldset-harvesting">
       <span id="fieldset-harvesting" class="fieldset-inline__legend create__inline-nested-legend">{% trans "Allow harvesting/indexing?" %}</span>
@@ -25,6 +24,5 @@
       <label for="export_no" class="fcontrol__radio-label-inline">
          <input id="export_no" class="fcontrol__radio-button-stacked" type="radio" value="no" name="export" {% if request.POST.export == 'no' %} checked="checked" {% endif %}> <span>{% trans "No" %}</span>
       </label>
-      {% help_icon "decide_export" _("on harvesting/indexing") %}
    </div>
 </div>

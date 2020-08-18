@@ -26,7 +26,7 @@ def settings_value(name):
 @register.simple_tag
 def content_heading(heading):
   """Outputs primary heading at top of page"""
-  return '<div class="heading__primary-container">' + \
+  return '<div class="container-sm">' + \
          '<h1 class="heading__primary-text">' + unicode(heading) + '</h1></div>'
 
 @register.simple_tag

@@ -3917,7 +3917,6 @@ tbody.collapse.in {
 }
 
 .heading__primary-text {
-    max-width: 1000px;
     margin: 0 auto;
     padding: .8em 0;
     color: #007bff;

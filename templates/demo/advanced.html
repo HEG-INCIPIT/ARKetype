@@ -7,11 +7,10 @@
 {% block description %}{%trans "Use the EZID demo to create an advanced identifier." %}{% endblock %}
 {% block heading %}{% autoescape off %}{% content_heading _("Create an Advanced Demo Identifier") %}{% endautoescape %}{% endblock %}
 {% block content %}
-<div class="container-sm">
-   <div>
-      <p class="h3 text-primary">To create a simple identifier <a href="{% url "ui_demo.simple" %}" class="btn btn-primary">click here</a></p>
-   </div>
-   <form id="create_form" action="{% url "ui_demo.advanced" %}" method="post" class="form-horizontal" role="form">
+<div class="container-sm card border-primary">
+
+   <form id="create_form" action="{% url "ui_demo.advanced" %}" method="post" class="card-body" role="form">
+      <p class="card-subtitle text-warning">To create a simple identifier <a href="{% url "ui_demo.simple" %}" class="btn btn-warning">click here</a></p>
       <input name="action" id="action" type="hidden" value="create" />
       <div class="row">
          <div class="col-md-4 col-md-push-8"></div>

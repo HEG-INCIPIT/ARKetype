@@ -62,14 +62,17 @@ DATABASE_ROUTERS = ["settings.routers.Router"]
 TIME_ZONE = "Europe/Zurich"
 TIME_FORMAT_UI_METADATA = "%Y-%m-%d %H:%M:%S"
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),    
+]
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = "/static/"
 
 LANGUAGES = [
   ("en", _("English")),
   ("fr-CA", _("Canadian French"))
 ]
-LOCALE_PATHS = [os.path.join(STATIC_ROOT, "locale")]
+LOCALE_PATHS = [os.path.join(STATICFILES_DIRS[0], "locale")]
 
 LANGUAGE_CODE='en'
 
@@ -117,7 +120,7 @@ INSTALLED_APPS = [
   "django.contrib.admin",
   "django.contrib.auth",
   "django.contrib.contenttypes",
-
+  "django.contrib.staticfiles",
   "ui_tags",
   "ezidapp",
 ]

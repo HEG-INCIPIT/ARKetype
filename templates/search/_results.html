@@ -68,11 +68,11 @@
 {% else %}
 
 {% if total_results > 10 %}
-{% include "search/_pagination.html" with primary_page=primary_page select_position="top" %}
+{% autoescape off %}{% include "search/_pagination.html" with primary_page=primary_page select_position="top" %}{% endautoescape %}
 {% endif %}
 
 <table class="table3">
-   {% header_row REQUEST fields_selected fields_mapped order_by sort primary_page %}
+   {% autoescape off %}{% header_row REQUEST fields_selected fields_mapped order_by sort primary_page %}{% endautoescape %}
    <tbody>
       {% for item in results %}
       <tr>
@@ -83,7 +83,7 @@
 </table>
 
 {% if total_results > 10 %}
-{% include "search/_pagination.html" with primary_page=primary_page select_position="bottom" %}
+{% autoescape off %}{% include "search/_pagination.html" with primary_page=primary_page select_position="bottom" %}{% endautoescape %}
 {% endif %}
 
 {% if primary_page == "ui_manage.index" %}

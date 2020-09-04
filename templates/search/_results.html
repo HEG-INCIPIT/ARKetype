@@ -29,7 +29,7 @@
          {% rewrite_hidden REQUEST %}
          <label for="owner_selected" class="fcontrol__select-label-inline">{% trans "View identifiers owned by" %}:</label>
 
-         {% include "includes/owner_select.html" %}
+         {% autoescape off %}{% include "includes/owner_select.html" %}{% endautoescape %}
 
       </form>
    </div>

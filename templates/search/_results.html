@@ -26,10 +26,10 @@
 <div class="manage__identifiers-submit-controls">
    <div class="fcontrol__select-group-inline manage__identifiers-select">
       <form id="owner_filter_form" action="{% url primary_page %}" method="get" role="form">
-         {% rewrite_hidden REQUEST %}
+         {% autoescape off %}{% rewrite_hidden REQUEST %}{% endautoescape %}
          <label for="owner_selected" class="fcontrol__select-label-inline">{% trans "View identifiers owned by" %}:</label>
 
-         {% autoescape off %}{% include "includes/owner_select.html" %}{% endautoescape %}
+         {% include "includes/owner_select.html" %}
 
       </form>
    </div>

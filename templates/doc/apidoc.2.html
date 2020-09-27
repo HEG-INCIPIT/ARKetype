@@ -11,7 +11,9 @@
 {% endautoescape %}
 {% endblock %}
 {% block content %}
+{% autoescape off %}
 {% learn_breadcrumb _("API Guide") %}
+{% endautoescape %}
 <div class="container api vertical-buffer-20">
    <div class="smallfont line-block">
       <div class="line"><strong>This version:</strong> <a class="reference external" href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/doc/apidoc.2.html">{{ request.scheme }}://{{ request.META.HTTP_HOST }}/doc/apidoc.2.html</a></div>

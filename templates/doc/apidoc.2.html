@@ -246,7 +246,7 @@ Authenticator.setDefault(new MyAuthenticator());
                interaction:</p>
             <pre class="literal-block">
 ⇒ GET /login HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23/
 ⇒ Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 
 ⇐ HTTP/1.1 200 OK
@@ -406,7 +406,7 @@ error: bad request - no such identifier
          line of the form &quot;error: <span class="hl1">reason</span>&quot;. For example:</p>
       <pre class="literal-block">
 ⇒ GET /id/ark:/99999/bogus HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23/
 
 ⇐ HTTP/1.1 400 BAD REQUEST
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -437,7 +437,7 @@ if (c.getResponseCode() &lt; 400) {
          identifier's Incipit URL. Here is a sample interaction:</p>
       <pre class="literal-block">
 ⇒ GET /id/ark:/99999/fk4cz3dh0 HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23/
 
 ⇐ HTTP/1.1 200 OK
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -486,7 +486,7 @@ if (c.getResponseCode() &lt; 400) {
       <p>Here's a sample interaction creating an ARK identifier:</p>
       <pre class="literal-block">
 ⇒ PUT /id/ark:/99999/fk4test HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 ⇒ Content-Type: text/plain; charset=UTF-8
 ⇒ Content-Length: 30
 ⇒
@@ -508,7 +508,7 @@ if (c.getResponseCode() &lt; 400) {
          identifier:</p>
       <pre class="literal-block">
 ⇒ PUT /id/doi:10.9999/test HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 
 ⇐ HTTP/1.1 201 CREATED
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -528,7 +528,7 @@ if (c.getResponseCode() &lt; 400) {
          is the desired namespace. For example:</p>
       <pre class="literal-block">
 ⇒ POST /shoulder/<span class="hl2">ark:/13030/c7</span> HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 ⇒ Content-Type: text/plain; charset=UTF-8
 ⇒ Content-Length: 30
 ⇒
@@ -563,7 +563,7 @@ if (c.getResponseCode() &lt; 400) {
          updated; see <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ POST /id/ark:/99999/fk4cz3dh0 HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 ⇒ Content-Type: text/plain; charset=UTF-8
 ⇒ Content-Length: 30
 ⇒
@@ -593,7 +593,7 @@ if (c.getResponseCode() &lt; 400) {
          previously. Here's a sample request:</p>
       <pre class="literal-block">
 ⇒ PUT /id/ark:/99999/fk4test?update_if_exists=yes HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 ⇒ Content-Type: text/plain; charset=UTF-8
 ⇒ Content-Length: 30
 ⇒
@@ -610,7 +610,7 @@ if (c.getResponseCode() &lt; 400) {
       <p>Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ DELETE /id/ark:/99999/fk4cz3dh0 HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 
 ⇐ HTTP/1.1 200 OK
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -646,7 +646,7 @@ if (c.getResponseCode() &lt; 400) {
          interaction that continues the previous example:</p>
       <pre class="literal-block">
 ⇒ GET /id/ark:/99999/fk4/root/andmore?prefix_match=yes HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23
 
 ⇐ HTTP/1.1 200 OK
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -1413,7 +1413,7 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
          response will resemble the following:</p>
       <pre class="literal-block">
 ⇒ GET /status HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23/
 
 ⇐ HTTP/1.1 200 OK
 ⇐ Content-Type: text/plain; charset=UTF-8
@@ -1588,7 +1588,7 @@ if ($r-&gt;is_success) {
          protocol should be included but not a port number
          (&quot;http://37.187.98.23/...&quot;), but conversely when supplying
          credentials the https port number should be included but not a
-         protocol (&quot;ezid.cdlib.org:443&quot;).</p>
+         protocol (&quot;37.187.98.23/:443&quot;).</p>
       <pre class="literal-block">
 use Encode;
 use HTTP::Request::Common;
@@ -1604,7 +1604,7 @@ sub escape {
   &quot;<span class="hl2">element1</span>&quot; =&gt; &quot;<span class="hl2">value1</span>&quot;,
   &quot;<span class="hl2">element2</span>&quot; =&gt; &quot;<span class="hl2">value2</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;ezid.cdlib.org:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(PUT &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
@@ -1618,7 +1618,7 @@ use HTTP::Request::Common;
 use LWP::UserAgent;
 
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;ezid.cdlib.org:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(POST &quot;http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;);
 if ($r-&gt;is_success) {
@@ -1641,7 +1641,7 @@ sub escape {
 
 %metadata = ( &quot;_target&quot; =&gt; &quot;<span class="hl2">url</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;ezid.cdlib.org:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(POST &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
@@ -1942,7 +1942,7 @@ _status = public
          the download can be retrieved. Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ POST /download_request HTTP/1.1
-⇒ Host: ezid.cdlib.org
+⇒ Host: 37.187.98.23/
 ⇒ Content-Type: application/x-www-form-urlencoded
 ⇒ Content-Length: 19
 ⇒

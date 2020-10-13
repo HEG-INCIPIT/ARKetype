@@ -33,7 +33,7 @@
       <div class="col-md-8">
          <div class="row">
             <label class="col-md-4 vertical-buffer-xxs">{% trans "Identifier" %}:</label>
-            <div class="col-md-8 vertical-buffer-bot-md"><strong>{% identifier_display id_text testPrefixes %}</strong></div>
+            <div class="col-md-8 vertical-buffer-bot-md"><strong>{% autoescape off %}{% identifier_display id_text testPrefixes %}{% endautoescape %}</strong></div>
             <label class="col-md-4 vertical-buffer-xxs">{% trans "Identifier as URL" %}:</label>
             <div class="col-md-7">
                <div id="id_as_url__box" class="vertical-buffer-xxs">
@@ -95,7 +95,7 @@
    </div>
    <div class="row vertical-buffer-bot">
       <label class="col-sm-2">{{internal_profile.target.displayName}}: </label>
-      <div class="col-sm-7">{% display_value identifier internal_profile.target %}</div>
+      <div class="col-sm-7">{% autoescape off %}{% display_value identifier internal_profile.target %}{% endautoescape %}</div>
    </div>
 
    {% if not has_block_data %}

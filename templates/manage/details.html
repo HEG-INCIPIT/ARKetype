@@ -80,7 +80,7 @@
             {% if has_resource_type %}
             {% get_dict_value identifier "datacite.resourcetype" %}.
             {% endif %}
-            {% active_id_display id_text testPrefixes %}
+            {% autoescape off %}{% active_id_display id_text testPrefixes %}{% endautoescape %}
          </p>
       </div>
    </div>

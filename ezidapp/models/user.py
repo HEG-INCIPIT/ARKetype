@@ -21,7 +21,6 @@ import re
 import shoulder
 import util
 import validation
-import nog_minter
 
 # Deferred imports...
 """
@@ -76,7 +75,7 @@ class User (django.db.models.Model):
       try:
         s = shoulder.getAgentShoulder()
         assert s.isArk, "agent shoulder type must be ARK"
-        self.pid = "ark:/" + nog_minter.mint_identifier(s)
+        self.pid = "ark:/" + noid_nog.getMinter(s.minter).mintIdentifier()
       except Exception, e:
         log.otherError("user.User.clean", e)
         raise

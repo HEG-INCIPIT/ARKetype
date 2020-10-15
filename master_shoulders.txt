@@ -1,13 +1,13 @@
 :: ark:/68061/g2
 type: shoulder
-manager: ezid
+manager: ncpt
 #eziduser: ncpt
 name: Incipit Ark
 minter: https://n2t.net/a/ncpt/m/ark/68061/g2
 
 :: ark:/99999/fk3
 type: shoulder
-manager: ezid
+manager: ncpt
 #eziduser: ncpt
 name: Incipit Test ARK
 minter: https://n2t.net/a/ncpt/m/ark/99999/fk3
@@ -18,3 +18,10 @@ minter: https://n2t.net/a/ncpt/m/ark/99999/fk3
 #eziduser: incipit
 #name: Incipit Ark
 #minter: https://n2t.net/a/ncpt/m/ark/99999/968061_bb4
+
+:: ark:/99166/p3
+type: shoulder
+manager: ncpt
+#eziduser: ncpt
+name: Incipit Test ARK
+minter: https://n2t.net/a/ncpt/m/ark/99999/fk3

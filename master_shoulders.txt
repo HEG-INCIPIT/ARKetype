@@ -23,5 +23,5 @@ minter: https://n2t.net/a/ncpt/m/ark/99999/fk3
 type: shoulder
 manager: ncpt
 #eziduser: ncpt
-name: Incipit Test ARK
+name: Incipit Agent
 minter: https://n2t.net/a/ncpt/m/ark/99166/p3

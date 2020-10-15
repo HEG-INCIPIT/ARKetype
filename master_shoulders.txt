@@ -1,20 +1,20 @@
-:: ark:/68061/g2
-type: shoulder
-manager: ncpt
-#eziduser: ncpt
-name: Incipit Ark
-minter: https://n2t.net/a/ncpt/m/ark/68061/g2
-
 :: ark:/99166/p3
 type: shoulder
-manager: ncpt
+manager: ezid
 #eziduser: ncpt
 name: Incipit Agent
 minter: https://n2t.net/a/ncpt/m/ark/99166/p3
 
+:: ark:/68061/g2
+type: shoulder
+manager: ezid
+#eziduser: ncpt
+name: Incipit Ark
+minter: https://n2t.net/a/ncpt/m/ark/68061/g2
+
 :: ark:/99999/fk3
 type: shoulder
-manager: ncpt
+manager: ezid
 #eziduser: ncpt
 name: Incipit Test ARK
 minter: https://n2t.net/a/ncpt/m/ark/99999/fk3

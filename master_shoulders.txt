@@ -5,6 +5,13 @@ manager: ezid
 name: Incipit Test ARK
 minter: https://n2t.net/a/ncpt/m/ark/99999/fk3
 
+:: ark:/99166/p3
+type: shoulder
+manager: ezid
+#eziduser: ncpt
+name: Incipit Agent
+minter: https://n2t.net/a/ncpt/m/ark/99166/p3
+
 :: ark:/68061/g2
 type: shoulder
 manager: ezid

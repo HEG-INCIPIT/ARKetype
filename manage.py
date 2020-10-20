@@ -14,7 +14,7 @@ def main():
 
     # print('syspath:\n' + '\n'.join(sys.path))
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.localdev")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.henenv")
     django.core.management.execute_from_command_line(sys.argv)
 
 

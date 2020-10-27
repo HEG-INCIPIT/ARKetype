@@ -367,14 +367,14 @@ class TitleForm(forms.Form):
     self.fields["title"] = forms.CharField(label=_("Title"),
       error_messages={'required': ERR_TITLE})
     TITLE_TYPES = (
-      ("", _("Main title")),
+      ("Main title", _("Main title")),
       ("AlternativeTitle", _("Alternative title")),
       ("Subtitle", _("Subtitle")),
       ("TranslatedTitle", _("Translated title")),
       ("Other", _("Other"))
     )
     self.fields["titleType"] = forms.ChoiceField(required=False, label = _("Type"),
-      widget= forms.RadioSelect(attrs={'class': 'fcontrol__radio-button-stacked'}), choices=TITLE_TYPES)
+      widget= forms.RadioSelect(attrs={'class': 'form-check-input'}), choices=TITLE_TYPES)
     self.fields["{http://www.w3.org/XML/1998/namespace}lang"] = forms.RegexField(required=False,
       label=_("Title Language"), regex=REGEX_LANGUAGE, error_messages={'invalid': ERR_LANGUAGE})
 

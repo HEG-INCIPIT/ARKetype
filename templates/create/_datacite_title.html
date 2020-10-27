@@ -12,7 +12,7 @@
 
 <div id="title_set" class="fieldset-stacked create__nested-fieldset fieldset__bottom-border" role="group" aria-labelledby="title_form_set">
    <div class="fieldset-controls__container">
-      <div id="title_form_set" class="text-primary h3">{% trans "Title" %}</div>
+      <div id="title_form_set" class="text-primary h4">{% trans "Title" %}</div>
       {% include "create/_datacite_buttons.html" with element="title" %}
    </div>
    {% for form in form.title_set %}
@@ -23,14 +23,16 @@
       {% if forloop.counter == 1 %}
       {% include "create/_datacite_inlinetext.html" with field=t_field reqd="true" %}
       {% elif forloop.counter == 2 %}
-      <div class="fieldset-inline create__form-element-group" role="group" aria-labelledby="title-type-{{forloop.counter}}">
-         <span id="title-type-{{forloop.counter}}" class="fieldset-inline__legend create__inline-nested-legend">{{ t_field.label }}</span>
-         {% for radio in t_field %}
-         <label for="{{ radio.id_for_label }}" class="fcontrol__radio-label-inline">
-            {{ radio.tag }}
-            <span>{{ radio.choice_label }}</span>
-         </label>
-         {% endfor %}
+      <div class="row my-2" role="group" aria-labelledby="title-type-{{forloop.counter}}">
+         <span id="title-type-{{forloop.counter}}" class="col-md-2 text-primary">{{ t_field.label }}</span>
+         <div class="col-md-10">
+            {% for radio in t_field %}
+            <label for="{{ radio.id_for_label }}" class="form-check text-primary">
+               {{ radio.tag }}
+               <span>{{ radio.choice_label }}</span>
+            </label>
+            {% endfor %}
+         </div>
       </div>
       {% else %}
       {% include "create/_datacite_inlinetext.html" with field=t_field %}

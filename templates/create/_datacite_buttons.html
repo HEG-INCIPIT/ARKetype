@@ -1,10 +1,11 @@
 {% load i18n %}
-    <div class="fieldset-controls__buttons">
-      <button id="button__plus-{{element}}" class="button__plus" type="button">
-        <span class="button__text">{% trans "Add" %}</span>
-      </button>
-      <button id="button__minus-{{element}}" class="button__minus" type="button">
-        <span class="button__text">{% trans "Remove" %}</span>
-      </button>
-    </div>
-
+<div class="fieldset-controls__buttons">
+   <button id="button__plus-{{element}}" class="btn btn-warning" arial-label="Add" type="button">
+      <span aria-hidden="true">&#43;</span>
+      <span class="sr-only">{% trans "Add" %}</span>
+   </button>
+   <button id="button__minus-{{element}}" class="btn btn-warning" arial-label="Remove" type="button">
+      <span aria-hidden="true">&#45;</span>
+      <span class="button__text">{% trans "Remove" %}</span>
+   </button>
+</div>

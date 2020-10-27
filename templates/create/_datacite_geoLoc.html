@@ -26,7 +26,7 @@
       {% endcomment %}
       {% if forloop.counter == 1 %}
       <div class="subfieldset__container">
-         <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Point" %}</div>
+         <div id="subfieldset__example1" class="text-primary h5">{% trans "Point" %}</div>
          {% include "create/_datacite_inlinetext.html" with field=g_field %}
          {% endif %}
          {% if forloop.counter == 2 %}
@@ -35,7 +35,7 @@
       {% endif %}
       {% if forloop.counter == 3 %}
       <div class="subfieldset__container">
-         <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Box" %}</div>
+         <div id="subfieldset__example1" class="text-primary h5">{% trans "Box" %}</div>
          {% include "create/_datacite_inlinetext.html" with field=g_field %}
          {% endif %}
          {% if forloop.counter == 4 %}

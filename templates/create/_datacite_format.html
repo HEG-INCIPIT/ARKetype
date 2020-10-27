@@ -1,26 +1,26 @@
 {% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#format_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.format_set.prefix }}',
-      deleteCssId: 'button__minus-format',
-      addCssId: 'button__plus-format'
-    });
-  })
+   $(function() {
+      $('#format_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.format_set.prefix }}',
+         deleteCssId: 'button__minus-format',
+         addCssId: 'button__plus-format'
+      });
+   })
 </script>
 
 <div id="format_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="format_form_set">
-  <div class="fieldset-controls__container">
-    <div id="format_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Format" %}</div>
-  {% include "create/_datacite_buttons.html" with element="format" %}
-  </div>
-{% for form in form.format_set %}
-  <div class="form-container">
-  {{ form.non_field_errors }}
-  {% include "create/_datacite_inlinetext.html" with field=form.format %}
-  </div>
-{% endfor %}
+   <div class="fieldset-controls__container">
+      <div id="format_form_set" class="text-primary h3">{% trans "Format" %}</div>
+      {% include "create/_datacite_buttons.html" with element="format" %}
+   </div>
+   {% for form in form.format_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% include "create/_datacite_inlinetext.html" with field=form.format %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.format_set.management_form }}

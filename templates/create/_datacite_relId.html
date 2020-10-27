@@ -1,36 +1,36 @@
-{% load i18n %}	
+{% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#relid_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.relid_set.prefix }}',
-      deleteCssId: 'button__minus-relid',
-      addCssId: 'button__plus-relid'
-    });
-  })
+   $(function() {
+      $('#relid_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.relid_set.prefix }}',
+         deleteCssId: 'button__minus-relid',
+         addCssId: 'button__plus-relid'
+      });
+   })
 </script>
 
 <div id="relid_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="related_id_form_set">
-  <div class="fieldset-controls__container">
-    <div id="related_id_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Related Identifier" %}</div>
-  {% include "create/_datacite_buttons.html" with element="relid" %}
-  </div>
-{% for form in form.relid_set %}
-  <div class="form-container">
-  {{ form.non_field_errors }}
+   <div class="fieldset-controls__container">
+      <div id="related_id_form_set" class="text-primary h3">{% trans "Related Identifier" %}</div>
+      {% include "create/_datacite_buttons.html" with element="relid" %}
+   </div>
+   {% for form in form.relid_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
 
-  {% include "create/_datacite_inlinetext.html" with field=form.relatedIdentifier %}
-  {% include "create/_datacite_inlineselect.html" with field=form.relatedIdentifierType %}
-  {% include "create/_datacite_inlineselect.html" with field=form.relationType %}
-  <details id="accordion__section-1" class="accordion__section create__accordion-section" {{accordions_open}}>
-    <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
-    {% include "create/_datacite_inlinetext.html" with field=form.relatedMetadataScheme %}
-    {% include "create/_datacite_inlinetext.html" with field=form.schemeURI %}
-    {% include "create/_datacite_inlinetext.html" with field=form.schemeType %}
-  </details>
+      {% include "create/_datacite_inlinetext.html" with field=form.relatedIdentifier %}
+      {% include "create/_datacite_inlineselect.html" with field=form.relatedIdentifierType %}
+      {% include "create/_datacite_inlineselect.html" with field=form.relationType %}
+      <details id="accordion__section-1" class="accordion__section create__accordion-section" {{accordions_open}}>
+         <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
+         {% include "create/_datacite_inlinetext.html" with field=form.relatedMetadataScheme %}
+         {% include "create/_datacite_inlinetext.html" with field=form.schemeURI %}
+         {% include "create/_datacite_inlinetext.html" with field=form.schemeType %}
+      </details>
 
-  </div>
-{% endfor %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.relid_set.management_form }}

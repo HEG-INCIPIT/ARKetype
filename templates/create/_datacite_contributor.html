@@ -1,49 +1,49 @@
 {% load i18n %}
 {% comment %} This template is very similar to the CreatorForm {% endcomment %}
 <script type="text/javascript">
-  $(function() {
-    $('#contrib_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.contrib_set.prefix }}',
-      deleteCssId: 'button__minus-contributor',
-      addCssId: 'button__plus-contributor'
-    });
-  })
+   $(function() {
+      $('#contrib_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.contrib_set.prefix }}',
+         deleteCssId: 'button__minus-contributor',
+         addCssId: 'button__plus-contributor'
+      });
+   })
 </script>
 
 <div id="contrib_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="contributor_form_set">
-  <div class="fieldset-controls__container">
-    <div id="contributor_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Contributor" %}</div>
-  {% include "create/_datacite_buttons.html" with element="contributor" %}
-  </div>
-{% for form in form.contrib_set %}
-  <div class="form-container">
-  {{ form.non_field_errors }}
-  {% for c_field in form %}
+   <div class="fieldset-controls__container">
+      <div id="contributor_form_set" class="text-primary h3">{% trans "Contributor" %}</div>
+      {% include "create/_datacite_buttons.html" with element="contributor" %}
+   </div>
+   {% for form in form.contrib_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% for c_field in form %}
 
-  {% if forloop.counter0 < 3 %}
+      {% if forloop.counter0 < 3 %}
 
-    {% if forloop.first %}
+      {% if forloop.first %}
       {% include "create/_datacite_inlineselect.html" with field=c_field %}
       <details id="accordion__section-1" class="accordion__section create__accordion-section" {{accordions_open}}>
-        <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
-    {% else %}
-      {% include "create/_datacite_inlinetext.html" with field=c_field %}
-    {% endif %}
-  {% elif forloop.counter0 > 2 %}
-    {% if forloop.last %}
-      {% include "create/_datacite_inlinetext.html" with field=c_field %}
-    {% elif forloop.counter0|divisibleby:3 %}
-      {% include "create/_datacite_inlinetext.html" with field=c_field class="end" %}
-    {% else %}
-      {% include "create/_datacite_inlinetext.html" with field=c_field class="tight" %}
-    {% endif %}
-  {% endif %}
+         <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
+         {% else %}
+         {% include "create/_datacite_inlinetext.html" with field=c_field %}
+         {% endif %}
+         {% elif forloop.counter0 > 2 %}
+         {% if forloop.last %}
+         {% include "create/_datacite_inlinetext.html" with field=c_field %}
+         {% elif forloop.counter0|divisibleby:3 %}
+         {% include "create/_datacite_inlinetext.html" with field=c_field class="end" %}
+         {% else %}
+         {% include "create/_datacite_inlinetext.html" with field=c_field class="tight" %}
+         {% endif %}
+         {% endif %}
 
-  {% endfor %}
-  </details>
+         {% endfor %}
+      </details>
 
-  </div>
-{% endfor %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.contrib_set.management_form }}

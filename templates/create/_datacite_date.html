@@ -1,27 +1,27 @@
 {% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#date_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.date_set.prefix }}',
-      deleteCssId: 'button__minus-date',
-      addCssId: 'button__plus-date'
-    });
-  })
+   $(function() {
+      $('#date_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.date_set.prefix }}',
+         deleteCssId: 'button__minus-date',
+         addCssId: 'button__plus-date'
+      });
+   })
 </script>
 
 <div id="date_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="date_form_set">
-  <div class="fieldset-controls__container">
-    <div id="date_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Date" %}</div>
-  {% include "create/_datacite_buttons.html" with element="date" %}
-  </div>
-{% for form in form.date_set %}
-  <div class="form-container">
-{{ form.non_field_errors }}
-{% include "create/_datacite_inlinetext.html" with field=form.date %}
-{% include "create/_datacite_inlineselect.html" with field=form.dateType %}
-  </div>
-{% endfor %}
+   <div class="fieldset-controls__container">
+      <div id="date_form_set" class="text-primary h3">{% trans "Date" %}</div>
+      {% include "create/_datacite_buttons.html" with element="date" %}
+   </div>
+   {% for form in form.date_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% include "create/_datacite_inlinetext.html" with field=form.date %}
+      {% include "create/_datacite_inlineselect.html" with field=form.dateType %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.date_set.management_form }}

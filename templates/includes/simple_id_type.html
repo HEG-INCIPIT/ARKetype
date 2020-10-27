@@ -3,7 +3,7 @@
 
 <div class="fieldset-stacked" role="group" aria-labelledby="create__fieldset1">
    <div id="create__fieldset1" aria-label="{% trans "Step 1 - Choose an identifier type" %}" class="">
-      <p class="card-title text-primary">{% trans "Choose an identifier type" %}</p>
+      <p class="card-title h3 text-primary">{% trans "Choose an identifier type" %}</p>
    </div>
    {% if prefixes|duplicate_id_types %}
    {% comment %}
@@ -12,15 +12,15 @@
    Although it's best we map already filled in fields over to next profile, which is something we should implement.
    {% endcomment %}
    {% for p in prefixes %}
-   <label for="{{p.prefix}}" class="fcontrol__radio-label-stacked create__radio-button">
-      <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked ays-ignore" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %} />
+   <label for="{{p.prefix}}" class="form-check text-primary">
+      <input id="{{p.prefix}}" class="form-check-input" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %} />
       <span>{% shoulder_display p "False" testPrefixes "False" %}</span>
    </label>
    {% endfor %}
    {% else %}
    {% for p in prefixes %}
-   <label for="{{p.prefix}}" class="fcontrol__radio-label-stacked create__radio-button">
-      <input id="{{p.prefix}}" class="fcontrol__radio-button-stacked ays-ignore" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %} />
+   <label for="{{p.prefix}}" class="form-check text-primary">
+      <input id="{{p.prefix}}" class="form-check-input" type="radio" value="{{p.prefix}}" name="shoulder" {% selected_radio "shoulder" forloop.counter p.prefix %} />
       <span>{% shoulder_display p "False" testPrefixes "True" %}</span>
    </label>
    {% endfor %}

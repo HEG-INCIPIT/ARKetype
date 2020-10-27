@@ -3,26 +3,24 @@
 
 <div class="fieldset-stacked" role="group" aria-labelledby="fieldset-publish">
    <div id="fieldset-publish" aria-label="{% trans "Step 3 - Publishing options" %}" class="">
-      <p class="card-title text-primary">{% trans "Decide" %}</p>
+      <p class="card-title h3 text-primary">{% trans "Decide" %}</p>
    </div>
-   <div class="fieldset-inline create__form-element-group" role="group" aria-labelledby="create__publish">
-      <span id="create__publish" class="fieldset-inline__legend create__inline-nested-legend">{% trans "Make this identifier" %}</span>
-      <label for="publish_true" class="fcontrol__radio-label-inline">
-         <input id="publish_true" class="fcontrol__radio-button-stacked" type="radio" value="True" name="publish" {% if request.POST.publish != 'False' or request.GET.publish != 'False' %} checked="checked"
-            {% endif %}><span>{% trans "Public" %}</span>
+   <div class="form-row" role="group" aria-labelledby="create__publish">
+      <span id="create__publish" class="card-title text-primary form-group col">{% trans "Make this identifier" %}</span>
+      <label for="publish_true" class="form-check text-primary form-group col">
+         <input id="publish_true" class="form-check-input" type="radio" value="True" name="publish" {% if request.POST.publish != 'False' or request.GET.publish != 'False' %} checked="checked" {% endif %}><span>{% trans "Public" %}</span>
       </label>
-      <label for="publish_false" class="fcontrol__radio-label-inline">
-         <input id="publish_false" class="fcontrol__radio-button-stacked" type="radio" value="False" name="publish" {% if request.POST.publish == 'False' or request.GET.publish == 'False' %} checked="checked"
-            {% endif %}><span>{% trans "Reserved" %}</span>
+      <label for="publish_false" class="form-check text-primary form-group col">
+         <input id="publish_false" class="form-check-input" type="radio" value="False" name="publish" {% if request.POST.publish == 'False' or request.GET.publish == 'False' %} checked="checked" {% endif %}><span>{% trans "Reserved" %}</span>
       </label>
    </div>
-   <div id="harv_index" class="fieldset-inline create__form-element-group" role="group" aria-labelledby="fieldset-harvesting">
-      <span id="fieldset-harvesting" class="fieldset-inline__legend create__inline-nested-legend">{% trans "Allow harvesting/indexing?" %}</span>
-      <label for="export_yes" class="fcontrol__radio-label-inline">
-         <input id="export_yes" class="fcontrol__radio-button-stacked" type="radio" value="yes" name="export" {% if request.POST.export != 'no' %} checked="checked" {% endif %}> <span>{% trans "Yes" %}</span>
+   <div id="harv_index" class="form-row" role="group" aria-labelledby="fieldset-harvesting">
+      <span id="fieldset-harvesting" class="card-title text-primary form-group col">{% trans "Allow harvesting/indexing?" %}</span>
+      <label for="export_yes" class="form-check text-primary form-group col">
+         <input id="export_yes" class="form-check-input" type="radio" value="yes" name="export" {% if request.POST.export != 'no' %} checked="checked" {% endif %}> <span>{% trans "Yes" %}</span>
       </label>
-      <label for="export_no" class="fcontrol__radio-label-inline">
-         <input id="export_no" class="fcontrol__radio-button-stacked" type="radio" value="no" name="export" {% if request.POST.export == 'no' %} checked="checked" {% endif %}> <span>{% trans "No" %}</span>
+      <label for="export_no" class="form-check text-primary form-group col">
+         <input id="export_no" class="form-check-input" type="radio" value="no" name="export" {% if request.POST.export == 'no' %} checked="checked" {% endif %}> <span>{% trans "No" %}</span>
       </label>
    </div>
 </div>

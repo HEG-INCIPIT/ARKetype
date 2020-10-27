@@ -1,27 +1,27 @@
 {% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#altid_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.altid_set.prefix }}',
-      deleteCssId: 'button__minus-altid',
-      addCssId: 'button__plus-altid'
-    });
-  })
+   $(function() {
+      $('#altid_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.altid_set.prefix }}',
+         deleteCssId: 'button__minus-altid',
+         addCssId: 'button__plus-altid'
+      });
+   })
 </script>
 
 <div id="altid_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="alternate_id_form_set">
-  <div class="fieldset-controls__container">
-    <div id="alternate_id_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Alternate Identifier" %}</div>
-  {% include "create/_datacite_buttons.html" with element="altid" %}
-  </div>
-{% for form in form.altid_set %}
-  <div class="form-container">
-  {{ form.non_field_errors }}
-  {% include "create/_datacite_inlinetext.html" with field=form.alternateIdentifier %}
-  {% include "create/_datacite_inlinetext.html" with field=form.alternateIdentifierType %}
-  </div>
-{% endfor %}
+   <div class="fieldset-controls__container">
+      <div id="alternate_id_form_set" class="text-primary h3">{% trans "Alternate Identifier" %}</div>
+      {% include "create/_datacite_buttons.html" with element="altid" %}
+   </div>
+   {% for form in form.altid_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% include "create/_datacite_inlinetext.html" with field=form.alternateIdentifier %}
+      {% include "create/_datacite_inlinetext.html" with field=form.alternateIdentifierType %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.altid_set.management_form }}

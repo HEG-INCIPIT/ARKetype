@@ -1,35 +1,35 @@
 {% load i18n %}
 <script type="text/javascript">
-  $(function() {
-    $('#subject_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.subject_set.prefix }}',
-      deleteCssId: 'button__minus-subject',
-      addCssId: 'button__plus-subject'
-    });
-  })
+   $(function() {
+      $('#subject_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.subject_set.prefix }}',
+         deleteCssId: 'button__minus-subject',
+         addCssId: 'button__plus-subject'
+      });
+   })
 </script>
 
 <div id="subject_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="subject_form_set">
-  <div class="fieldset-controls__container">
-    <div id="subject_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Subject" %}</div>
-  {% include "create/_datacite_buttons.html" with element="subject" %}
-  </div>
-{% for form in form.subject_set %}
-  <div class="form-container">
-{{ form.non_field_errors }}
-  {% for subj_field in form %}
+   <div class="fieldset-controls__container">
+      <div id="subject_form_set" class="text-primary h3">{% trans "Subject" %}</div>
+      {% include "create/_datacite_buttons.html" with element="subject" %}
+   </div>
+   {% for form in form.subject_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% for subj_field in form %}
 
-  {% if forloop.first %}
-    {% include "create/_datacite_inlinetext.html" with field=subj_field %}
-    <details id="accordion__section-1" class="accordion__section create__accordion-section" {{accordions_open}}>
-      <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
-  {% else %}
+      {% if forloop.first %}
       {% include "create/_datacite_inlinetext.html" with field=subj_field %}
-  {% endif %}
-  {% endfor %}
-    </details>
-  </div>
-{% endfor %}
+      <details id="accordion__section-1" class="accordion__section create__accordion-section" {{accordions_open}}>
+         <summary class="accordion__title create__accordion-title">{% trans "More Fields" %}</summary>
+         {% else %}
+         {% include "create/_datacite_inlinetext.html" with field=subj_field %}
+         {% endif %}
+         {% endfor %}
+      </details>
+   </div>
+   {% endfor %}
 </div>
 {{ form.subject_set.management_form }}

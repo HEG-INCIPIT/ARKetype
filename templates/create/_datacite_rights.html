@@ -1,28 +1,28 @@
 {% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#rights_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.rights_set.prefix }}',
-      deleteCssId: 'button__minus-rights',
-      addCssId: 'button__plus-rights'
-    });
-  })
+   $(function() {
+      $('#rights_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.rights_set.prefix }}',
+         deleteCssId: 'button__minus-rights',
+         addCssId: 'button__plus-rights'
+      });
+   })
 </script>
 
 <div id="rights_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="rights_form_set">
-  <div class="fieldset-controls__container">
-    <div id="rights_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Rights" %}</div>
-  {% include "create/_datacite_buttons.html" with element="rights" %}
-  </div>
-{% for form in form.rights_set %}
-  <div class="form-container">
-  {{ form.non_field_errors }}
+   <div class="fieldset-controls__container">
+      <div id="rights_form_set" class="text-primary h3">{% trans "Rights" %}</div>
+      {% include "create/_datacite_buttons.html" with element="rights" %}
+   </div>
+   {% for form in form.rights_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
 
-  {% include "create/_datacite_inlinetext.html" with field=form.rights %}
-  {% include "create/_datacite_inlinetext.html" with field=form.rightsURI %}
-  </div>
-{% endfor %}
+      {% include "create/_datacite_inlinetext.html" with field=form.rights %}
+      {% include "create/_datacite_inlinetext.html" with field=form.rightsURI %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.rights_set.management_form }}

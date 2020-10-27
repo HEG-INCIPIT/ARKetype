@@ -2,64 +2,64 @@
 {% load i18n %}
 
 <script type="text/javascript">
-  $(function() {
-    $('#geoloc_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.geoloc_set.prefix }}',
-      deleteCssId: 'button__minus-geoloc',
-      addCssId: 'button__plus-geoloc'
-    });
-  })
+   $(function() {
+      $('#geoloc_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.geoloc_set.prefix }}',
+         deleteCssId: 'button__minus-geoloc',
+         addCssId: 'button__plus-geoloc'
+      });
+   })
 </script>
 
 <div id="geoloc_set" class="fieldset-stacked create__nested-fieldset" role="group" aria-labelledby="geoLocation_form_set">
-  <div class="fieldset-controls__container">
-    <div id="geoLocation_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Geolocation" %}</div>
-  {% include "create/_datacite_buttons.html" with element="geoloc" %}
-  </div>
-{% for form in form.geoloc_set %}
-  <div class="form-container">
-{{ form.non_field_errors }}
-  {% for g_field in form %}
-    {% comment %}
+   <div class="fieldset-controls__container">
+      <div id="geoLocation_form_set" class="text-primary h3">{% trans "Geolocation" %}</div>
+      {% include "create/_datacite_buttons.html" with element="geoloc" %}
+   </div>
+   {% for form in form.geoloc_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% for g_field in form %}
+      {% comment %}
       Field labels with hyphens in them aren't handled well by Django templates, so need to loop through.
-    {% endcomment %}
-    {% if forloop.counter == 1 %}
+      {% endcomment %}
+      {% if forloop.counter == 1 %}
       <div class="subfieldset__container">
-        <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Point" %}</div>
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
-    {% endif %}
-    {% if forloop.counter == 2 %}
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Point" %}</div>
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         {% endif %}
+         {% if forloop.counter == 2 %}
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
       </div>
-    {% endif %}
-    {% if forloop.counter == 3 %}
+      {% endif %}
+      {% if forloop.counter == 3 %}
       <div class="subfieldset__container">
-        <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Box" %}</div>
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
-    {% endif %}
-    {% if forloop.counter == 4 %}
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
-    {% endif %}
-    {% if forloop.counter == 5 %}
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
-    {% endif %}
-    {% if forloop.counter == 6 %}
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         <div id="subfieldset__example1" class="subfieldset__legend">{% trans "Box" %}</div>
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         {% endif %}
+         {% if forloop.counter == 4 %}
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         {% endif %}
+         {% if forloop.counter == 5 %}
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         {% endif %}
+         {% if forloop.counter == 6 %}
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
       </div>
-    {% endif %}
-    {% if forloop.counter == 7 %}
+      {% endif %}
+      {% if forloop.counter == 7 %}
       <div class="subfieldset-inline__container">
-        {% include "create/_datacite_inlinetext.html" with field=g_field %}
+         {% include "create/_datacite_inlinetext.html" with field=g_field %}
       </div>
-    {% endif %}
-    {% if forloop.counter == 8 %}
+      {% endif %}
+      {% if forloop.counter == 8 %}
       <div class="subfieldset-inline__container">
-        {% include "create/_datacite_inlinetextarea.html" with field=g_field polygon="true" polygon_view=polygon_view %}
+         {% include "create/_datacite_inlinetextarea.html" with field=g_field polygon="true" polygon_view=polygon_view %}
       </div>
-    {% endif %}
-  {% endfor %}
-  </div>
-{% endfor %}
+      {% endif %}
+      {% endfor %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.geoloc_set.management_form }}

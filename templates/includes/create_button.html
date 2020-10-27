@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="row">
+<div class="row my-2">
    <div class="col-6"></div>
    <div class="col-6">
       <button id="create__button" class="btn btn-primary float-right">{% trans "Create" %}</button>
@@ -12,7 +12,7 @@
    i.e.: <a class="don't_translate_classes" href="don't_translate_urls">PLEASE PRESERVE HTML TAGS</a>
    {% endcomment %}
    {% if calling_page == 'demo' %}
-   <div class="sidebox create__button-note"><em>
+   <div class="alert alert-warning text-left" role="alert"><em>
          {# Translators: Please preserve &quot; tags. #}
          {% blocktrans trimmed %}
          By clicking &quot;Create&quot; you will create a demo ID. Demo IDs are subject to deletion two weeks after creation and are only meant for testing purposes.
@@ -20,7 +20,7 @@
          {% if not authenticatedUser %}
          <br /><br />
          {% blocktrans trimmed %}
-         To create a real identifier, <a class="link__primary" href="/contact">request an account</a>.
+         To create a real identifier, <a class="alert-link" href="/contact">request an account</a>.
          {% endblocktrans %}
          {% endif %}
       </em></div>

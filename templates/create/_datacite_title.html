@@ -1,44 +1,44 @@
 {% load i18n %}
 <script type="text/javascript">
-  $(function() {
-    $('#title_set .form-container').formset({
-      auto_id: '',
-      prefix: '{{ form.title_set.prefix }}',
-      deleteCssId: 'button__minus-title',
-      addCssId: 'button__plus-title'
-    });
-  })
+   $(function() {
+      $('#title_set .form-container').formset({
+         auto_id: '',
+         prefix: '{{ form.title_set.prefix }}',
+         deleteCssId: 'button__minus-title',
+         addCssId: 'button__plus-title'
+      });
+   })
 </script>
 
 <div id="title_set" class="fieldset-stacked create__nested-fieldset fieldset__bottom-border" role="group" aria-labelledby="title_form_set">
-  <div class="fieldset-controls__container">
-    <div id="title_form_set" class="fieldset-controls__legend create__nested-legend">{% trans "Title" %}</div>
-  {% include "create/_datacite_buttons.html" with element="title" %}
-  </div>
-{% for form in form.title_set %}
-  <div class="form-container">
-{{ form.non_field_errors }}
-  {% for t_field in form %}
+   <div class="fieldset-controls__container">
+      <div id="title_form_set" class="text-primary h3">{% trans "Title" %}</div>
+      {% include "create/_datacite_buttons.html" with element="title" %}
+   </div>
+   {% for form in form.title_set %}
+   <div class="form-container">
+      {{ form.non_field_errors }}
+      {% for t_field in form %}
 
-  {% if forloop.counter == 1 %}
-    {% include "create/_datacite_inlinetext.html" with field=t_field reqd="true" %}
-  {% elif forloop.counter == 2 %}
-    <div class="fieldset-inline create__form-element-group" role="group" aria-labelledby="title-type-{{forloop.counter}}">
-      <span id="title-type-{{forloop.counter}}" class="fieldset-inline__legend create__inline-nested-legend">{{ t_field.label }}</span>
-      {% for radio in t_field %}
-      <label for="{{ radio.id_for_label }}" class="fcontrol__radio-label-inline">
-        {{ radio.tag }}
-        <span>{{ radio.choice_label }}</span>
-      </label>
+      {% if forloop.counter == 1 %}
+      {% include "create/_datacite_inlinetext.html" with field=t_field reqd="true" %}
+      {% elif forloop.counter == 2 %}
+      <div class="fieldset-inline create__form-element-group" role="group" aria-labelledby="title-type-{{forloop.counter}}">
+         <span id="title-type-{{forloop.counter}}" class="fieldset-inline__legend create__inline-nested-legend">{{ t_field.label }}</span>
+         {% for radio in t_field %}
+         <label for="{{ radio.id_for_label }}" class="fcontrol__radio-label-inline">
+            {{ radio.tag }}
+            <span>{{ radio.choice_label }}</span>
+         </label>
+         {% endfor %}
+      </div>
+      {% else %}
+      {% include "create/_datacite_inlinetext.html" with field=t_field %}
+      {% endif %}
+
       {% endfor %}
-    </div>
-  {% else %}
-    {% include "create/_datacite_inlinetext.html" with field=t_field %}
-  {% endif %}
 
-  {% endfor %}
-
-  </div>
-{% endfor %}
+   </div>
+   {% endfor %}
 </div>
 {{ form.title_set.management_form }}

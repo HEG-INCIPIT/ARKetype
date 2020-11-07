@@ -21,7 +21,8 @@ MENU_USER = (
               (_("Advanced"), "ui_create.advanced", 'user', ())
             )
           ),
-          (_("ACCOUNT SETTINGS"), 'ui_account.edit', 'user', ())
+          (_("ACCOUNT SETTINGS"), 'ui_account.edit', 'user', ()),
+          (_("CONTACT"), 'ui.contact', 'user', ()),
         )
 
 # Tertiary nav
@@ -41,14 +42,29 @@ def menu_user(current_func, session):
 
 def menu_user_item(tup, session, is_current):
   u = reverse(tup[1])
-
+  link_class = "nav-link"
+  drop_body = ""
+  drop_attr = ""
   if is_current:
     class_name = "nav-item active"
   else:
     class_name = "nav-item"
 
+  if len(tup[3]) > 0:
+      class_name += " dropdown"
+      drop_attr += 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"'
+      link_class += " dropdown-toggle"
+      drop_body += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">'
+      for menu in tup[3]:
+          print(menu)
+          li = reverse(menu[1])
+          drop_body += '<a class="dropdown-item" href="%s">%s</a>' % (li,menu[0])
+
+      drop_body += '</div>'
+
   acc = '<li class=\"' + class_name + '\"><a href=\"%s\" ' % u
-  acc += 'class="nav-link">%s</a></li>' % tup[0]
+  acc += 'class=\"' + link_class + '\" ' + drop_attr + '>%s</a>' % tup[0]
+  acc += drop_body+'</li>'
   return acc
 
 @register.simple_tag

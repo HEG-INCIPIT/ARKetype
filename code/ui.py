@@ -24,8 +24,8 @@ def ajax_hide_alert(request):
   return uic.plainTextResponse('Ok')
 
 def contact(request):
-  d = { 'menu_item': 'ui_null.contact'}
-  localized = False 
+  d = { 'menu_item': 'ui.contact'}
+  localized = False
   host = request.META.get("HTTP_HOST", "default")
   if host not in django.conf.settings.LOCALIZATIONS: host = "default"
   if host != "default":
@@ -35,7 +35,7 @@ def contact(request):
     d['form'] = form_objects.ContactForm(P, localized=localized)
     if (not 'url' in P or ('url' in P and P['url'] != '')) or (P['question'] and not re.match("(2|two)", P['question'])):
       #url is hidden.  If it's filled in then probably a spam bot
-      pass 
+      pass
     elif d['form'].is_valid():
       emails = __emails(request)
       title = "EZID contact form email"
@@ -54,7 +54,7 @@ def contact(request):
         if P['newsletter'] == 'on':
           message += "YES, I'd like to subscribe to the EZID newsletter."
         else:
-          message += "Newsletter option NOT checked." 
+          message += "Newsletter option NOT checked."
       try:
         django.core.mail.send_mail(title, message, P['email'], emails)
         # 'extra_tags' used for recording a Google Analytics event
@@ -121,7 +121,7 @@ def tombstone (request):
   id = s[8:].strip()
   if not m["_status"].startswith("unavailable"):
     return uic.redirect("/id/%s" % urllib.quote(id, ":/"))
-  status = m["_status"] 
+  status = m["_status"]
   reason = tombstone_text
   if "|" in m["_status"]:
     status = m["_status"].split("|", 1)[0].strip()
@@ -130,7 +130,7 @@ def tombstone (request):
   htmlMode = False
   if m["_profile"] == "datacite" and "datacite" in m:
     md = datacite.dcmsRecordToHtml(m["datacite"])
-    if md: 
+    if md:
       htmlMode = True
       root = lxml.etree.fromstring(md)
       # Tack on an additional row displaying status

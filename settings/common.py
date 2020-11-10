@@ -23,13 +23,17 @@ DEBUG = True
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 MANAGERS = ADMINS = [
-  ("John Kunze", "jak@ucop.edu"),
-  ("Rushiraj Nenuji", "rushiraj.nenuji@ucop.edu")]
+ ("Amir Alwash", "amir.alwash@hesge.ch"),
+ ("Arnaud Gaudinat", "arnaud.gaudinat@hesge.ch"),
+ ("Julien Raemy", "julien.raemy@hesge.ch"),
+ ("Rene Schneider", "rene.schneider@hesge.ch")]
 
 if "HOSTNAME" in os.environ:
-  SERVER_EMAIL = "ezid@" + os.environ["HOSTNAME"]
+  # SERVER_EMAIL = "ezid@" + os.environ["HOSTNAME"]
+  SERVER_EMAIL = "amir@alwash.ch"
 else:
-  SERVER_EMAIL = "ezid@" + socket.gethostname()
+  SERVER_EMAIL = "amir@alwash.ch"
+  #SERVER_EMAIL = "ezid@" + socket.gethostname()
 
 DATABASES = {
   # To keep the Django admin app happy, the store database must be
@@ -63,14 +67,13 @@ TIME_ZONE = "Europe/Zurich"
 TIME_FORMAT_UI_METADATA = "%Y-%m-%d %H:%M:%S"
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),    
+    os.path.join(PROJECT_ROOT, 'static'),
 ]
 #STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = "/static/"
 
 LANGUAGES = [
-  ("en", _("English")),
-  ("fr-CA", _("Canadian French"))
+  ("en", _("English"))
 ]
 LOCALE_PATHS = [os.path.join(STATICFILES_DIRS[0], "locale")]
 
@@ -130,7 +133,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 # EZID-specific settings...
 STANDALONE = False
 DAEMON_THREADS_ENABLED = True
-LOCALIZATIONS = { "default": ("cdl", ["ezid@ucop.edu"]) }
+LOCALIZATIONS = { "default": ("incipit", ["amir@alwash.ch"]) }
 
 # The following is a necessarily cockamamie scheme to get passwords
 # and other sensitive information from the EZID configuration system

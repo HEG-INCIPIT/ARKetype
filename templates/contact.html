@@ -20,19 +20,11 @@ This tag forces language:
 {% endlanguage %}
 {% endcomment %}
 
-<!--
-{% get_language_info for LANGUAGE_CODE as lang %}
-Language code: {{ lang.code }}<br />
-Name of language: {{ lang.name_local }}<br />
-Name in English: {{ lang.name }}<br />
-Bi-directional: {{ lang.bidi }}<br />
-request.LANGUAGE_CODE: {{ request.LANGUAGE_CODE }}
--->
 <p class="general__note text-primary">{% trans "Have a question, comment, or want to request an Incipit account? Fill out this form and we will get in touch with you." %}</p>
 
 <form name="contact" action="{% url "ui.contact" %}" method="post" class="general__form" role="form">
    {{ form.non_field_errors }}
-
+   <input type="hidden" name="url" value="">
    {% for field in form %}
    {% if field|fieldtype == "TextInput" or field|fieldtype == "EmailInput" %}
    {% include "includes/_inlinetext.html" with field=field form_name="general__" %}

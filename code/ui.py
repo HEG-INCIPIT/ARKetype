@@ -38,7 +38,7 @@ def contact(request):
       pass
     elif d['form'].is_valid():
       emails = __emails(request)
-      title = "EZID contact form email"
+      title = "Incipit contact form email"
       if 'HTTP_REFERER' in request.META:
         message = 'Sent FROM: ' + request.META['HTTP_REFERER'] +"\r\n\r\n"
       else:

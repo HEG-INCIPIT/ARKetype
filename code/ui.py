@@ -29,7 +29,7 @@ def api(request):
   files.
   """
   if request.method != "GET": return uic.methodNotAllowed(request)
-  file = "apidoc.html"
+  file = "apidoc-incipit.html"
   print(file)
   path = os.path.join(django.conf.settings.PROJECT_ROOT, "templates", "doc",
     file)

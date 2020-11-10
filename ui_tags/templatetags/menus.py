@@ -23,6 +23,7 @@ MENU_USER = (
           ),
           (_("ACCOUNT SETTINGS"), 'ui_account.edit', 'user', ()),
           (_("CONTACT"), 'ui.contact', 'user', ()),
+          (_("API"), 'ui_api.latest', 'user', ()),
         )
 
 # Tertiary nav
@@ -41,7 +42,7 @@ def menu_user(current_func, session):
   return acc
 
 def menu_user_item(tup, session, is_current):
-  u = reverse(tup[1])
+  u = reverse(tup[1]) or tup[1]
   link_class = "nav-link"
   drop_body = ""
   drop_attr = ""

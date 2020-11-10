@@ -23,6 +23,28 @@ def ajax_hide_alert(request):
   request.session['hide_alert'] = True
   return uic.plainTextResponse('Ok')
 
+def api(request):
+  """
+  Renders UTF-8 encoded HTML documentation and plain text Python code
+  files.
+  """
+  if request.method != "GET": return uic.methodNotAllowed(request)
+  file = "apidoc.html"
+  print(file)
+  path = os.path.join(django.conf.settings.PROJECT_ROOT, "templates", "doc",
+    file)
+  if os.path.exists(path):
+    if file.endswith(".html"):
+      return uic.render(request, os.path.join("doc", file[:-5]),
+        { "menu_item": "ui_api.latest" })
+    else:
+      f = open(path)
+      content = f.read()
+      f.close()
+      return uic.staticTextResponse(content)
+  else:
+    return uic.error(request, 404)
+
 def contact(request):
   d = { 'menu_item': 'ui.contact'}
   localized = False
@@ -88,6 +110,7 @@ def doc (request):
   file = request.path_info[5:]
   path = os.path.join(django.conf.settings.PROJECT_ROOT, "templates", "doc",
     file)
+  print(file[:-5])
   if os.path.exists(path):
     if file.endswith(".html"):
       return uic.render(request, os.path.join("doc", file[:-5]),

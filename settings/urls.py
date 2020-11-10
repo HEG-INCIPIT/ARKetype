@@ -111,6 +111,7 @@ urlpatterns = i18n_patterns(
     url("^admin/login/?$", ui_account.login, name="ui_account.login"),
     url("^admin/logout/?$", ui_account.logout, name="ui_account.logout"),
     url("^admin/", include(ezidapp.admin.superuser.urls)),
+    url("doc/api",ui.api,name="ui_api.latest"),
     prefix_default_language=False
 )
 

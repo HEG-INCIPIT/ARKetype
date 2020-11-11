@@ -22,7 +22,7 @@
    <p>Please send mail to the Incipit discussion list (open to Incipit customers
       only) to ask questions or report problems:</p>
 
-      <div class="alert alert-warning">For the full API, please refer to: </div>
+      <div class="alert alert-warning text-left">For the full API, please refer to <a href="/doc/apidoc.html">this page</a></div>
    <blockquote>
       <a class="reference external" href="mailto:"></a></blockquote>
    <div class="section" id="contents">
@@ -88,29 +88,7 @@
       <p>An identifier's Incipit URL should not be confused with the identifier's
          &quot;URL form.&quot; The former is used to manipulate the identifier, whereas
          the latter is used to express the identifier as an embeddable
-         hyperlink that redirects to the identifier's target URL. For DOI
-         identifiers:</p>
-      <table border="1" class="leftheaders docutils">
-         <colgroup>
-            <col width="16%" />
-            <col width="84%" />
-         </colgroup>
-         <tbody valign="top">
-            <tr>
-               <td>Identifier</td>
-               <td><span class="hl1">doi:10.nnnn/suffix</span></td>
-            </tr>
-            <tr>
-               <td>URL form</td>
-               <td>https://doi.org/<span class="hl1">10.nnnn/suffix</span></td>
-            </tr>
-            <tr>
-               <td>Incipit URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">doi:10.nnnn/suffix</span></td>
-            </tr>
-         </tbody>
-      </table>
-      <p>For ARK identifiers:</p>
+         hyperlink that redirects to the identifier's target URL. For ARK identifiers:</p>
       <table border="1" class="leftheaders docutils">
          <colgroup>
             <col width="16%" />
@@ -128,27 +106,6 @@
             <tr>
                <td>Incipit URL</td>
                <td>http://37.187.98.23/id/<span class="hl1">ark:/nnnnn/suffix</span></td>
-            </tr>
-         </tbody>
-      </table>
-      <p>For UUID identifiers:</p>
-      <table border="1" class="leftheaders docutils">
-         <colgroup>
-            <col width="16%" />
-            <col width="84%" />
-         </colgroup>
-         <tbody valign="top">
-            <tr>
-               <td>Identifier</td>
-               <td><span class="hl1">uuid:suffix</span></td>
-            </tr>
-            <tr>
-               <td>URL form</td>
-               <td>http://n2t.net/<span class="hl1">uuid:suffix</span></td>
-            </tr>
-            <tr>
-               <td>Incipit URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">uuid:suffix</span></td>
             </tr>
          </tbody>
       </table>
@@ -498,18 +455,7 @@ if (c.getResponseCode() &lt; 400) {
          identifier's &quot;shadow ARK&quot; (an ARK identifier that is an alias for the
          created identifier; deprecated). Note that different identifier
          schemes have different normalization rules (e.g., DOIs are normalized
-         to all uppercase letters). Here's a sample interaction creating a DOI
-         identifier:</p>
-      <pre class="literal-block">
-⇒ PUT /id/doi:10.9999/test HTTP/1.1
-⇒ Host: 37.187.98.23
-
-⇐ HTTP/1.1 201 CREATED
-⇐ Content-Type: text/plain; charset=UTF-8
-⇐ Content-Length: 43
-⇐
-⇐ success: doi:10.9999/TEST | ark:/b9999/test
-</pre>
+         to all uppercase letters).</p>
    </div>
    <div class="section" id="operation-mint-identifier">
       <h1>Operation: mint identifier</h1>
@@ -1379,14 +1325,12 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
    <div class="section" id="testing-the-api">
       <h1>Testing the API</h1>
       <p>Incipit provides three namespaces (or &quot;shoulders&quot;) for testing purposes:
-         ark:/99999/fk4 for ARK identifiers, doi:10.5072/FK2 for DataCite DOI
-         identifiers, and doi:10.15697/ for Crossref DOI identifiers.
+         ark:/99999/fk3 for ARK identifiers.
          Identifiers in these namespaces are termed &quot;test identifiers.&quot; They
          are ordinary long-term identifiers in almost all respects, except that
          Incipit deletes them after 2 weeks.</p>
       <p>Test ARK identifiers resolve just as real ARK identifiers do through
-         the <a class="reference external" href="https://n2t.net/">N2T</a> resolver, but test DOI identifiers do not resolve and do not
-         appear in any DataCite or Crossref systems.</p>
+         the <a class="reference external" href="https://n2t.net/">N2T</a> resolver.</p>
       <p>All user accounts are permitted to create test identifiers. Incipit also
          provides an &quot;apitest&quot; account that is permitted to create only test
          identifiers. <a class="reference external" href="/contact">Contact us</a> for the password for this account.

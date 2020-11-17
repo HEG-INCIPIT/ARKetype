@@ -7,38 +7,44 @@
 {% endblock %}{% endblock %}
 {% block heading %}
 {% autoescape off %}
-{% content_heading _("The Incipit API, Short Version 2") %}
+{% content_heading _("The Incipit API, Simplified Version 2") %}
 {% endautoescape %}
 {% endblock %}
 {% block content %}
-<div class="container api vertical-buffer-20">
+<div class="container vertical-buffer-20">
    <p>Incipit provides an easy way to obtain, describe, and
       manage long-term identifiers for digital objects. It can be accessed
       via a web User Interface (UI) and a web Application Programming
       Interface (API). A few account management functions can be accessed
       from the UI only, but otherwise all of Incipit's functionality is
-      available through the API. This document describes Version 2 of the
-      Incipit API.</p>
+      available through the API. This document describes a simplified version of the full documentation for quick access.</p>
    <p>Please send mail to the Incipit discussion list (open to Incipit customers
       only) to ask questions or report problems:</p>
 
-      <div class="alert alert-warning text-left">For the full API, please refer to <a href="/doc/apidoc.html">this page</a></div>
+      <div class="alert alert-warning text-left">For the full API documentation, please refer to <a href="/doc/apidoc.html">this page</a></div>
    <blockquote>
       <a class="reference external" href="mailto:"></a></blockquote>
    <div class="section" id="contents">
       <h1>Contents</h1>
       <ul class="simple">
-         <li><a class="reference internal" href="#framework">Framework</a></li>
-         <li><a class="reference internal" href="#api-vs-ui">API vs. UI</a></li>
-         <li><a class="reference internal" href="#authentication">Authentication</a></li>
-         <li><a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a></li>
-         <li><a class="reference internal" href="#error-reporting">Error reporting</a></li>
-         <li><a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a></li>
-         <li><a class="reference internal" href="#operation-create-identifier">Operation: create identifier</a></li>
-         <li><a class="reference internal" href="#operation-mint-identifier">Operation: mint identifier</a></li>
-         <li><a class="reference internal" href="#operation-update-identifier">Operation: update identifier</a></li>
-         <li><a class="reference internal" href="#operation-create-or-update-identifier">Operation: create or update identifier</a></li>
-         <li><a class="reference internal" href="#operation-delete-identifier">Operation: delete identifier</a></li>
+         <li><a class="reference internal" href="#introduction">Introduction</a>
+            <ul>
+               <li><a class="reference internal" href="#api-vs-ui">API vs. UI</a></li>
+               <li><a class="reference internal" href="#authentication">Authentication</a></li>
+               <li><a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a></li>
+               <li><a class="reference internal" href="#error-reporting">Error reporting</a></li>
+            </ul>
+         </li>
+         <li><a class="reference internal" href="#operation">Operations</a>
+            <ul>
+               <li><a class="reference internal" href="#operation-get-identifier-metadata">get identifier metadata</a></li>
+               <li><a class="reference internal" href="#operation-create-identifier">create identifier</a></li>
+               <li><a class="reference internal" href="#operation-mint-identifier">mint identifier</a></li>
+               <li><a class="reference internal" href="#operation-update-identifier">update identifier</a></li>
+               <li><a class="reference internal" href="#operation-create-or-update-identifier">create or update identifier</a></li>
+               <li><a class="reference internal" href="#operation-delete-identifier">delete identifier</a></li>
+            </ul>
+         </li>
          <li><a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a></li>
          <li><a class="reference internal" href="#ownership-model">Ownership model</a></li>
          <li><a class="reference internal" href="#identifier-status">Identifier status</a></li>
@@ -72,16 +78,12 @@
          <li><a class="reference internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a></li>
       </ul>
    </div>
-   <div class="section" id="framework">
-      <h1>Framework</h1>
-      <p>The Incipit API is available from the base URL</p>
-      <blockquote>
-         <a class="reference external" href="http://37.187.98.23">http://37.187.98.23</a></blockquote>
-      <p>Interaction is via <a class="reference external" href="http://oreilly.com/catalog/9780596529260">REST-style</a> <span class="ext-icon"></span> HTTP web services. The
-         API's central design principle is to treat an identifier as a kind of
-         web resource. Specifically, identifier <span class="hl1">foo</span> is represented as a
-         resource at URL http://37.187.98.23/id/<span class="hl1">foo</span>. In this
-         document we will refer to this URL as the identifier's &quot;Incipit URL.&quot; A
+   <div class="section" id="introduction">
+      <h1>Introduction</h1>
+      <p>The Incipit API is available from the base URL: <a class="reference external" href="http://37.187.98.23">http://37.187.98.23</a></p>
+      <p>The identifier <em class="text-warning">foo</em> is represented as a
+         resource at URL http://37.187.98.23/id/<em class="text-warning">foo</em>. In this
+         document we will refer to this URL as the identifier's &quot;<strong>Incipit URL</strong>&quot;.<br>A
          client manipulates an identifier by performing HTTP operations on its
          Incipit URL: PUT to create the identifier, GET to view it, and POST to
          update it.</p>
@@ -89,37 +91,35 @@
          &quot;URL form.&quot; The former is used to manipulate the identifier, whereas
          the latter is used to express the identifier as an embeddable
          hyperlink that redirects to the identifier's target URL. For ARK identifiers:</p>
-      <table border="1" class="leftheaders docutils">
+      <table class="table table-bordered w-50">
          <colgroup>
-            <col width="16%" />
+            <col width="20%" />
             <col width="84%" />
          </colgroup>
-         <tbody valign="top">
+         <tbody>
             <tr>
-               <td>Identifier</td>
-               <td><span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td class="table-primary">Identifier</td>
+               <td><span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
             </tr>
             <tr>
-               <td>URL form</td>
-               <td>http://n2t.net/<span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td class="table-primary">URL form</td>
+               <td>http://n2t.net/<span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
             </tr>
             <tr>
-               <td>Incipit URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td class="table-primary">Incipit URL</td>
+               <td>http://37.187.98.23/id/<span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
             </tr>
          </tbody>
       </table>
    </div>
    <div class="section" id="api-vs-ui">
-      <h1>API vs. UI</h1>
+      <h2>API vs. UI</h2>
       <p>The Incipit UI and API share some URLs (the base URL is the same for
          both) but their behavior is different. For example, in the API a GET
          operation on an Incipit URL returns client-parseable metadata (see
-         <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> below), but in the UI it returns
-         an HTML page.</p>
-      <p>To distinguish between the two interfaces Incipit employs HTTP <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">content
-            negotiation</a> <span class="ext-icon"></span>. If a request comes in with an HTTP
-         Accept header that expresses a preference for any form of HTML or XML,
+         <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> below),
+         but in the UI it returns an HTML page.</p>
+      <p>If a request comes in with an HTTP Accept header that expresses a preference for any form of HTML or XML,
          the UI is invoked; otherwise, the API is invoked. A preference for
          the API can be made explicit by omitting any Accept header, or setting
          the Accept header to something like &quot;text/plain&quot;. If using Java, it
@@ -135,7 +135,7 @@ c.connect();
 </pre>
    </div>
    <div class="section" id="authentication">
-      <h1>Authentication</h1>
+      <h2>Authentication</h2>
       <p>Most requests require authentication. The Incipit API supports two
          methods of authentication:</p>
       <ol class="arabic">
@@ -232,7 +232,7 @@ r.add_header(&quot;Cookie&quot;, <span class="hl2">cookie</span>)
          forbidden&quot;.</p>
    </div>
    <div class="section" id="request-response-bodies">
-      <h1>Request &amp; response bodies</h1>
+      <h2>Request &amp; response bodies</h2>
       <p>Request and response bodies are used to transmit identifier metadata.
          The HTTP content type for all bodies is &quot;text/plain&quot; using UTF-8
          charset encoding. In request bodies, if no charset encoding is
@@ -352,7 +352,7 @@ error: bad request - no such identifier
 </pre>
    </div>
    <div class="section" id="error-reporting">
-      <h1>Error reporting</h1>
+      <h2>Error reporting</h2>
       <p>An error is indicated by both an HTTP status code and an error status
          line of the form &quot;error: <span class="hl1">reason</span>&quot;. For example:</p>
       <pre class="literal-block">
@@ -381,8 +381,11 @@ if (c.getResponseCode() &lt; 400) {
 // read from s...
 </pre>
    </div>
+   <div id="operation">
+      <h1>Operations</h1>
+   </div>
    <div class="section" id="operation-get-identifier-metadata">
-      <h1>Operation: get identifier metadata</h1>
+      <h2>get identifier metadata</h2>
       <p>Metadata can be retrieved for any existing identifier; no
          authentication is required. Simply issue a GET request to the
          identifier's Incipit URL. Here is a sample interaction:</p>
@@ -416,7 +419,7 @@ if (c.getResponseCode() &lt; 400) {
          <a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a> below.</p>
    </div>
    <div class="section" id="operation-create-identifier">
-      <h1>Operation: create identifier</h1>
+      <h2>create identifier</h2>
       <p>An identifier can be &quot;created&quot; by sending a PUT request to the
          identifier's Incipit URL. Here, identifier creation means establishing a
          record of the identifier in Incipit (to be successful, no such record can
@@ -458,7 +461,7 @@ if (c.getResponseCode() &lt; 400) {
          to all uppercase letters).</p>
    </div>
    <div class="section" id="operation-mint-identifier">
-      <h1>Operation: mint identifier</h1>
+      <h2>mint identifier</h2>
       <p>Minting an identifier is the same as creating an identifier, but
          instead of supplying a complete identifier, the client specifies only
          a namespace (or &quot;shoulder&quot;) that forms the identifier's prefix, and
@@ -491,7 +494,7 @@ if (c.getResponseCode() &lt; 400) {
          &quot;${identifier}&quot; in the target URL with the newly-minted identifier.</p>
    </div>
    <div class="section" id="operation-update-identifier">
-      <h1>Operation: update identifier</h1>
+      <h2>update identifier</h2>
       <p>An identifier's metadata can be updated by sending a POST request to
          the identifier's Incipit URL. Authentication is required; only the
          identifier's owner and certain other users may update the identifier
@@ -521,11 +524,11 @@ if (c.getResponseCode() &lt; 400) {
       <p>To delete a metadata element, set its value to the empty string.</p>
    </div>
    <div class="section" id="operation-create-or-update-identifier">
-      <h1>Operation: create or update identifier</h1>
+      <h2>create or update identifier</h2>
       <p>An identifier can be created or updated in one interaction; the
          specific operation performed will depend on whether the identifier
          already exists or not. To do so, issue a create operation as
-         described under <a class="reference internal" href="#operation-create-identifier">Operation: create identifier</a> above, but add an
+         described under <a class="reference internal" href="#operation-create-identifier">create identifier</a> above, but add an
          update_if_exists=yes URL query parameter to the PUT request. Incipit
          returns a 201 HTTP status code if the identifier was created or a 200
          HTTP status code if the identifier already existed and was
@@ -541,7 +544,7 @@ if (c.getResponseCode() &lt; 400) {
 </pre>
    </div>
    <div class="section" id="operation-delete-identifier">
-      <h1>Operation: delete identifier</h1>
+      <h2>delete identifier</h2>
       <p>An identifier that has only been reserved can be deleted by sending a
          DELETE request to the identifier's Incipit URL. We emphasize that only
          <em>reserved</em> identifiers may be deleted; see <a class="reference internal" href="#identifier-status">Identifier status</a> below.

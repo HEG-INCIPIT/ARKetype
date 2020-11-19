@@ -27,14 +27,6 @@
    <div class="section" id="contents">
       <h1>Contents</h1>
       <ul class="simple">
-         <li><a class="reference internal" href="#introduction">Introduction</a>
-            <ul>
-               <li><a class="reference internal" href="#api-vs-ui">API vs. UI</a></li>
-               <li><a class="reference internal" href="#authentication">Authentication</a></li>
-               <li><a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a></li>
-               <li><a class="reference internal" href="#error-reporting">Error reporting</a></li>
-            </ul>
-         </li>
          <li><a class="reference internal" href="#operation">Operations</a>
             <ul>
                <li><a class="reference internal" href="#operation-get-identifier-metadata">get identifier metadata</a></li>
@@ -45,10 +37,6 @@
                <li><a class="reference internal" href="#operation-delete-identifier">delete identifier</a></li>
             </ul>
          </li>
-         <li><a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a></li>
-         <li><a class="reference internal" href="#ownership-model">Ownership model</a></li>
-         <li><a class="reference internal" href="#identifier-status">Identifier status</a></li>
-         <li><a class="reference internal" href="#internal-metadata">Internal metadata</a></li>
          <li><a class="reference internal" href="#metadata-profiles">Metadata profiles</a>
             <ul>
                <li><a class="reference internal" href="#profile-erc">Profile &quot;erc&quot;</a></li>
@@ -58,7 +46,6 @@
             </ul>
          </li>
          <li><a class="reference internal" href="#metadata-requirements-mapping">Metadata requirements &amp; mapping</a></li>
-         <li><a class="reference internal" href="#crossref-registration">Crossref registration</a></li>
          <li><a class="reference internal" href="#testing-the-api">Testing the API</a></li>
          <li><a class="reference internal" href="#server-status">Server status</a></li>
          <li><a class="reference internal" href="#python-command-line-tool">Python command line tool</a></li>
@@ -78,317 +65,13 @@
          <li><a class="reference internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a></li>
       </ul>
    </div>
-   <div class="section" id="introduction">
-      <h1>Introduction</h1>
-      <p>The Incipit API is available from the base URL: <a class="reference external" href="http://37.187.98.23">http://37.187.98.23</a></p>
-      <p>The identifier <em class="text-warning">foo</em> is represented as a
-         resource at URL http://37.187.98.23/id/<em class="text-warning">foo</em>. In this
-         document we will refer to this URL as the identifier's &quot;<strong>Incipit URL</strong>&quot;.<br>A
-         client manipulates an identifier by performing HTTP operations on its
-         Incipit URL: PUT to create the identifier, GET to view it, and POST to
-         update it.</p>
-      <p>An identifier's Incipit URL should not be confused with the identifier's
-         &quot;URL form.&quot; The former is used to manipulate the identifier, whereas
-         the latter is used to express the identifier as an embeddable
-         hyperlink that redirects to the identifier's target URL. For ARK identifiers:</p>
-      <table class="table table-bordered w-50">
-         <colgroup>
-            <col width="20%" />
-            <col width="84%" />
-         </colgroup>
-         <tbody>
-            <tr>
-               <td class="table-primary">Identifier</td>
-               <td><span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
-            </tr>
-            <tr>
-               <td class="table-primary">URL form</td>
-               <td>http://n2t.net/<span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
-            </tr>
-            <tr>
-               <td class="table-primary">Incipit URL</td>
-               <td>http://37.187.98.23/id/<span class="text-warning"><em>ark:/nnnnn/suffix</em></span></td>
-            </tr>
-         </tbody>
-      </table>
-   </div>
-   <div class="section" id="api-vs-ui">
-      <h2>API vs. UI</h2>
-      <p>The Incipit UI and API share some URLs (the base URL is the same for
-         both) but their behavior is different. For example, in the API a GET
-         operation on an Incipit URL returns client-parseable metadata (see
-         <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> below),
-         but in the UI it returns an HTML page.</p>
-      <p>If a request comes in with an HTTP Accept header that expresses a preference for any form of HTML or XML,
-         the UI is invoked; otherwise, the API is invoked. A preference for
-         the API can be made explicit by omitting any Accept header, or setting
-         the Accept header to something like &quot;text/plain&quot;. If using Java, it
-         will probably be necessary to override the default Accept header Java
-         sends as follows:</p>
-      <pre class="literal-block">
-import java.net.*;
-
-URL u = new URL(&quot;http://37.187.98.23/...&quot;);
-URLConnection c = u.openConnection();
-c.setRequestProperty(&quot;Accept&quot;, &quot;text/plain&quot;);
-c.connect();
-</pre>
-   </div>
-   <div class="section" id="authentication">
-      <h2>Authentication</h2>
-      <p>Most requests require authentication. The Incipit API supports two
-         methods of authentication:</p>
-      <ol class="arabic">
-         <li>
-            <p class="first"><strong>HTTP Basic authentication</strong>. With this method, the client
-               supplies HTTP Basic authentication credentials on every request.
-               The authentication realm is &quot;Incipit&quot;. For example, credentials can
-               be added manually in Python as follows:</p>
-            <pre class="literal-block">
-import base64, urllib2
-r = urllib2.Request(&quot;http://37.187.98.23/...&quot;)
-r.add_header(&quot;Authorization&quot;, &quot;Basic &quot; + base64.b64encode(&quot;<span class="hl2">username</span>:<span class="hl2">password</span>&quot;))
-</pre>
-            <p>But most programming libraries provide higher-level support for
-               authentication. For example, Python provides HTTPBasicAuthHandler:</p>
-            <pre class="literal-block">
-import urllib2
-h = urllib2.HTTPBasicAuthHandler()
-h.add_password(&quot;Incipit&quot;, &quot;http://37.187.98.23/&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;)
-o = urllib2.build_opener(h)
-o.open(&quot;http://37.187.98.23/...&quot;)
-</pre>
-            <p>The downside of using higher-level authentication mechanisms is
-               that they often do not supply credentials initially, but only in
-               response to a challenge from Incipit, thus doubling the number of HTTP
-               transactions.</p>
-            <p>To manually provide credentials in Java, using <a class="reference external" href="http://commons.apache.org/codec/">Apache Commons
-                  Codec</a> <span class="ext-icon"></span> to do the Base64 encoding:</p>
-            <pre class="literal-block">
-import java.net.*;
-import org.apache.commons.codec.binary.*;
-
-URL u = new URL(&quot;http://37.187.98.23/...);
-URLConnection c = u.openConnection();
-c.setRequestProperty(&quot;Accept&quot;, &quot;text/plain&quot;);
-c.setRequestProperty(&quot;Authorization&quot;, &quot;Basic &quot; +
-  new String(Base64.encodeBase64(&quot;<span class="hl2">username</span>:<span class="hl2">password</span>&quot;.getBytes())));
-c.connect();
-</pre>
-            <p>Java also provides an Authenticator class:</p>
-            <pre class="literal-block">
-import java.net.*;
-
-class MyAuthenticator extends Authenticator {
-  protected PasswordAuthentication getPasswordAuthentication () {
-    return new PasswordAuthentication(&quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;.toCharArray());
-  }
-}
-
-Authenticator.setDefault(new MyAuthenticator());
-</pre>
-         </li>
-         <li>
-            <p class="first"><strong>One-time login</strong>. Perform a GET operation on
-               http://37.187.98.23/login and supply HTTP Basic credentials as
-               above. In response, Incipit returns a session cookie. Subsequent
-               requests can be made without authentication by supplying the
-               session cookie in HTTP Cookie headers. Here's an example
-               interaction:</p>
-            <pre class="literal-block">
-⇒ GET /login HTTP/1.1
-⇒ Host: 37.187.98.23/
-⇒ Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
-
-⇐ HTTP/1.1 200 OK
-⇐ Set-Cookie: sessionid=403a1ea3b03b74f663c1cd7fc877f495; expires...
-⇐ Content-Type: text/plain; charset=UTF-8
-⇐ Content-Length: 32
-⇐
-⇐ success: session cookie returned
-</pre>
-            <p>In Python, cookies can be managed using <a class="reference external" href="http://docs.python.org/library/cookielib.html">cookielib</a> <span class="ext-icon"></span>,
-               or manually captured and set using code similar to the following:</p>
-            <pre class="literal-block">
-import urllib2
-c = urllib2.urlopen(&quot;http://37.187.98.23/login&quot;)
-<span class="hl2">cookie</span> = c.headers[&quot;Set-Cookie&quot;].split(&quot;;&quot;)[0]
-...
-r = urllib2.Request(&quot;http://37.187.98.23/...&quot;)
-r.add_header(&quot;Cookie&quot;, <span class="hl2">cookie</span>)
-</pre>
-            <p>In Java, cookies can be manually captured and set using code
-               analogous to the Python code above or, in Java 1.6 and newer,
-               <a class="reference external" href="http://download.oracle.com/javase/6/docs/api/java/net/CookieManager.html">CookieManager</a> <span class="ext-icon"></span> can be used to manage cookies.</p>
-            <p>Perform a GET operation on http://37.187.98.23/logout to
-               invalidate a session.</p>
-         </li>
-      </ol>
-      <p>If authentication is required and credentials are either missing or
-         invalid, Incipit returns a 401 HTTP status code and the status line
-         &quot;error: unauthorized&quot; (see <a class="reference internal" href="#error-reporting">Error reporting</a> below). If
-         authentication is successful but the request is still not authorized,
-         Incipit returns a 403 HTTP status code and the status line &quot;error:
-         forbidden&quot;.</p>
-   </div>
-   <div class="section" id="request-response-bodies">
-      <h2>Request &amp; response bodies</h2>
-      <p>Request and response bodies are used to transmit identifier metadata.
-         The HTTP content type for all bodies is &quot;text/plain&quot; using UTF-8
-         charset encoding. In request bodies, if no charset encoding is
-         declared in the HTTP Content-Type header, it is assumed to be UTF-8.</p>
-      <p>Incipit's data model for metadata is a dictionary of element name/value
-         pairs. The dictionary is single-valued: an element name may not be
-         repeated. Names and values are strings. Leading and trailing
-         whitespace in names and values is not significant. Neither element
-         names nor element values may be empty. (When updating an identifier,
-         an uploaded empty value is treated as a command to delete the element
-         entirely.)</p>
-      <p>Metadata dictionaries are serialized using a subset of <a class="reference external" href="https://wiki.ucop.edu/display/Curation/Anvl">A Name-Value
-            Language (ANVL)</a> <span class="ext-icon"></span> rules:</p>
-      <ul class="simple">
-         <li>One element name/value pair per line.</li>
-         <li>Names separated from values by colons.</li>
-      </ul>
-      <p>For example:</p>
-      <pre class="literal-block">
-who: Proust, Marcel
-what: Remembrance of Things Past
-when: 1922
-</pre>
-      <p>In addition, two ANVL features may be used when uploading metadata to
-         Incipit (but clients can safely assume that Incipit will never use these
-         features when returning metadata):</p>
-      <ul class="simple">
-         <li>A line beginning with a number sign (&quot;#&quot;, U+0023) is a comment and
-            will be ignored.</li>
-         <li>A line beginning with whitespace continues the previous line (the
-            intervening line terminator and whitespace are converted to a single
-            space).</li>
-      </ul>
-      <p>For example:</p>
-      <pre class="literal-block">
-# The following two elements are identical:
-who: Proust,
-  Marcel
-who: Proust, Marcel
-</pre>
-      <p>Care must be taken to escape structural characters that appear in
-         element names and values, specifically, line terminators (both
-         newlines (&quot;\n&quot;, U+000A) and carriage returns (&quot;\r&quot;, U+000D)) and, in
-         element names, colons (&quot;:&quot;, U+003A). Incipit employs <a class="reference external" href="http://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>
-         <span class="ext-icon"></span> as the escaping mechanism, and thus percent signs (&quot;%&quot;,
-         U+0025) must be escaped as well. In Python, a dictionary of Unicode
-         metadata element names and values, <span class="hl1">metadata</span>, is serialized into
-         a UTF-8 encoded string, <span class="hl1">anvl</span>, with the following code:</p>
-      <pre class="literal-block">
-import re
-
-def escape (s):
-  return re.sub(&quot;[%:\r\n]&quot;, lambda c: &quot;%%%02X&quot; % ord(c.group(0)), s)
-
-<span class="hl2">anvl</span> = &quot;\n&quot;.join(&quot;%s: %s&quot; % (escape(name), escape(value)) for name,
-  value in <span class="hl2">metadata</span>.items()).encode(&quot;UTF-8&quot;)
-</pre>
-      <p>Conversely, to parse a UTF-8 encoded string, <span class="hl1">anvl</span>, producing
-         a dictionary, <span class="hl1">metadata</span>:</p>
-      <pre class="literal-block">
-import re
-
-def unescape (s):
-  return re.sub(&quot;%([0-9A-Fa-f][0-9A-Fa-f])&quot;,
-    lambda m: chr(int(m.group(1), 16)), s)
-
-<span class="hl2">metadata</span> = dict(tuple(unescape(v).strip() for v in l.split(&quot;:&quot;, 1)) \
-  for l in <span class="hl2">anvl</span>.decode(&quot;UTF-8&quot;).splitlines())
-</pre>
-      <p>In Java, to serialize a HashMap of metadata element names and values,
-         <span class="hl1">metadata</span>, into an ANVL-formatted Unicode string, <span class="hl1">anvl</span>:</p>
-      <pre class="literal-block">
-import java.util.*;
-
-String escape (String s) {
-  return s.replace(&quot;%&quot;, &quot;%25&quot;).replace(&quot;\n&quot;, &quot;%0A&quot;).
-    replace(&quot;\r&quot;, &quot;%0D&quot;).replace(&quot;:&quot;, &quot;%3A&quot;);
-}
-
-Iterator&lt;Map.Entry&lt;String, String&gt;&gt; i = <span class="hl2">metadata</span>.entrySet().iterator();
-StringBuffer b = new StringBuffer();
-while (i.hasNext()) {
-  Map.Entry&lt;String, String&gt; e = i.next();
-  b.append(escape(e.getKey()) + &quot;: &quot; + escape(e.getValue()) + &quot;\n&quot;);
-}
-String <span class="hl2">anvl</span> = b.toString();
-</pre>
-      <p>And conversely, to parse a Unicode ANVL-formatted string, <span class="hl1">anvl</span>,
-         producing a HashMap, <span class="hl1">metadata</span>:</p>
-      <pre class="literal-block">
-import java.util.*;
-
-String unescape (String s) {
-  StringBuffer b = new StringBuffer();
-  int i;
-  while ((i = s.indexOf(&quot;%&quot;)) &gt;= 0) {
-    b.append(s.substring(0, i));
-    b.append((char) Integer.parseInt(s.substring(i+1, i+3), 16));
-    s = s.substring(i+3);
-  }
-  b.append(s);
-  return b.toString();
-}
-
-HashMap&lt;String, String&gt; <span class="hl2">metadata</span> = new HashMap&lt;String, String&gt;();
-for (String l : <span class="hl2">anvl</span>.split(&quot;[\\r\\n]+&quot;)) {
-  String[] kv = l.split(&quot;:&quot;, 2);
-  metadata.put(unescape(kv[0]).trim(), unescape(kv[1]).trim());
-}
-</pre>
-      <p>The first line of an Incipit response body is a status indicator
-         consisting of &quot;success&quot; or &quot;error&quot;, followed by a colon, followed by
-         additional information. Two examples:</p>
-      <pre class="literal-block">
-success: ark:/99999/fk4test
-error: bad request - no such identifier
-</pre>
-   </div>
-   <div class="section" id="error-reporting">
-      <h2>Error reporting</h2>
-      <p>An error is indicated by both an HTTP status code and an error status
-         line of the form &quot;error: <span class="hl1">reason</span>&quot;. For example:</p>
-      <pre class="literal-block">
-⇒ GET /id/ark:/99999/bogus HTTP/1.1
-⇒ Host: 37.187.98.23/
-
-⇐ HTTP/1.1 400 BAD REQUEST
-⇐ Content-Type: text/plain; charset=UTF-8
-⇐ Content-Length: 39
-⇐
-⇐ error: bad request - no such identifier
-</pre>
-      <p>Some programming libraries make it a little difficult to read the
-         content following an error status code. For example, from Java, it is
-         necessary to explicitly switch between the input and error streams
-         based on the status code:</p>
-      <pre class="literal-block">
-java.net.HttpURLConnection c;
-java.io.InputStream s;
-...
-if (c.getResponseCode() &lt; 400) {
-  s = c.getInputStream();
-} else {
-  s = c.getErrorStream();
-}
-// read from s...
-</pre>
-   </div>
    <div id="operation">
       <h1>Operations</h1>
    </div>
    <div class="section" id="operation-get-identifier-metadata">
       <h2>get identifier metadata</h2>
-      <p>Metadata can be retrieved for any existing identifier; no
-         authentication is required. Simply issue a GET request to the
-         identifier's Incipit URL. Here is a sample interaction:</p>
+      <div class="alert alert-info text-left"><strong>GET</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
+      <p>Output example: </p>
       <pre class="literal-block">
 ⇒ GET /id/ark:/99999/fk4cz3dh0 HTTP/1.1
 ⇒ Host: 37.187.98.23/
@@ -405,12 +88,12 @@ if (c.getResponseCode() &lt; 400) {
 ⇐ erc.who: Proust, Marcel
 ⇐ erc.what: Remembrance of Things Past
 ⇐ erc.when: 1922
-</pre>
+      </pre>
       <p>The first line of the response body is a status line. Assuming
-         success (see <a class="reference internal" href="#error-reporting">Error reporting</a> above), the remainder of the status
+         success, the remainder of the status
          line echoes the canonical form of the requested identifier.</p>
       <p>The remaining lines are metadata element name/value pairs serialized
-         per ANVL rules; see <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a> above. The order of
+         per ANVL rules. The order of
          elements is undefined. Element names beginning with an underscore
          (&quot;_&quot;, U+005F) are reserved for use by Incipit; their meanings are
          described in <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Some elements may be drawn
@@ -420,6 +103,7 @@ if (c.getResponseCode() &lt; 400) {
    </div>
    <div class="section" id="operation-create-identifier">
       <h2>create identifier</h2>
+      <div class="alert alert-info text-left"><strong>PUT</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier can be &quot;created&quot; by sending a PUT request to the
          identifier's Incipit URL. Here, identifier creation means establishing a
          record of the identifier in Incipit (to be successful, no such record can
@@ -462,6 +146,7 @@ if (c.getResponseCode() &lt; 400) {
    </div>
    <div class="section" id="operation-mint-identifier">
       <h2>mint identifier</h2>
+      <div class="alert alert-info text-left"><strong>POST</strong> http://http://37.187.98.23/shoulder/<em>shoulder</em></div>
       <p>Minting an identifier is the same as creating an identifier, but
          instead of supplying a complete identifier, the client specifies only
          a namespace (or &quot;shoulder&quot;) that forms the identifier's prefix, and
@@ -495,6 +180,7 @@ if (c.getResponseCode() &lt; 400) {
    </div>
    <div class="section" id="operation-update-identifier">
       <h2>update identifier</h2>
+      <div class="alert alert-info text-left"><strong>POST</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier's metadata can be updated by sending a POST request to
          the identifier's Incipit URL. Authentication is required; only the
          identifier's owner and certain other users may update the identifier
@@ -525,6 +211,7 @@ if (c.getResponseCode() &lt; 400) {
    </div>
    <div class="section" id="operation-create-or-update-identifier">
       <h2>create or update identifier</h2>
+      <div class="alert alert-info text-left"><strong>PUT</strong> http://http://37.187.98.23/id/<em>identifier</em>?update_if_exists=yes</div>
       <p>An identifier can be created or updated in one interaction; the
          specific operation performed will depend on whether the identifier
          already exists or not. To do so, issue a create operation as
@@ -545,6 +232,7 @@ if (c.getResponseCode() &lt; 400) {
    </div>
    <div class="section" id="operation-delete-identifier">
       <h2>delete identifier</h2>
+      <div class="alert alert-info text-left"><strong>DELETE</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier that has only been reserved can be deleted by sending a
          DELETE request to the identifier's Incipit URL. We emphasize that only
          <em>reserved</em> identifiers may be deleted; see <a class="reference internal" href="#identifier-status">Identifier status</a> below.

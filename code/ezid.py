@@ -31,10 +31,10 @@ _perUserThreadLimit = None
 _perUserThrottle = None
 
 def loadConfig ():
-  global _perUserThreadLimit, _perUserThrottle
-  _perUserThreadLimit = int(config.get("DEFAULT.max_threads_per_user"))
-  _perUserThrottle =\
-    int(config.get("DEFAULT.max_concurrent_operations_per_user"))
+    config.load()
+    global _perUserThreadLimit, _perUserThrottle
+    _perUserThreadLimit = int(config.get("DEFAULT.max_threads_per_user"))
+    _perUserThrottle = int(config.get("DEFAULT.max_concurrent_operations_per_user"))
 
 # Simple locking mechanism to ensure that, in a multi-threaded
 # environment, no given identifier is operated on by two threads
@@ -428,4 +428,3 @@ def deleteIdentifier (identifier, user, updateExternalServices=True):
     return "success: " + nqidentifier
   finally:
     _releaseIdentifierLock(nqidentifier, user.username)
-

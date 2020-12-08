@@ -2,14 +2,14 @@
 
 { "model": "ezidapp.SearchRealm",
   "pk": 1,
-  "fields": { "name": "Incipit" }
+  "fields": { "name": "CDL" }
 },
 
 { "model": "ezidapp.SearchGroup",
   "pk": 1,
   "fields": {
-    "pid": "ark:/99166/p35p4h",
-    "groupname": "incipit_admin",
+    "pid": "ark:/99166/p9g44hq02",
+    "groupname": "admin",
     "realm": 1
   }
 },
@@ -17,8 +17,8 @@
 { "model": "ezidapp.SearchUser",
   "pk": 1,
   "fields": {
-    "pid": "ark:/99166/p3w88d",
-    "username": "incipit_admin",
+    "pid": "ark:/99166/p9kw57h4w",
+    "username": "admin",
     "group": 1,
     "realm": 1
   }
@@ -27,8 +27,8 @@
 { "model": "ezidapp.SearchGroup",
   "pk": 2,
   "fields": {
-    "pid": "ark:/99166/p3ks3w",
-    "groupname": "incipit_apitest",
+    "pid": "ark:/99166/p9pg1hn29",
+    "groupname": "apitest",
     "realm": 1
   }
 },
@@ -36,8 +36,8 @@
 { "model": "ezidapp.SearchUser",
   "pk": 2,
   "fields": {
-    "pid": "ark:/99166/p3g591",
-    "username": "incipit_apitest",
+    "pid": "ark:/99166/p9jq0st8j",
+    "username": "apitest",
     "group": 2,
     "realm": 1
   }

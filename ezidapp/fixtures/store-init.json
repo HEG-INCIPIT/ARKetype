@@ -10,17 +10,17 @@
 
 { "model": "ezidapp.StoreRealm",
   "pk": 1,
-  "fields": { "name": "Incipit" }
+  "fields": { "name": "CDL" }
 },
 
 { "model": "ezidapp.StoreGroup",
   "pk": 1,
   "fields": {
-    "pid": "ark:/99166/p35p4h",
-    "groupname": "incipit_admin",
+    "pid": "ark:/99166/p9g44hq02",
+    "groupname": "admin",
     "realm": 1,
-    "organizationName": "Incipit superuser",
-    "organizationUrl": "http://37.187.98.23",
+    "organizationName": "EZID superuser",
+    "organizationUrl": "https://ezid.cdlib.org/",
     "organizationStreetAddress": "(:unap)"
   }
 },
@@ -28,15 +28,15 @@
 { "model": "ezidapp.StoreUser",
   "pk": 1,
   "fields": {
-    "pid": "ark:/99166/p3w88d",
-    "username": "incipit_admin",
+    "pid": "ark:/99166/p9kw57h4w",
+    "username": "admin",
     "group": 1,
     "realm": 1,
-    "displayName": "Incipit superuser",
-    "accountEmail": "admin@37.187.98.23",
-    "primaryContactName": "Incipit administrator",
-    "primaryContactEmail": "admin@37.187.98.23",
-    "primaryContactPhone": "+410790000000",
+    "displayName": "EZID superuser",
+    "accountEmail": "ezid@ucop.edu",
+    "primaryContactName": "EZID administrator",
+    "primaryContactEmail": "ezid@ucop.edu",
+    "primaryContactPhone": "(510) 987-0555",
     "isSuperuser": 1
   }
 },
@@ -44,11 +44,11 @@
 { "model": "ezidapp.StoreGroup",
   "pk": 2,
   "fields": {
-    "pid": "ark:/99166/p3ks3w",
-    "groupname": "incipit_apitest",
+    "pid": "ark:/99166/p9pg1hn29",
+    "groupname": "apitest",
     "realm": 1,
-    "organizationName": "Incipit API test account",
-    "organizationUrl": "http://37.187.98.23",
+    "organizationName": "EZID API test account",
+    "organizationUrl": "https://ezid.cdlib.org/",
     "organizationStreetAddress": "(:unap)",
     "crossrefEnabled": 0
   }
@@ -57,15 +57,15 @@
 { "model": "ezidapp.StoreUser",
   "pk": 2,
   "fields": {
-    "pid": "ark:/99166/p3g591",
-    "username": "incipit_apitest",
+    "pid": "ark:/99166/p9jq0st8j",
+    "username": "apitest",
     "group": 2,
     "realm": 1,
-    "displayName": "Incipit API test account",
-    "accountEmail": "admin@37.187.98.23",
-    "primaryContactName": "Incipit administrator",
-    "primaryContactEmail": "admin@37.187.98.23",
-    "primaryContactPhone": "+41790000000",
+    "displayName": "EZID API test account",
+    "accountEmail": "ezid@ucop.edu",
+    "primaryContactName": "EZID administrator",
+    "primaryContactEmail": "ezid@ucop.edu",
+    "primaryContactPhone": "(510) 987-0555",
     "crossrefEnabled": 0
   }
 }

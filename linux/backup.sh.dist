@@ -1,0 +1,4 @@
+#!/bin/bash
+
+MYSQL_PWD="{PASSWORD}" mysqldump -u {USERNAME} {DATABASE} >{PATH}-$(date +"\%Y-\%m-\%d-\%T").sql
+rm `ls -t {PATH}| tail -n +6`

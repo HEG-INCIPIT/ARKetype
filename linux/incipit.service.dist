@@ -1,0 +1,13 @@
+[Unit]
+Description=Incipit
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=centos
+ExecStart={PATH_TOPYENV}/.pyenv/versions/2.7.18/envs/ezid_2.7.18/bin/python {PATH_TO_INCIPIT}/manage.py runserver
+
+[Install]
+WantedBy=multi-user.target

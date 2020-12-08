@@ -1,4 +1,8 @@
 #!/bin/bash
 
-MYSQL_PWD="{PASSWORD}" mysqldump -u {USERNAME} {DATABASE} >{PATH}-$(date +"\%Y-\%m-\%d-\%T").sql
-rm `ls -t {PATH}| tail -n +6`
+MYSQL_PWD="{PASSWORD}" mysqldump -u {USER} {DB} >{BACKUPPATH}/{NAME}-$(date +"\%Y-\%m-\%d-\%T").sql
+cmd=`ls -t {BACKUPPATH}| tail -n +6`
+if [ ! -z "$cmd" ]
+then
+  rm `find {BACKUPPATH} -type f| tail -n +6`
+fi

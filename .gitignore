@@ -16,3 +16,4 @@ db
 .idea
 .python-version
 *.out
+linux/*.sh

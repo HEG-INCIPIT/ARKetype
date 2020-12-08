@@ -46,7 +46,7 @@ class Startup(django.apps.AppConfig):
         download.loadConfig()
         config.registerReloadListener(download.loadConfig)
 
-        from ezid.code import ezid
+        import ezid
         ezid.loadConfig()
         config.registerReloadListener(ezid.loadConfig)
 

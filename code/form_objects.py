@@ -1030,7 +1030,7 @@ class ContactForm(forms.Form):
     self.localized = kwargs.pop('localized',None)
     super(ContactForm,self).__init__(*args,**kwargs)
     self.fields["contact_reason"] = forms.ChoiceField(required=False, choices=CONTACT_REASONS,
-      label = _("Reason for contacting Incipit"))
+      label = _("Reason for contacting ARKetype"))
     self.fields["your_name"] = forms.CharField(max_length=200, label=_("Your Name"),
       error_messages={'required': _("Please fill in your name")})
     self.fields["email"] = forms.EmailField(max_length=200, label=_("Your Email"),
@@ -1046,7 +1046,7 @@ class ContactForm(forms.Form):
     self.fields["question"] = forms.CharField(max_length=200, label=_("Human test: How many drop down menus are in this form?"),
       error_messages={'required': _("Please answer the question")})
     if self.localized == False:
-      self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the Incipit newsletter"))
+      self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the ARKetype newsletter"))
 
 ################  Password Reset Landing Page ##########
 

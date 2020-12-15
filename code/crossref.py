@@ -483,12 +483,12 @@ def _sendEmail (emailAddress, r):
   else:
     s = "error"
   l = "%s/id/%s" % (_ezidUrl, urllib.quote(r.identifier, ":/"))
-  m = ("EZID received a%s %s in registering an identifier of yours with " +\
+  m = ("ARKetype received a%s %s in registering an identifier of yours with " +\
     "Crossref.\n\n" +\
     "Identifier: %s\n\n" +\
     "Status: %s\n\n" +\
     "Crossref message: %s\n\n" +\
-    "The identifier can be viewed in EZID at:\n" +
+    "The identifier can be viewed in ARKetype at:\n" +
     "%s\n\n" +\
     "You are receiving this message because your account is configured to " +\
     "receive Crossref errors and warnings.  This is an automated email.  " +\
@@ -594,4 +594,3 @@ def _daemonThread ():
     except Exception, e:
       log.otherError("crossref._daemonThread", e)
       maxSeq = None
-

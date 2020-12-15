@@ -133,7 +133,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 # EZID-specific settings...
 STANDALONE = False
 DAEMON_THREADS_ENABLED = True
-LOCALIZATIONS = { "default": ("incipit", ["amir@alwash.ch"]) }
+LOCALIZATIONS = { "default": ("ARKetype", ["amir@alwash.ch"]) }
 
 # The following is a necessarily cockamamie scheme to get passwords
 # and other sensitive information from the EZID configuration system

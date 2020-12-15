@@ -3,24 +3,24 @@ import userauth
 import ezidapp.models
 import stats
 from datetime import datetime
-import ui_search 
+import ui_search
 from collections import *
 import csv
 import StringIO
 from django.utils.translation import ugettext as _
 
-NO_CONSTRAINTS = True 
+NO_CONSTRAINTS = True
 
 @uic.user_login_required
 def dashboard(request):
-  """ 
+  """
   ID Issues and Crossref tables load for the first time w/o ajax
   All subsequent searches are done via ajax (ajax_dashboard_table method below)
   """
   d = { 'menu_item' : 'ui_admin.dashboard'}
   user = userauth.getUser(request)
-  d['heading_user_display'] = user.displayName + "'s EZID " + _("Dashboard")
-  d['display_adminlink'] = user.isSuperuser 
+  d['heading_user_display'] = user.displayName + "'s ARKetype " + _("Dashboard")
+  d['display_adminlink'] = user.isSuperuser
   if request.method == "GET":
     REQUEST = request.GET
   elif request.method == "POST":
@@ -33,7 +33,7 @@ def dashboard(request):
       else "group_" + user.group.groupname if user.isGroupAdministrator \
       else "user_" + user.username
   else:
-   d['owner_selected'] = REQUEST['owner_selected'] 
+   d['owner_selected'] = REQUEST['owner_selected']
   d['owner_names'] = uic.owner_names(user, "dashboard")
   d = _getUsage(REQUEST, user, d)
   d['ajax'] = False
@@ -49,7 +49,7 @@ def dashboard(request):
   d['has_broken_links'] = ui_search.hasBrokenLinks(d, request)
   if d['has_broken_links']: d['accountEmail'] = user.accountEmail
 
-  # Search:    Crossref Submission Status 
+  # Search:    Crossref Submission Status
   d = ui_search.search(d, request, NO_CONSTRAINTS, "crossref")
   d['order_by'] = 'c_crossref_date'
   d['sort'] = 'asc'
@@ -73,7 +73,7 @@ def ajax_dashboard_table(request):
       return uic.render(request, "dashboard/_" + G['name'], d)
 
 def _getUsage(REQUEST, user, d):
-  table = [] 
+  table = []
   user_id, group_id, realm_id = uic.getOwnerOrGroupOrRealm(d['owner_selected'])
   if realm_id != None:
     table = stats.getTable(realm=realm_id)
@@ -196,4 +196,4 @@ def csvStats (request):
         outputRow.append(str(t))
       w.writerow(outputRow)
   fn = "EZID_" + requestor.username + datetime.now().strftime("%Y%m%d-%H%M%S")
-  return uic.csvResponse(f.getvalue(), fn) 
+  return uic.csvResponse(f.getvalue(), fn)

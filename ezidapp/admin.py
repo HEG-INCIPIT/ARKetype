@@ -45,8 +45,8 @@ import ui_common
 
 class SuperuserSite (django.contrib.admin.sites.AdminSite):
   # This administrative site allows full access.
-  site_header = "EZID superuser administration"
-  site_title = "EZID superuser administration"
+  site_header = "ARKetype superuser administration"
+  site_title = "ARKetype superuser administration"
   index_title = "Administration home"
   def each_context (self, request):
     context = super(SuperuserSite, self).each_context(request)

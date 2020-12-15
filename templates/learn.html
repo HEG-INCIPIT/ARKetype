@@ -2,8 +2,8 @@
 {% load layout_extras %}
 {% load i18n %}
 
-{% block title %}{% block title-twitter %}{% trans "Learn About Incipit" %}{% endblock %}{% endblock %}
-{% block description %}{%trans "Learn more about Incipit pricing, documentation and current users." %}{% endblock %}
+{% block title %}{% block title-twitter %}{% trans "Learn About ARKetype" %}{% endblock %}{% endblock %}
+{% block description %}{%trans "Learn more about ARKetype pricing, documentation and current users." %}{% endblock %}
 {% block javascript %}
 // Open accordion anchors from Learn Menu (single URL) without reloading page
 $(document).ready(function(){
@@ -14,13 +14,13 @@ window.location.reload(false);
 });
 {% endblock %}
 
-{% block heading %}{% autoescape off %}{% content_heading _("Learn About Incipit") %}{% endautoescape %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("Learn About ARKetype") %}{% endautoescape %}{% endblock %}
 {% block content %}
 <div class="container accordion vertical-buffer-xs">
    <div class="accordion">
       <details id="accordion__section-01" class="accordion__section">
          <summary class="accordion__title">
-            <h2 class="accordion__title-heading">What Is Incipit?</h2>
+            <h2 class="accordion__title-heading">What Is ARKetype?</h2>
          </summary>
          {% include "info/learnsub_what_is_ezid.html" %}
       </details>
@@ -71,7 +71,7 @@ window.location.reload(false);
    <a href="{% url "ui_demo.index" %}">
       <div class="learn-button__section">
          <div class="learn-button__title">
-            <h2 class="learn-button__title-heading">Incipit Demo</h2>
+            <h2 class="learn-button__title-heading">ARKetype Demo</h2>
          </div>
       </div>
    </a>

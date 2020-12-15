@@ -2,7 +2,7 @@
 
 { "model": "ezidapp.SearchRealm",
   "pk": 1,
-  "fields": { "name": "Incipit" }
+  "fields": { "name": "ARKetype" }
 },
 
 { "model": "ezidapp.SearchGroup",

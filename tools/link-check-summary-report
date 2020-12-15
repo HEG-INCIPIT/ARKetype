@@ -37,13 +37,13 @@ BAD_RECHECK_MIN_INTERVAL =\
   int(config.get("linkchecker.bad_recheck_min_interval"))
 NOTIFICATION_THRESHOLD = int(config.get("linkchecker.notification_threshold"))
 
-message = """Dear EZID administrator,
+message = """Dear ARKetype administrator,
 
 The attached CSV file lists broken target URL counts broken down by
 identifier owner and by when the target URL was first detected broken.
 
 Best,
-EZID Team
+ARKetype Team
 
 This is an automated email.  Please do not reply.
 
@@ -117,7 +117,7 @@ def main ():
   f.close()
   if options.email:
     m = django.core.mail.EmailMessage(
-      subject="EZID link checker summary report", body=message,
+      subject="ARKetype link checker summary report", body=message,
       from_email=django.conf.settings.SERVER_EMAIL, to=options.emailAddresses)
     m.attach_file(filename)
     m.send()

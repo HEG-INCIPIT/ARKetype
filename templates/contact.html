@@ -2,7 +2,7 @@
 {% load layout_extras %}
 {% load i18n %}
 {% block title %}{% block title-twitter %}{% trans "Contact Us" %}{% endblock %}{% endblock %}
-{% block description %}{%trans "Contact Incipit for more information about our services or ask a specific question." %}{% endblock %}
+{% block description %}{%trans "Contact ARKetype for more information about our services or ask a specific question." %}{% endblock %}
 {% block heading %}{% autoescape off %}{% content_heading _("Contact Us") %}{% endautoescape %}{% endblock %}
 {% block content %}
 {% comment %}
@@ -20,7 +20,7 @@ This tag forces language:
 {% endlanguage %}
 {% endcomment %}
 
-<p class="general__note text-primary">{% trans "Have a question, comment, or want to request an Incipit account? Fill out this form and we will get in touch with you." %}</p>
+<p class="general__note text-primary">{% trans "Have a question, comment, or want to request an ARKetype account? Fill out this form and we will get in touch with you." %}</p>
 
 <form name="contact" action="{% url "ui.contact" %}" method="post" class="general__form" role="form">
    {{ form.non_field_errors }}

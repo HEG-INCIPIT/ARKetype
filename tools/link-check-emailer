@@ -89,9 +89,9 @@ def compressCsv (csvFilename, zipFilename):
   p.communicate()
   assert p.returncode == 0, "ZIP command failed"
 
-template = """Dear EZID user "%s",
+template = """Dear ARKetype user "%s",
 
-You are receiving this message because the EZID link checker has
+You are receiving this message because the ARKetype link checker has
 discovered that %d of your identifiers have broken target URLs
 (also referred to as object locations).  A broken target URL is
 one that has failed to load for at least two weeks.  Attached to
@@ -104,10 +104,10 @@ identified object may have moved, in which case the identifier
 needs to be updated.  Or there may be a problem with the server
 hosting the URL.  If an object is no longer available, the
 identifier's status can and should be set to "unavailable" using
-EZID's UI or API.
+ARKetype's UI or API.
 
 Best,
-EZID Team
+ARKetype Team
 
 This is an automated email.  Please do not reply.
 

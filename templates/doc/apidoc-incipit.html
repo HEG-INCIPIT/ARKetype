@@ -3,22 +3,22 @@
 {% load i18n %}
 {% load menus %}
 {% block title %}{% block title-twitter %}
-{% trans "The Incipit API, Version 2" %}
+{% trans "The ARKetype API, Version 2" %}
 {% endblock %}{% endblock %}
 {% block heading %}
 {% autoescape off %}
-{% content_heading _("The Incipit API, Simplified Version 2") %}
+{% content_heading _("The ARKetype API, Simplified Version 2") %}
 {% endautoescape %}
 {% endblock %}
 {% block content %}
 <div class="container vertical-buffer-20">
-   <p>Incipit provides an easy way to obtain, describe, and
+   <p>ARKetype provides an easy way to obtain, describe, and
       manage long-term identifiers for digital objects. It can be accessed
       via a web User Interface (UI) and a web Application Programming
       Interface (API). A few account management functions can be accessed
-      from the UI only, but otherwise all of Incipit's functionality is
+      from the UI only, but otherwise all of ARKetype's functionality is
       available through the API. This document describes a simplified version of the full documentation for quick access.</p>
-   <p>Please send mail to the Incipit discussion list (open to Incipit customers
+   <p>Please send mail to the ARKetype discussion list (open to ARKetype customers
       only) to ask questions or report problems:</p>
 
       <div class="alert alert-warning text-left">For the full API documentation, please refer to <a href="/doc/apidoc.html">this page</a></div>
@@ -95,31 +95,31 @@
       <p>The remaining lines are metadata element name/value pairs serialized
          per ANVL rules. The order of
          elements is undefined. Element names beginning with an underscore
-         (&quot;_&quot;, U+005F) are reserved for use by Incipit; their meanings are
+         (&quot;_&quot;, U+005F) are reserved for use by ARKetype; their meanings are
          described in <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Some elements may be drawn
          from citation metadata standards; see <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below.</p>
-      <p>Incipit also supports a more flexible identifier lookup operation; see
+      <p>ARKetype also supports a more flexible identifier lookup operation; see
          <a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a> below.</p>
    </div>
    <div class="section" id="operation-create-identifier">
       <h2>create identifier</h2>
       <div class="alert alert-info text-left"><strong>PUT</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier can be &quot;created&quot; by sending a PUT request to the
-         identifier's Incipit URL. Here, identifier creation means establishing a
-         record of the identifier in Incipit (to be successful, no such record can
+         identifier's ARKetype URL. Here, identifier creation means establishing a
+         record of the identifier in ARKetype (to be successful, no such record can
          already exist). Authentication is required, and the user must have
          permission to create identifiers in the namespace (or &quot;shoulder&quot;)
          named by the identifier's prefix. Users can view the namespaces
-         available to them by visiting the Incipit UI and navigating to the Create
+         available to them by visiting the ARKetype UI and navigating to the Create
          ID tab. For example, if the user has permission to create identifiers
-         in the general Incipit ARK (ark:/13030/c7) namespace, then the user may
+         in the general ARKetype ARK (ark:/13030/c7) namespace, then the user may
          create identifiers beginning with &quot;ark:/13030/c7&quot;.</p>
       <p>A request body is optional; if present, it defines the identifier's
          starting metadata. There are no restrictions on what metadata
          elements can be submitted, but a convention has been established for
-         naming metadata elements, and Incipit has built-in support for certain
+         naming metadata elements, and ARKetype has built-in support for certain
          sets of metadata elements; see <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below. A few of
-         the internal Incipit metadata elements may be set; see <a class="reference internal" href="#internal-metadata">Internal
+         the internal ARKetype metadata elements may be set; see <a class="reference internal" href="#internal-metadata">Internal
             metadata</a> below.</p>
       <p>Here's a sample interaction creating an ARK identifier:</p>
       <pre class="literal-block">
@@ -150,7 +150,7 @@
       <p>Minting an identifier is the same as creating an identifier, but
          instead of supplying a complete identifier, the client specifies only
          a namespace (or &quot;shoulder&quot;) that forms the identifier's prefix, and
-         Incipit generates an opaque, random string for the identifier's suffix.
+         ARKetype generates an opaque, random string for the identifier's suffix.
          An identifier can be minted by sending a POST request to the URL
          http://37.187.98.23/shoulder/<span class="hl1">shoulder</span> where <span class="hl1">shoulder</span>
          is the desired namespace. For example:</p>
@@ -171,24 +171,24 @@
       <p>Aside from specifying a complete identifier versus specifying a
          shoulder only, the create and mint operations operate identically.
          Authentication is required to mint an identifier; namespace permission
-         is required; and permissions can be viewed in the Incipit UI under the
+         is required; and permissions can be viewed in the ARKetype UI under the
          Create ID tab. The request and response bodies are identical.</p>
-      <p>Incipit automatically embeds the newly-minted identifier in certain types
+      <p>ARKetype automatically embeds the newly-minted identifier in certain types
          of uploaded metadata. See <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below for when this is
-         performed. Additionally, Incipit replaces all occurrences of the string
+         performed. Additionally, ARKetype replaces all occurrences of the string
          &quot;${identifier}&quot; in the target URL with the newly-minted identifier.</p>
    </div>
    <div class="section" id="operation-update-identifier">
       <h2>update identifier</h2>
       <div class="alert alert-info text-left"><strong>POST</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier's metadata can be updated by sending a POST request to
-         the identifier's Incipit URL. Authentication is required; only the
+         the identifier's ARKetype URL. Authentication is required; only the
          identifier's owner and certain other users may update the identifier
          (see <a class="reference internal" href="#ownership-model">Ownership model</a> below).</p>
       <p>Metadata elements are operated on individually. If the identifier
          already has a value for a metadata element included in the request
          body, the value is overwritten, otherwise the element and its value
-         are added. Only a few of the reserved Incipit metadata elements may be
+         are added. Only a few of the reserved ARKetype metadata elements may be
          updated; see <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ POST /id/ark:/99999/fk4cz3dh0 HTTP/1.1
@@ -216,7 +216,7 @@
          specific operation performed will depend on whether the identifier
          already exists or not. To do so, issue a create operation as
          described under <a class="reference internal" href="#operation-create-identifier">create identifier</a> above, but add an
-         update_if_exists=yes URL query parameter to the PUT request. Incipit
+         update_if_exists=yes URL query parameter to the PUT request. ARKetype
          returns a 201 HTTP status code if the identifier was created or a 200
          HTTP status code if the identifier already existed and was
          successfully updated. The response body is a status line as described
@@ -234,7 +234,7 @@
       <h2>delete identifier</h2>
       <div class="alert alert-info text-left"><strong>DELETE</strong> http://http://37.187.98.23/id/<em>identifier</em></div>
       <p>An identifier that has only been reserved can be deleted by sending a
-         DELETE request to the identifier's Incipit URL. We emphasize that only
+         DELETE request to the identifier's ARKetype URL. We emphasize that only
          <em>reserved</em> identifiers may be deleted; see <a class="reference internal" href="#identifier-status">Identifier status</a> below.
          Authentication is required; only the identifier's owner and certain
          other users may delete the identifier (see <a class="reference internal" href="#ownership-model">Ownership model</a> below).</p>
@@ -263,14 +263,14 @@
          identifier) and appends the extra characters in the supplied
          identifier (the &quot;suffix&quot;) to the root identifier's target URL before
          redirecting. For example, if identifier ark:/99999/fk4/root has been
-         registered with Incipit and has target URL http://www.cdlib.org, then N2T
+         registered with ARKetype and has target URL http://www.cdlib.org, then N2T
          resolves ark:/99999/fk4/root<span class="hl1">/andmore</span> to
          http://www.cdlib.org<span class="hl1">/andmore</span>. The capability is so-named
          because the suffix is effectively &quot;passed through&quot; to the receiving
          server.</p>
-      <p>Incipit supports a similar capability. If a request to view identifier
+      <p>ARKetype supports a similar capability. If a request to view identifier
          metadata (see <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> above) is
-         accompanied by a prefix_match=yes URL query parameter, then Incipit
+         accompanied by a prefix_match=yes URL query parameter, then ARKetype
          returns metadata for the longest matching identifier (if there is
          one). If an identifier other than the one requested is returned, the
          status line includes a note to that effect. Here is a sample
@@ -290,18 +290,18 @@
    </div>
    <div class="section" id="ownership-model">
       <h1>Ownership model</h1>
-      <p>Incipit maintains ownership information about identifiers and uses that
+      <p>ARKetype maintains ownership information about identifiers and uses that
          information to enforce access control.</p>
-      <p>The ownership model employed by Incipit is hierarchical: each identifier
-         has one owner, which is an Incipit user; each Incipit user belongs to one
+      <p>The ownership model employed by ARKetype is hierarchical: each identifier
+         has one owner, which is an ARKetype user; each ARKetype user belongs to one
          group; and each group belongs to one realm. Permission to create
          identifiers is governed by the namespaces (or &quot;shoulders&quot;) that have
-         been assigned to a user by an Incipit administrator. But once created,
+         been assigned to a user by an ARKetype administrator. But once created,
          permission to subsequently update an identifier is governed solely by
          the identifier's ownership. An identifier may be updated only by its
          owner, with two exceptions:</p>
       <ul class="simple">
-         <li><strong>Proxies</strong>. A user (the &quot;proxied user&quot;) may name another Incipit user
+         <li><strong>Proxies</strong>. A user (the &quot;proxied user&quot;) may name another ARKetype user
             as its &quot;proxy&quot;. A user may have multiple proxies, and a user may be
             a proxy for multiple other users. Generally speaking, a proxy may
             operate on behalf of the proxied user. Specifically, a proxy may:<ul>
@@ -320,7 +320,7 @@
                   below).</li>
             </ul>
          </li>
-         <li><strong>Group administrators</strong>. An Incipit user may be appointed an
+         <li><strong>Group administrators</strong>. An ARKetype user may be appointed an
             &quot;administrator&quot; of its group. A group may have zero, one, or more
             than one administrator. Generally speaking, a group administrator
             may operate on behalf of any other member of the group;
@@ -333,23 +333,23 @@
             </ul>
          </li>
       </ul>
-      <p>Proxies can be set up and managed in the Incipit UI, Account Settings
-         tab. Group administrators can be appointed only by an Incipit
+      <p>Proxies can be set up and managed in the ARKetype UI, Account Settings
+         tab. Group administrators can be appointed only by an ARKetype
          administrator.</p>
       <p>Proxies and group administrators are independent concepts. A group
          administrator may also be a proxy, and may also have proxies.</p>
    </div>
    <div class="section" id="identifier-status">
       <h1>Identifier status</h1>
-      <p>Each identifier in Incipit has a status. The status is recorded as the
+      <p>Each identifier in ARKetype has a status. The status is recorded as the
          value of the &quot;_status&quot; reserved metadata element (see <a class="reference internal" href="#internal-metadata">Internal
             metadata</a> below) and may be one of:</p>
       <dl class="docutils">
          <dt><strong>public</strong></dt>
          <dd>The default value.</dd>
          <dt><strong>reserved</strong></dt>
-         <dd>The identifier is known only to Incipit. This status may be used to
-            reserve an identifier name within Incipit without advertising the
+         <dd>The identifier is known only to ARKetype. This status may be used to
+            reserve an identifier name within ARKetype without advertising the
             identifier's existence to resolvers and other external services. A
             reserved identifier may be deleted.</dd>
          <dt><strong>unavailable</strong></dt>
@@ -357,13 +357,13 @@
             identifier is not available. A reason for the object's
             unavailability may optionally follow the status separated by a pipe
             character (&quot;|&quot;, U+007C), e.g., &quot;unavailable | withdrawn by author&quot;.
-            The identifier redirects to an Incipit-provided &quot;tombstone&quot; page (an
+            The identifier redirects to an ARKetype-provided &quot;tombstone&quot; page (an
             HTML page that displays the identifier's citation metadata and the
             reason for the object's unavailability) regardless of its target
             URL.</dd>
       </dl>
       <p>An identifier's status may be changed by setting a new value for the
-         aforementioned &quot;_status&quot; metadata element. Incipit permits only certain
+         aforementioned &quot;_status&quot; metadata element. ARKetype permits only certain
          status transitions:</p>
       <ul class="simple">
          <li>A status of &quot;reserved&quot; may be specified only at identifier
@@ -382,8 +382,8 @@
    <div class="section" id="internal-metadata">
       <h1>Internal metadata</h1>
       <p>Metadata element names beginning with an underscore (&quot;_&quot;, U+005F) are
-         reserved for use by Incipit. The reserved elements below are returned by
-         the Incipit API, and have the following meanings. A check mark in the
+         reserved for use by ARKetype. The reserved elements below are returned by
+         the ARKetype API, and have the following meanings. A check mark in the
          first column indicates the element is updatable by clients.</p>
       <blockquote>
          <table border="1" class="docutils">
@@ -436,7 +436,7 @@
                   <td>✓</td>
                   <td>_target</td>
                   <td colspan="2">The identifier's target URL. Defaults to the identifier's
-                     Incipit URL. That is, the default target URL for identifier
+                     ARKetype URL. That is, the default target URL for identifier
                      <span class="hl1">foo</span> is the self-referential URL
                      http://37.187.98.23/id/<span class="hl1">foo</span>. Note that creating or
                      updating the target URL of a DOI identifier may take up to
@@ -497,20 +497,20 @@
    </div>
    <div class="section" id="metadata-profiles">
       <h1>Metadata profiles</h1>
-      <p>Incipit allows &quot;citation metadata&quot; to be stored with an identifier, i.e.,
+      <p>ARKetype allows &quot;citation metadata&quot; to be stored with an identifier, i.e.,
          metadata that describes the object referenced by the identifier or
          that otherwise gives the meaning of the identifier. In certain cases
          certain metadata elements are required to be present; see <a class="reference internal" href="#metadata-requirements-mapping">Metadata
             requirements &amp; mapping</a> below. This section describes only the
-         general structure and naming of citation metadata in Incipit.</p>
-      <p>Incipit supports several citation metadata &quot;profiles,&quot; or standard sets
+         general structure and naming of citation metadata in ARKetype.</p>
+      <p>ARKetype supports several citation metadata &quot;profiles,&quot; or standard sets
          of citation metadata elements. By convention, a metadata profile is
          referred to using a simple, lowercase name, e.g., &quot;erc&quot;, and elements
          belonging to that profile are referred to using the syntax
          &quot;<span class="hl1">profile</span>.<span class="hl1">element</span>&quot;, e.g., &quot;erc.who&quot;.</p>
-      <p>Currently Incipit treats profiles entirely separately, and thus an
+      <p>Currently ARKetype treats profiles entirely separately, and thus an
          identifier may have values for multiple metadata profiles
-         simultaneously. However, we anticipate that Incipit will provide
+         simultaneously. However, we anticipate that ARKetype will provide
          metadata cross-walking in the future, in which case setting a value
          for an element in one profile will automatically provide a value for
          equivalent elements in other profiles. For this reason, clients are
@@ -519,7 +519,7 @@
          preferred metadata profile (typically the only profile for which it
          has metadata). There is no restriction on what metadata elements may
          be bound to an identifier, and hence clients are free to use alternate
-         citation profiles or no citation profile at all. However, Incipit's UI
+         citation profiles or no citation profile at all. However, ARKetype's UI
          is, and its future metadata cross-walking support will be, limited to
          those profiles that it explicitly supports.</p>
       <ol class="arabic simple" id="profile-erc">
@@ -705,7 +705,7 @@ erc: who: Proust, Marcel%0Awhat: Remembrance of Things Past
          </table>
          <p>Alternatively, an entire XML document adhering to the DataCite
             Metadata Scheme schema may be bound to the metadata element
-            &quot;datacite&quot;. Note that Incipit sets the identifier embedded in the
+            &quot;datacite&quot;. Note that ARKetype sets the identifier embedded in the
             document to the identifier being operated on; thus it need not be
             specified by the client. The &lt;identifier&gt; element must still be
             included in the document, though, so the XML document may resemble:</p>
@@ -812,27 +812,27 @@ datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource...
    <div class="section" id="metadata-requirements-mapping">
       <h1>Metadata requirements &amp; mapping</h1>
       <p>DOI identifiers must satisfy specific metadata requirements. A
-         DataCite DOI created by Incipit must have title, creator, publisher, and
+         DataCite DOI created by ARKetype must have title, creator, publisher, and
          publication year metadata any time its status is not reserved (see
          <a class="reference internal" href="#identifier-status">Identifier status</a> above). A Crossref DOI must have Crossref
          metadata at all times (see <a class="reference internal" href="#crossref-registration">Crossref registration</a> below), though the
          metadata need not be complete if the identifier is reserved. Other
-         than that, Incipit imposes no requirements on the presence or form of
+         than that, ARKetype imposes no requirements on the presence or form of
          citation metadata, but uploading at least minimal citation metadata to
-         Incipit is strongly encouraged in all cases to record the identifier's
+         ARKetype is strongly encouraged in all cases to record the identifier's
          meaning and to facilitate its long-term maintenance. Regardless of
          the metadata profile used, population of the &quot;datacite.resourcetype&quot;
          element is encouraged to support broad categorization of identifiers.</p>
-      <p>To satisfy the aforementioned DataCite DOI metadata requirements, Incipit
+      <p>To satisfy the aforementioned DataCite DOI metadata requirements, ARKetype
          looks in order for:</p>
       <ol class="arabic simple">
          <li>DataCite XML metadata bound to the &quot;datacite&quot; element;</li>
          <li>Individual elements from the &quot;datacite&quot; profile as described in
             <a class="reference internal" href="#profile-datacite">Profile &quot;datacite&quot;</a> (&quot;datacite.title&quot;, etc.); and lastly</li>
          <li>Elements from the identifier's preferred metadata profile (see
-            <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> above) that Incipit is able to map to DataCite
+            <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> above) that ARKetype is able to map to DataCite
             equivalents. For example, if the preferred profile is &quot;erc&quot;, then
-            Incipit will map element &quot;erc.who&quot; to &quot;datacite.creator&quot;.</li>
+            ARKetype will map element &quot;erc.who&quot; to &quot;datacite.creator&quot;.</li>
       </ol>
       <p>If no meaningful value is available for a required element, clients
          are encouraged to supply a standard machine-readable code drawn from
@@ -914,7 +914,7 @@ who: (:unkn) anonymous donor
          registration with Crossref.</p>
       <p>Once registered, an identifier cannot be removed from Crossref. If
          the identifier's status is set to unavailable (recall <a class="reference internal" href="#identifier-status">Identifier
-            status</a>, above), Incipit will prepend &quot;WITHDRAWN&quot; to the title of the
+            status</a>, above), ARKetype will prepend &quot;WITHDRAWN&quot; to the title of the
          resource associated with the identifier, but the identifier remains in
          Crossref's systems.</p>
       <p>Registering an identifier with Crossref requires three steps:</p>
@@ -923,7 +923,7 @@ who: (:unkn) anonymous donor
          <li>Supply Crossref deposit metadata as the value of the &quot;crossref&quot;
             element.</li>
          <li>Set the &quot;_profile&quot; reserved metadata element to &quot;crossref&quot; to be
-            able to view the metadata in the Incipit UI.</li>
+            able to view the metadata in the ARKetype UI.</li>
       </ol>
       <p>These steps are discussed in more detail next.</p>
       <p>Crossref registration is asynchronous. Registration is initiated by a
@@ -934,11 +934,11 @@ who: (:unkn) anonymous donor
          character (&quot;|&quot;, U+007C) followed by the status of the registration,
          e.g., &quot;yes | registration in progress&quot; or &quot;yes | successfully
          registered&quot;. The status of the registration is updated automatically
-         by Incipit and may be polled by the client. If a warning or error
+         by ARKetype and may be polled by the client. If a warning or error
          occurred during registration, the status is followed by another pipe
          character and the message received from Crossref, e.g., &quot;yes |
          registration failure | xml error...&quot;. Warnings and errors may also be
-         viewed in the Incipit UI and may also be emailed to a specified mailbox.
+         viewed in the ARKetype UI and may also be emailed to a specified mailbox.
          Warnings and errors can be removed only by submitting new metadata and
          re-registering identifiers.</p>
       <p>Crossref deposit metadata should adhere to the <a class="reference external" href="http://help.crossref.org/deposit_schema">Crossref Deposit
@@ -958,10 +958,10 @@ who: (:unkn) anonymous donor
       <p>(If an outer element such as &lt;doi_batch&gt; or &lt;body&gt; is nevertheless
          supplied, it will be stripped off.)</p>
       <p>Although the Crossref deposit schema is quite flexible, and supports
-         batch operations, Incipit requires that the deposit metadata specify a
+         batch operations, ARKetype requires that the deposit metadata specify a
          single DOI identifier, i.e., a single &lt;doi_data&gt; element. This
          element should contain &lt;doi&gt; and &lt;resource&gt; subelements, which may be
-         left empty. Incipit replaces the contents of the &lt;doi&gt; element (if any)
+         left empty. ARKetype replaces the contents of the &lt;doi&gt; element (if any)
          with the identifier in question and the contents of the &lt;resource&gt;
          element with the target URL. Here is an abridged example of deposit
          metadata:</p>
@@ -994,11 +994,11 @@ who: (:unkn) anonymous donor
          should be taken to escape line terminators and percent signs in the
          document (as is true for all metadata element values; see <a class="reference internal" href="#request-response-bodies">Request &amp;
             response bodies</a> above).</p>
-      <p>If the identifier's preferred metadata profile is &quot;crossref&quot;, Incipit
+      <p>If the identifier's preferred metadata profile is &quot;crossref&quot;, ARKetype
          automatically creates a DataCite Metadata Scheme record from the
          Crossref deposit metadata for display and search purposes. Where
          conversion values are missing (e.g., a journal does not have a
-         creator) Incipit supplies the code &quot;(:unav)&quot;. This automatic conversion
+         creator) ARKetype supplies the code &quot;(:unav)&quot;. This automatic conversion
          can be overriden by supplying an entire DataCite Metadata Scheme XML
          record as the value of the &quot;datacite&quot; element (see <a class="reference internal" href="#profile-datacite">Profile
             &quot;datacite&quot;</a> above). Additionally, individual DataCite elements
@@ -1015,21 +1015,21 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
    </div>
    <div class="section" id="testing-the-api">
       <h1>Testing the API</h1>
-      <p>Incipit provides three namespaces (or &quot;shoulders&quot;) for testing purposes:
+      <p>ARKetype provides three namespaces (or &quot;shoulders&quot;) for testing purposes:
          ark:/99999/fk3 for ARK identifiers.
          Identifiers in these namespaces are termed &quot;test identifiers.&quot; They
          are ordinary long-term identifiers in almost all respects, except that
-         Incipit deletes them after 2 weeks.</p>
+         ARKetype deletes them after 2 weeks.</p>
       <p>Test ARK identifiers resolve just as real ARK identifiers do through
          the <a class="reference external" href="https://n2t.net/">N2T</a> resolver.</p>
-      <p>All user accounts are permitted to create test identifiers. Incipit also
+      <p>All user accounts are permitted to create test identifiers. ARKetype also
          provides an &quot;apitest&quot; account that is permitted to create only test
          identifiers. <a class="reference external" href="/contact">Contact us</a> for the password for this account.
          Additionally, please <a class="reference external" href="/contact">contact us</a> before embarking on any large-scale
          testing, specifically, before creating more than 10,000 test
          identifiers.</p>
       <p>Test identifiers and reserved identifiers are orthogonal concepts. A
-         test identifier has a limited lifetime and is deleted by Incipit when it
+         test identifier has a limited lifetime and is deleted by ARKetype when it
          expires. A reserved identifier may be deleted by the owner while
          still in its reserved state, but once made public, is permanent. As
          evidence of this orthogonality, it is possible to create reserved test
@@ -1037,7 +1037,7 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
    </div>
    <div class="section" id="server-status">
       <h1>Server status</h1>
-      <p>The status of the Incipit server can be probed by issuing a GET request
+      <p>The status of the ARKetype server can be probed by issuing a GET request
          to the URL http://37.187.98.23/status. If the server is up the
          response will resemble the following:</p>
       <pre class="literal-block">
@@ -1048,7 +1048,7 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
 ⇐ Content-Type: text/plain; charset=UTF-8
 ⇐ Content-Length: 19
 ⇐
-⇐ success: Incipit is up
+⇐ success: ARKetype is up
 </pre>
    </div>
    <div class="section" id="python-command-line-tool">
@@ -1056,7 +1056,7 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
       <p><a class="reference external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/ezid.py">ezid.py</a> <span class="ext-icon"></span> is a command line tool, written in Python,
          that is capable of exercising all API functions. It serves as an
          example of how to use the API from Python, but it's also useful in its
-         own right as an easy, scriptable means of accessing Incipit
+         own right as an easy, scriptable means of accessing ARKetype
          functionality. The general usage is:</p>
       <pre class="literal-block">
 % ezid.py <span class="hl2">credentials</span> <span class="hl2">operation</span> <span class="hl2">[arguments...]</span>
@@ -1116,7 +1116,7 @@ erc.when: 1922
       <p>PHP is agnostic with respect to character sets and character set
          encoding; it operates on bytes only. The following examples assume
          that input data is already UTF-8 encoded and hence can be passed
-         directly to Incipit; if this is not the case, input data will need to be
+         directly to ARKetype; if this is not the case, input data will need to be
          converted to UTF-8 using the functions PHP provides for that purpose.</p>
       <p>Get identifier metadata:</p>
       <pre class="literal-block">
@@ -1233,7 +1233,7 @@ sub escape {
   &quot;<span class="hl2">element1</span>&quot; =&gt; &quot;<span class="hl2">value1</span>&quot;,
   &quot;<span class="hl2">element2</span>&quot; =&gt; &quot;<span class="hl2">value2</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(PUT &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
@@ -1247,7 +1247,7 @@ use HTTP::Request::Common;
 use LWP::UserAgent;
 
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(POST &quot;http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;);
 if ($r-&gt;is_success) {
@@ -1270,7 +1270,7 @@ sub escape {
 
 %metadata = ( &quot;_target&quot; =&gt; &quot;<span class="hl2">url</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
-$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;Incipit&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
+$ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
 $r = $ua-&gt;request(POST &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
@@ -1435,7 +1435,7 @@ class harness {
    </div>
    <div class="section" id="curl-examples">
       <h1>curl examples</h1>
-      <p>The Incipit API can be exercised using the <a class="reference external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command
+      <p>The ARKetype API can be exercised using the <a class="reference external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command
          line tool. The following examples assume metadata is UTF-8 encoded
          throughout.</p>
       <p>To get identifier metadata, obtaining text formatted as described in
@@ -1486,7 +1486,7 @@ curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X P
    </div>
    <div class="section" id="batch-processing">
       <h1>Batch processing</h1>
-      <p>The API does not directly support batch processing, but Incipit does
+      <p>The API does not directly support batch processing, but ARKetype does
          provide two client tools, linked from this documentation, that can
          simplify the work of scripting a batch job. First and most generally,
          the <a class="reference internal" href="#python-command-line-tool">Python command line tool</a> can exercise all API functions and is
@@ -1501,7 +1501,7 @@ done
       <p>Second, the <a class="reference external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/batch-register.py">batch-register.py</a> <span class="ext-icon"></span> script automates several
          common types of batch processing. It reads an input CSV file
          containing identifier metadata, one row per identifier; transforms the
-         metadata into Incipit metadata as directed by a configuration file of
+         metadata into ARKetype metadata as directed by a configuration file of
          mappings; creates or mints identifiers, or updates existing
          identifiers, using that metadata; and outputs a CSV file containing
          the created, minted, or updated identifiers and other information.
@@ -1511,7 +1511,7 @@ done
 title,author,orcid,publisher_name,publisher_place,url
 </pre>
       <p>a possible complete mapping file to mint DOI identifiers is shown
-         below. The mappings reference both Incipit metadata elements and, using
+         below. The mappings reference both ARKetype metadata elements and, using
          XPath expressions, <a class="reference external" href="http://schema.datacite.org/">DataCite Metadata Scheme</a> <span class="ext-icon"></span> elements
          and attributes.</p>
       <pre class="literal-block">
@@ -1638,7 +1638,7 @@ datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource xmlns=&quot;http:
                selected identifier. A header row lists column names. The columns
                to return must be specified using one or more &quot;column&quot; parameters;
                the order of columns in the table matches the parameter order. The
-               columns that can be returned include all internal Incipit metadata
+               columns that can be returned include all internal ARKetype metadata
                elements (refer to <a class="reference internal" href="#internal-metadata">Internal metadata</a>) and all citation metadata
                elements (refer to <a class="reference internal" href="#metadata-profiles">Metadata profiles</a>). Additionally, the
                following columns may be requested:</p>
@@ -1806,7 +1806,7 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
          </li>
          <li>
             <p class="first">owner=<span class="hl1">u</span> (<em>repeatable</em>)</p>
-            <p>Return identifiers owned by user <span class="hl1">u</span>, where <span class="hl1">u</span> is an Incipit
+            <p>Return identifiers owned by user <span class="hl1">u</span>, where <span class="hl1">u</span> is an ARKetype
                username, e.g., &quot;apitest&quot;. All &quot;owner&quot; and &quot;ownergroup&quot; parameters
                are ORed together; if none are specified, the identifiers directly
                owned by the requestor are returned.</p>
@@ -1814,7 +1814,7 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
          <li>
             <p class="first">ownergroup=<span class="hl1">g</span> <em>(repeatable)</em></p>
             <p>Return identifiers owned by group <span class="hl1">g</span>, where <span class="hl1">g</span> is an
-               Incipit group name, e.g., &quot;cdl&quot;. All &quot;owner&quot; and &quot;ownergroup&quot;
+               ARKetype group name, e.g., &quot;cdl&quot;. All &quot;owner&quot; and &quot;ownergroup&quot;
                parameters are ORed together; if none are specified, the identifiers
                directly owned by the requestor are returned.</p>
          </li>
@@ -1863,7 +1863,7 @@ waiting......
    </div>
    <div class="section" id="oai-pmh-harvesting">
       <h1>OAI-PMH harvesting</h1>
-      <p>Incipit supports harvesting of identifiers and citation metadata via <a class="reference external" href="http://www.openarchives.org/OAI/openarchivesprotocol.html">The
+      <p>ARKetype supports harvesting of identifiers and citation metadata via <a class="reference external" href="http://www.openarchives.org/OAI/openarchivesprotocol.html">The
             Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH)</a>
          <span class="ext-icon"></span>, version 2.0. The base URL for OAI-PMH access is</p>
       <blockquote>
@@ -1874,12 +1874,12 @@ waiting......
          OAI-PMH.</p>
       <p>Harvesting and batch download are similar but different operations;
          see <a class="reference internal" href="#batch-download">Batch download</a> for the differences.</p>
-      <p>In returning an identifier's metadata, Incipit maps citation metadata
+      <p>In returning an identifier's metadata, ARKetype maps citation metadata
          from the identifier's preferred metadata profile (see <a class="reference internal" href="#metadata-profiles">Metadata
             profiles</a> above) to one of two delivery formats: <a class="reference external" href="http://dublincore.org/documents/dces/">Dublin Core</a>
          <span class="ext-icon"></span> (as required by the protocol) or <a class="reference external" href="http://schema.datacite.org/">DataCite</a>
          <span class="ext-icon"></span>. In the latter case, older DataCite XML metadata
-         records stored in Incipit are converted to version 4 of the DataCite
+         records stored in ARKetype are converted to version 4 of the DataCite
          schema for uniformity. Note that, in an extension to the DataCite
          schema, the identifier type for non-DOI identifiers is set to &quot;ARK&quot; or
          &quot;UUID&quot; as appropriate.</p>

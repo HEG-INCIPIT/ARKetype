@@ -2,10 +2,10 @@
 {% load layout_extras %}
 {% load i18n %}
 {% load menus %}
-{% block title %}{% block title-twitter %}{% trans "The Incipit API, Version 1" %}{% endblock %}{% endblock %}
+{% block title %}{% block title-twitter %}{% trans "The ARKetype API, Version 1" %}{% endblock %}{% endblock %}
 {% block heading %}
 {% autoescape off %}
-{% content_heading _("The Incipit API, Version 1") %}
+{% content_heading _("The ARKetype API, Version 1") %}
 {% endautoescape %}
 {% endblock %}
 {% block content %}
@@ -19,11 +19,11 @@
       <div class="line"><strong>Latest version:</strong> <a class="reference external" href="http://{{ request.META.HTTP_HOST }}/doc/apidoc.html">http://{{ request.META.HTTP_HOST }}/doc/apidoc.html</a></div>
    </div>
    <p>Modified 2010.06.24.</p>
-   <p>Incipit is an interface that provides an easy way for digital object
+   <p>ARKetype is an interface that provides an easy way for digital object
       producers and others to obtain, register, and describe long-term
       identifiers for their objects. It comes with a web user interface
       (UI) and a web Application Programming Interface (API). This document
-      describes Version 1 of the Incipit API.</p>
+      describes Version 1 of the ARKetype API.</p>
    <p>Please use the following address to report any problems:</p>
    <blockquote>
       <a class="reference external" href="mailto:"></a></blockquote>
@@ -31,7 +31,7 @@
       Monday - Friday) will be addressed the next work day.</p>
    <div class="section" id="framework">
       <h1>Framework</h1>
-      <p>The Incipit API (and UI) is available from the base URL,</p>
+      <p>The ARKetype API (and UI) is available from the base URL,</p>
       <blockquote>
          <a class="reference external" href="http://n2t.net/ncpt">http://n2t.net/ncpt</a></blockquote>
       <p>Interaction is done via RESTful HTTP. Message bodies of both requests
@@ -49,10 +49,10 @@ _target: http://...
          where XY is the character's hex code. These include ':' and '.' in
          element names, and ';' and '|' in element values.</p>
       <p>Element names beginning with an underscore ('_') are reserved for
-         internal use by Incipit. There is one reserved element name, _target, to
+         internal use by ARKetype. There is one reserved element name, _target, to
          hold the reidirection target URL. In returned metadata, additional
          elements with leading underscores may be returned; this is metadata
-         maintained by Incipit.</p>
+         maintained by ARKetype.</p>
    </div>
    <div class="section" id="requests-and-responses">
       <h1>Requests and Responses</h1>
@@ -107,7 +107,7 @@ import urllib2
 baseurl = &quot;http://n2t.net/ncpt&quot;
 
 h = urllib2.HTTPBasicAuthHandler()
-h.add_password(&quot;Incipit&quot;, baseurl, &quot;username&quot;, &quot;password&quot;)
+h.add_password(&quot;ARKetype&quot;, baseurl, &quot;username&quot;, &quot;password&quot;)
 opener = urllib2.build_opener(h)
 
 # Create a DOI with an initial target and other metadata.

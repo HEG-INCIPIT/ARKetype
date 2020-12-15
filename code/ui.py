@@ -29,7 +29,7 @@ def api(request):
   files.
   """
   if request.method != "GET": return uic.methodNotAllowed(request)
-  file = "apidoc-incipit.html"
+  file = "apidoc-ARKetype.html"
   print(file)
   path = os.path.join(django.conf.settings.PROJECT_ROOT, "templates", "doc",
     file)
@@ -60,7 +60,7 @@ def contact(request):
       pass
     elif d['form'].is_valid():
       emails = __emails(request)
-      title = "Incipit contact form email"
+      title = "ARKetype contact form email"
       if 'HTTP_REFERER' in request.META:
         message = 'Sent FROM: ' + request.META['HTTP_REFERER'] +"\r\n\r\n"
       else:
@@ -74,7 +74,7 @@ def contact(request):
         "Heard about from: " + P['hear_about'] + "\r\n\r\n"
       if 'newsletter' in P:
         if P['newsletter'] == 'on':
-          message += "YES, I'd like to subscribe to the EZID newsletter."
+          message += "YES, I'd like to subscribe to the ARKetype newsletter."
         else:
           message += "Newsletter option NOT checked."
       try:

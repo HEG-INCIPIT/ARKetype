@@ -335,7 +335,7 @@ def getStatus (request):
   if options.get("detailed", False):
     statusLine = _statusLineGenerator(False).next()[7:]
   else:
-    statusLine = "Incipit is up"
+    statusLine = "ARKetype is up"
   body = ""
   if "subsystems" in options:
     l = options["subsystems"]

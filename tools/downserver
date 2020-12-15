@@ -38,7 +38,7 @@ document = """<?xml version="1.0"?>
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>EZID</title>
+<title>ARKetype</title>
 <style type="text/css">
 body { text-align: center; margin-top: 5em; font-family: Helvetica, sans-serif;
   font-weight: bold }
@@ -47,7 +47,7 @@ p.big { font-size: 200%% }
 </head>
 <body>
 %s<p class="big">%s</p>
-<p>EZID's regularly scheduled maintenance window is Sunday <a
+<p>ARKetype's regularly scheduled maintenance window is Sunday <a
 href="http://www.thetimezoneconverter.com/?t=8:00am&amp;tz=Oakland">8:00am</a>&ndash;<a
 href="http://www.thetimezoneconverter.com/?t=9:00am&amp;tz=Oakland">9:00am</a>
 Pacific time.</p>
@@ -80,14 +80,14 @@ downtime = int(sys.argv[3])
 if len(sys.argv) == 5:
   message = sys.argv[4]
 else:
-  message = "EZID is down for maintenance"
+  message = "RKetype is down for maintenance"
 
 logoPath = os.path.join(os.path.split(sys.argv[0])[0], "logo.png")
 if os.path.exists(logoPath):
   f = open(logoPath)
   logo = f.read()
   f.close()
-  logoLink = "<p><img src=\"logo.png\" alt=\"EZID\"/></p>\n"
+  logoLink = "<p><img src=\"logo.png\" alt=\"ARKetype\"/></p>\n"
 else:
   logo = None
   logoLink = ""

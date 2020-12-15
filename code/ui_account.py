@@ -19,8 +19,8 @@ import ezidapp.models
 import json
 from django.utils.translation import ugettext as _
 
-ACCOUNT_FIELDS_EDITABLE = ['primaryContactName', 'primaryContactEmail', 'primaryContactPhone', 
-           'secondaryContactName', 'secondaryContactEmail', 'secondaryContactPhone', 
+ACCOUNT_FIELDS_EDITABLE = ['primaryContactName', 'primaryContactEmail', 'primaryContactPhone',
+           'secondaryContactName', 'secondaryContactEmail', 'secondaryContactPhone',
            'accountDisplayName', 'accountEmail']
 
 proxies_default = _("None chosen")
@@ -109,7 +109,7 @@ def edit(request):
   elif request.method == "POST":
     d['form'] = form_objects.UserForm(request.POST, initial=d, user=user, username=d['username'], pw_reqd=False)
     basic_info_changed=False
-    newProxies = None 
+    newProxies = None
     if d['form'].is_valid():
       if d['form'].has_changed():
         basic_info_changed = any(ch in d['form'].changed_data for ch in ACCOUNT_FIELDS_EDITABLE)
@@ -123,7 +123,7 @@ def edit(request):
         all_errors = ''
         errors = d['form'].errors['__all__']
         for e in errors:
-          all_errors += e 
+          all_errors += e
         messages.error(request, _("Change(s) could not be made.   ") + all_errors)
       else:
         err = _("Change(s) could not be made.  Please check the highlighted field(s) below for details.")
@@ -139,7 +139,7 @@ def allUsersInRealm(user):
   return sorted(realmusers, key=lambda k: k.username)
 
 def _getNewProxies(user, orig, picked):
-  """ 
+  """
   Compares two lists of usernames. Returns list of newly picked users, as User objects.
   Not removing any users at the moment.
   """
@@ -201,29 +201,29 @@ def _sendProxyEmail (request, p_user, user):
     "   " + _("Account") + ": %s\n" +\
     "   " + _("Account Email") + ": %s\n\n" +\
     _("As a proxy user, you can create and modify identifiers owned by the primary user") + ". " +\
-    _("If you need more information about proxy ownership of EZID identifiers, ") +\
+    _("If you need more information about proxy ownership of ARKetype identifiers, ") +\
     _("please don't hesitate to contact us") +\
     ": https://ezid.cdlib.org/contact\n\n" +\
-    _("Best,\nEZID Team\n\n\nThis is an automated email. Please do not reply.\n")) %\
-    (p_user.primaryContactName, 
+    _("Best,\nARKetype Team\n\n\nThis is an automated email. Please do not reply.\n")) %\
+    (p_user.primaryContactName,
      user.primaryContactName, user.username, user.displayName, user.accountEmail)
-  _sendEmail(request, p_user, _("You've Been Added as an EZID Proxy User"), m)
- 
+  _sendEmail(request, p_user, _("You've Been Added as an ARKetype Proxy User"), m)
+
 def _sendUserEmail (request, user, new_proxies):
-  plural = True if len(new_proxies) > 1 else False 
+  plural = True if len(new_proxies) > 1 else False
   intro = _("These proxy users have been") if plural else _("This proxy user has been")
   p_list = ""
   for p in new_proxies:
-    p_list += "*** EZID " + _("User") + ": " + p.username + "   |   " +\
+    p_list += "*** ARKetype " + _("User") + ": " + p.username + "   |   " +\
       _("Name") + ": " + p.displayName + "  ***\n"
   m = (_("Dear") + " %s,\n\n" +\
-    _("Thank you for using EZID to easily create and manage your identifiers.") +\
+    _("Thank you for using ARKetype to easily create and manage your identifiers.") +\
     " %s " + _("successfully added to your account") + ":\n\n%s\n\n" +\
-    _("To manage your account's proxy users, please log into EZID and go to") +\
+    _("To manage your account's proxy users, please log into ARKetype and go to") +\
     " ezid.cdlib.org/account/edit.\n\n" +\
-    _("Best,\nEZID Team\n\n\nThis is an automated email. Please do not reply.\n")) %\
+    _("Best,\ARKetype Team\n\n\nThis is an automated email. Please do not reply.\n")) %\
     (user.primaryContactName, intro, p_list)
-  subj = (_("New EZID Proxy User%s Added")) % ("s" if plural else "")
+  subj = (_("New ARKetype Proxy User%s Added")) % ("s" if plural else "")
   _sendEmail(request, user, subj, m)
 
 def pwreset(request, pwrr):
@@ -242,7 +242,7 @@ def pwreset(request, pwrr):
       return uic.redirect("/")
     d['pwrr'] = pwrr
     if request.method == "GET":
-      d['username'] = username 
+      d['username'] = username
       d['form'] = form_objects.BasePasswordForm(None, username=username, pw_reqd=True)
     elif request.method == "POST":
       if "pwnew" not in request.POST or "pwconfirm" not in request.POST:
@@ -265,7 +265,7 @@ def pwreset(request, pwrr):
         return uic.redirect("/")
     else:
       return uic.methodNotAllowed(request)
-    return uic.render(request, "account/pwreset2", d) 
+    return uic.render(request, "account/pwreset2", d)
   else:
     # First step: enter your username and email to get sent an email containing link for password change
     d = { 'menu_item' : 'ui_null.null'}
@@ -307,11 +307,11 @@ def sendPasswordResetEmail (username, emailAddress):
     django.conf.settings.SECRET_KEY)).hexdigest()[::4]
   link = "%s/account/pwreset/%s,%d,%s" %\
     (uic.ezidUrl, urllib.quote(username), t, hash)
-  message = _("You have requested to reset your EZID password") + ".\n" +\
+  message = _("You have requested to reset your ARKetype password") + ".\n" +\
     _("Click the link below to complete the process") + ":\n\n" +\
     link + "\n\n" +\
     _("Please do not reply to this email") + ".\n"
-  django.core.mail.send_mail(_("EZID password reset request"), message,
+  django.core.mail.send_mail(_("ARKetype password reset request"), message,
     django.conf.settings.SERVER_EMAIL, [emailAddress])
   return None
 

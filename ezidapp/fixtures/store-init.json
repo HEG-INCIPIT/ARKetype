@@ -10,7 +10,7 @@
 
 { "model": "ezidapp.StoreRealm",
   "pk": 1,
-  "fields": { "name": "Incipit" }
+  "fields": { "name": "ARKetype" }
 },
 
 { "model": "ezidapp.StoreGroup",
@@ -19,7 +19,7 @@
     "pid": "ark:/99166/p3g018",
     "groupname": "admin",
     "realm": 1,
-    "organizationName": "Incipit superuser",
+    "organizationName": "ARKetype superuser",
     "organizationUrl": "http://37.187.98.23",
     "organizationStreetAddress": "(:unap)"
   }
@@ -32,9 +32,9 @@
     "username": "admin",
     "group": 1,
     "realm": 1,
-    "displayName": "Incipit superuser",
+    "displayName": "ARKetype superuser",
     "accountEmail": "example@example.com",
-    "primaryContactName": "Incipit administrator",
+    "primaryContactName": "ARKetype administrator",
     "primaryContactEmail": "example@example.com",
     "primaryContactPhone": "079 000 00 00",
     "isSuperuser": 1
@@ -47,7 +47,7 @@
     "pid": "ark:/99166/p3b88f",
     "groupname": "apitest",
     "realm": 1,
-    "organizationName": "Incipit API test account",
+    "organizationName": "ARKetype API test account",
     "organizationUrl": "http://37.187.98.23",
     "organizationStreetAddress": "(:unap)",
     "crossrefEnabled": 0
@@ -61,9 +61,9 @@
     "username": "apitest",
     "group": 2,
     "realm": 1,
-    "displayName": "Incipit API test account",
+    "displayName": "ARKetype API test account",
     "accountEmail": "example@example.com",
-    "primaryContactName": "Incipit administrator",
+    "primaryContactName": "ARKetype administrator",
     "primaryContactEmail": "example@example.com",
     "primaryContactPhone": "079 000 00 00",
     "crossrefEnabled": 0

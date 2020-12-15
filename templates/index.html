@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}{% block title-twitter %}{% trans "Home" %}{% endblock %}{% endblock %}
-{% block description %}{%trans "Incipit is a swiss provider of Arks." %}{% endblock %}
+{% block description %}{%trans "ARKetype is a swiss provider of Arks." %}{% endblock %}
 {% block javascript %}
 var imageURLs = [
 'homeHero_01.jpg', 'homeHero_02.jpg', 'homeHero_03.jpg', 'homeHero_04.jpg',
@@ -18,14 +18,14 @@ img += imageURLs[randomIndex];
 return img;
 }
 {% endblock %}
-{% block heading %}{% autoescape off %}{% content_heading _("Incipit: The Swiss option for creating ARKs") %}{% endautoescape %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("ARKetype: The Swiss option for creating ARKs") %}{% endautoescape %}{% endblock %}
 {% block content %}
 <!-- Home Banner -->
 <!--
     <div class="home-banner">
       <div class="home-banner__lead-container">
       <div class="home-banner__lead">
-        <p class="home-banner__lead-text">{% trans "Create and manage long-term globally unique IDs for data and other sources using Incipit" %}</p>
+        <p class="home-banner__lead-text">{% trans "Create and manage long-term globally unique IDs for data and other sources using ARKetype" %}</p>
         <a href="{% url "ui_home.learn" %}" class="home-banner__lead-button">{% trans "Learn More" %}</a>
       </div>
       </div>

@@ -231,7 +231,7 @@ def owner_names(user, page):
   r = []
   me = _userList([user], 0, "  (" + _("me") + ")")
   if user.isSuperuser:
-    r += me if page == 'manage' else [('all', 'ALL EZID')]
+    r += me if page == 'manage' else [('all', 'ALL ARKETYPE')]
     for realm in ezidapp.models.StoreRealm.objects.all().order_by("name"):
       n = realm.name
       r += [('realm_' + n, "Realm: " + n)]

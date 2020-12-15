@@ -1,6 +1,6 @@
 [Unit]
 Description=ARKetype
-After=network.target
+After=mysql.service
 StartLimitIntervalSec=0
 [Service]
 Type=simple

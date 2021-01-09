@@ -10,17 +10,6 @@
       <input name="action" id="action" type="hidden" value="create" />
       <div class="row">
          <div class="col-md-4 col-md-push-8 create__sidebox">
-            <div class="alert alert-warning text-left">
-               <h2 class="h3 text-center">{% trans "Quick Start Guides" %}</h2>
-               <ul class="sidebox__list">
-                  <li><a href="/static/locale/en/EZID_CustomRemainders.pdf" class="alert-link" title="PDF Document" target="_blank">{% trans "Custom Remainder Rules" %}</a></li>
-                  <li><a href="/static/locale/en/EZID_AdvancedCreate.pdf" class="alert-link" title="PDF Document" target="_blank">{% trans "Advanced Create for DOIs" %}</a></li>
-                  <li><a href="/static/locale/en/EZID_ResourceTypes.pdf" title="PDF Document" class="alert-link" target="_blank">{% trans "Resource Types" %}</a></li>
-                  <li><a href="/static/locale/en/EZID_ContributorTypes.pdf" title="PDF Document" class="alert-link" target="_blank">{% trans "Contributor Types" %}</a></li>
-                  <li><a href="/static/locale/en/EZID_RelationTypes.pdf" title="PDF Document" class="alert-link" target="_blank">{% trans "Relation Types" %}</a></li>
-                  <li><a href="/static/locale/en/EZID_InfoUnavailable.pdf" title="PDF Document" class="alert-link" target="_blank">{% trans "Don't have info for required fields? Use placeholder codes." %}</a></li>
-               </ul>
-            </div>
          </div>
          <div class="col-md-8 col-md-pull-4">
             {% include "includes/simple_id_type.html" with calling_page="create" %}

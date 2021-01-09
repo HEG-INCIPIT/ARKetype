@@ -1045,8 +1045,8 @@ class ContactForm(forms.Form):
       label=_("How did you hear about us?"))
     self.fields["question"] = forms.CharField(max_length=200, label=_("Human test: How many drop down menus are in this form?"),
       error_messages={'required': _("Please answer the question")})
-    if self.localized == False:
-      self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the ARKetype newsletter"))
+    #if self.localized == False:
+      #self.fields["newsletter"] = forms.BooleanField(required=False, label=_("Subscribe to the ARKetype newsletter"))
 
 ################  Password Reset Landing Page ##########
 

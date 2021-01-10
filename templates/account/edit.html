@@ -39,6 +39,8 @@
          </div>
       </div>
       {% endif %}
+
+      {% comment "Proxy User" %}
       <div class="form-group row">
          <label for="account_username" class="col-sm-6 col-form-label text-primary">{% trans "Your Proxy Account(s)" %}</label>
          <div class="col-sm-6">
@@ -46,7 +48,6 @@
             <div class="fcontrol__caption">{% trans "NOTE: These are identifier groups where you have been designated as proxy user." %}</div>
          </div>
       </div>
-
       {% if proxy_users_choose %}
       <div class="form-group row">
          <label for="{{ form.proxy_users_picked.id_for_label }}" class="col-sm-6 col-form-label text-primary">{{ form.proxy_users_picked.label }}</label>
@@ -69,6 +70,7 @@
          {% include "account/_proxyModal.html" %}
       </div>
       {% endif %}
+      {% endcomment %}
 
       <h2 class="h3 text-primary">{% trans "Change Password" %}</h2>
 

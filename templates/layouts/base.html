@@ -1,5 +1,6 @@
 {% load layout_extras %}
 {% load i18n %}
+{% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 {% get_current_language as LANGUAGE_CODE %}
 <html class="no-js" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl" {% endif %}>
@@ -39,13 +40,8 @@
 
    {% block header %}{% endblock %}
    <script type="text/javascript">
-      {
-         %
-         block javascript %
-      } {
-         %
-         endblock %
-      }
+      {% block javascript %}
+      {% endblock %}
    </script>
    {% if google_analytics_id %}
    <script>

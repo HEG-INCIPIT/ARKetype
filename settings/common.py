@@ -19,7 +19,8 @@ MINTERS_PATH = os.path.join(PROJECT_ROOT, "db", "minters")
 sys.path.append(os.path.join(PROJECT_ROOT, "code"))
 
 
-DEBUG = True
+DEBUG = False
+STANDALONE = True
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 MANAGERS = ADMINS = [
@@ -66,16 +67,13 @@ DATABASE_ROUTERS = ["settings.routers.Router"]
 TIME_ZONE = "Europe/Zurich"
 TIME_FORMAT_UI_METADATA = "%Y-%m-%d %H:%M:%S"
 
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
-]
-#STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = "/static/"
 
 LANGUAGES = [
   ("en", _("English"))
 ]
-LOCALE_PATHS = [os.path.join(STATICFILES_DIRS[0], "locale")]
+LOCALE_PATHS = [os.path.join(STATIC_ROOT, "locale")]
 
 LANGUAGE_CODE='en'
 
@@ -123,7 +121,6 @@ INSTALLED_APPS = [
   "django.contrib.admin",
   "django.contrib.auth",
   "django.contrib.contenttypes",
-  "django.contrib.staticfiles",
   "ui_tags",
   "ezidapp",
 ]
@@ -131,7 +128,6 @@ INSTALLED_APPS = [
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 # EZID-specific settings...
-STANDALONE = False
 DAEMON_THREADS_ENABLED = True
 LOCALIZATIONS = { "default": ("ARKetype", ["amir@alwash.ch"]) }
 

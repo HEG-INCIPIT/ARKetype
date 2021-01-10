@@ -28,7 +28,6 @@ urlpatterns = i18n_patterns(
     url("^i18n/", JavaScriptCatalog.as_view(), name='i18n'),
     # url("jsi18n/", JavaScriptCatalog.as_view(), name='javascript-catalog'),
 
-    # url("^$", ui_home.inde, name="ui_home.index)
     # UI - RENDERED FROM TEMPLATES IN INFO REPOSITORY
     url("^$", ui_home.index, name="ui_home.index"),
     url("^learn/$", ui_home.learn, name="ui_home.learn"),
@@ -111,10 +110,9 @@ urlpatterns = i18n_patterns(
     url("^admin/login/?$", ui_account.login, name="ui_account.login"),
     url("^admin/logout/?$", ui_account.logout, name="ui_account.logout"),
     url("^admin/", include(ezidapp.admin.superuser.urls)),
-    url("doc/api",ui.api,name="ui_api.latest"),
+    url("^doc/api$",ui.api,name="ui_api.latest"),
     prefix_default_language=False
 )
-
 # ]
 
 if django.conf.settings.STANDALONE:

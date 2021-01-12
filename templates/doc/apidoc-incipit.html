@@ -78,124 +78,124 @@
       <p class="h4 text-primary">Internal</p>
       <table class="table table-striped">
          <thead>
-            <tr class="bg-info text-light">
-               <th scope="col">Updatable</th>
-               <th scope="col">Metadata</th>
-               <th scope="col">Description</th>
-               <th scope="col">Example</th>
+            <tr class="d-flex bg-info text-light">
+               <th class="col-1" scope="col">Updatable</th>
+               <th class="col-2" scope="col">Metadata</th>
+               <th class="col-6" scope="col">Description</th>
+               <th class="col-3" scope="col">Example</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_owner</td>
-               <td>The identifier's owner. Only updatable by group administrators</td>
-               <td>jsmith</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_owner</td>
+               <td class="col-6">The identifier's owner. Only updatable by group administrators</td>
+               <td class="col-3">jsmith</td>
             </tr>
-            <tr>
-               <th scope="row">no</th>
-               <td>_ownergroup</td>
-               <td>The identifier's owning group, which is currently restricted to be the identifier's owner's group.</td>
-               <td>@arketype</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">no</th>
+               <td class="col-2">_ownergroup</td>
+               <td class="col-6">The identifier's owning group, which is currently restricted to be the identifier's owner's group.</td>
+               <td class="col-3">@arketype</td>
             </tr>
-            <tr>
-               <th scope="row">no</th>
-               <td>_created</td>
-               <td>The time the identifier was created expressed as a Unix timestamp.</td>
-               <td>1300812337</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">no</th>
+               <td class="col-2">_created</td>
+               <td class="col-6">The time the identifier was created expressed as a Unix timestamp.</td>
+               <td class="col-3">1300812337</td>
             </tr>
-            <tr>
-               <th scope="row">no</th>
-               <td>_updated</td>
-               <td>The time the identifier was last updated expressed as a Unix timestamp.</td>
-               <td>1300913550</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">no</th>
+               <td class="col-2">_updated</td>
+               <td class="col-6">The time the identifier was last updated expressed as a Unix timestamp.</td>
+               <td class="col-3">1300913550</td>
             </tr>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_target</td>
-               <td colspan="2">The identifier's target URL. Defaults to the
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_target</td>
+               <td class="col-9" colspan="2">The identifier's target URL. Defaults to the
                   identifier's ARKetype URL. That is, the default target URL
                   for identifier foo is the self-referential URL
                   https://arketype.ch/id/foo.</td>
             </tr>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_profile</td>
-               <td>The identifier's preferred metadata profile (see Metadata profiles next).</td>
-               <td>erc (default)| datacite | dc</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_profile</td>
+               <td class="col-6">The identifier's preferred metadata profile (see Metadata profiles next).</td>
+               <td class="col-3">erc (default)| datacite | dc</td>
             </tr>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_status</td>
-               <td>The identifier's status</td>
-               <td>public (dfault)| reserved | unavailable</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_status</td>
+               <td class="col-6">The identifier's status</td>
+               <td class="col-3">public (dfault)| reserved | unavailable</td>
             </tr>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_export</td>
-               <td>Determines if the identifier is publicized by exporting it to external indexing and harvesting services.</td>
-               <td>yes (default)| no</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_export</td>
+               <td class="col-6">Determines if the identifier is publicized by exporting it to external indexing and harvesting services.</td>
+               <td class="col-3">yes (default)| no</td>
             </tr>
-            <tr>
-               <th scope="row">yes</th>
-               <td>_crossref</td>
-               <td>If returned, indicates that the identifier is registered with Crossref (or, in the case of a reserved identifier, will be registered), and also indicates the status of the registration process. When setting, must be set to "yes". </td>
-               <td>yes | successfully registered</td>
+            <tr class="d-flex">
+               <th class="col-1" scope="row">yes</th>
+               <td class="col-2">_crossref</td>
+               <td class="col-6">If returned, indicates that the identifier is registered with Crossref (or, in the case of a reserved identifier, will be registered), and also indicates the status of the registration process. When setting, must be set to "yes". </td>
+               <td class="col-3">yes | successfully registered</td>
             </tr>
          </tbody>
       </table>
       <p class="h4 text-primary">Codes</p>
       <table class="table table-striped">
          <thead>
-            <tr class="bg-info text-light">
-               <th scope="col">Code</th>
-               <th scope="col">Description</th>
+            <tr class="d-flex bg-info text-light">
+               <th class="col-3" scope="col">Code</th>
+               <th class="col-9" scope="col">Description</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">(:unac)</th>
-               <td>temporarily inaccessible</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unac)</th>
+               <td class="col-9">temporarily inaccessible</td>
             </tr>
-            <tr>
-               <th scope="row">(:unal)</th>
-               <td>unallowed; intentionally suppressed</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unal)</th>
+               <td class="col-9">unallowed; intentionally suppressed</td>
             </tr>
-            <tr>
-               <th scope="row">(:unap)</th>
-               <td>not applicable; makes no sense</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unap)</th>
+               <td class="col-9">not applicable; makes no sense</td>
             </tr>
-            <tr>
-               <th scope="row">(:unas)</th>
-               <td>unassigned (e.g., untitled)</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unas)</th>
+               <td class="col-9">unassigned (e.g., untitled)</td>
             </tr>
-            <tr>
-               <th scope="row">(:unav)</th>
-               <td>unavailable; possibly unknown</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unav)</th>
+               <td class="col-9">unavailable; possibly unknown</td>
             </tr>
-            <tr>
-               <th scope="row">(:unkn)</th>
-               <td>known to be unknown (e.g., anonymous)</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:unkn)</th>
+               <td class="col-9">known to be unknown (e.g., anonymous)</td>
             </tr>
-            <tr>
-               <th scope="row">(:none)</th>
-               <td>never had a value, never will</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:none)</th>
+               <td class="col-9">never had a value, never will</td>
             </tr>
-            <tr>
-               <th scope="row">(:null)</th>
-               <td>explicitly and meaningfully empty</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:null)</th>
+               <td class="col-9">explicitly and meaningfully empty</td>
             </tr>
-            <tr>
-               <th scope="row">(:tba)</th>
-               <td>to be assigned or announced later</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:tba)</th>
+               <td class="col-9">to be assigned or announced later</td>
             </tr>
-            <tr>
-               <th scope="row">(:etal)</th>
-               <td>too numerous to list (et alia)</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:etal)</th>
+               <td class="col-9">too numerous to list (et alia)</td>
             </tr>
-            <tr>
-               <th scope="row">(:at)</th>
-               <td>the real value is at the given URL or identifier</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">(:at)</th>
+               <td class="col-9">the real value is at the given URL or identifier</td>
             </tr>
          </tbody>
       </table>
@@ -203,85 +203,85 @@
       <p class="h5 text-primary">ERC</p>
       <table class="table table-striped">
          <thead>
-            <tr class="bg-info text-light">
-               <th scope="col">Metadata</th>
-               <th scope="col">Description</th>
+            <tr class="d-flex bg-info text-light">
+               <th class="col-3" scope="col">Metadata</th>
+               <th class="col-9" scope="col">Description</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">erc.who</th>
-               <td>temporarily inaccessible</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">erc.who</th>
+               <td class="col-9">temporarily inaccessible</td>
             </tr>
-            <tr>
-               <th scope="row">erc.what</th>
-               <td>unallowed; intentionally suppressed</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">erc.what</th>
+               <td class="col-9">unallowed; intentionally suppressed</td>
             </tr>
-            <tr>
-               <th scope="row">erc.when</th>
-               <td>not applicable; makes no sense</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">erc.when</th>
+               <td class="col-9">not applicable; makes no sense</td>
             </tr>
          </tbody>
       </table>
       <p class="h5 text-primary">DataCite</p>
       <table class="table table-striped">
          <thead>
-            <tr class="bg-info text-light">
-               <th scope="col">Metadata</th>
-               <th scope="col">Description</th>
+            <tr class="d-flex bg-info text-light">
+               <th class="col-3" scope="col">Metadata</th>
+               <th class="col-9" scope="col">Description</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">datacite.creator</th>
-               <td>temporarily inaccessible</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">datacite.creator</th>
+               <td class="col-9">temporarily inaccessible</td>
             </tr>
-            <tr>
-               <th scope="row">datacite.title</th>
-               <td>unallowed; intentionally suppressed</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">datacite.title</th>
+               <td class="col-9">unallowed; intentionally suppressed</td>
             </tr>
-            <tr>
-               <th scope="row">datacite.publisher</th>
-               <td>not applicable; makes no sense</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">datacite.publisher</th>
+               <td class="col-9">not applicable; makes no sense</td>
             </tr>
-            <tr>
-               <th scope="row">datacite.publicationyear</th>
-               <td>unassigned (e.g., untitled)</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">datacite.publicationyear</th>
+               <td class="col-9">unassigned (e.g., untitled)</td>
             </tr>
-            <tr>
-               <th scope="row">datacite.resourcetype</th>
-               <td>unavailable; possibly unknown</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">datacite.resourcetype</th>
+               <td class="col-9">unavailable; possibly unknown</td>
             </tr>
          </tbody>
       </table>
       <p class="h5 text-primary">DublinCore</p>
       <table class="table table-striped">
          <thead>
-            <tr class="bg-info text-light">
-               <th scope="col">Metadata</th>
-               <th scope="col">Description</th>
+            <tr class="d-flex bg-info text-light">
+               <th class="col-3" scope="col">Metadata</th>
+               <th class="col-9" scope="col">Description</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">dc.creator</th>
-               <td>temporarily inaccessible</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">dc.creator</th>
+               <td class="col-9">temporarily inaccessible</td>
             </tr>
-            <tr>
-               <th scope="row">dc.title</th>
-               <td>unallowed; intentionally suppressed</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">dc.title</th>
+               <td class="col-9">unallowed; intentionally suppressed</td>
             </tr>
-            <tr>
-               <th scope="row">dc.publisher</th>
-               <td>not applicable; makes no sense</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">dc.publisher</th>
+               <td class="col-9">not applicable; makes no sense</td>
             </tr>
-            <tr>
-               <th scope="row">dc.date</th>
-               <td>unassigned (e.g., untitled)</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">dc.date</th>
+               <td class="col-9">unassigned (e.g., untitled)</td>
             </tr>
-            <tr>
-               <th scope="row">dc.type</th>
-               <td>unavailable; possibly unknown</td>
+            <tr class="d-flex">
+               <th class="col-3" scope="row">dc.type</th>
+               <td class="col-9">unavailable; possibly unknown</td>
             </tr>
          </tbody>
       </table>

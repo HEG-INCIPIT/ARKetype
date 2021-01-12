@@ -1014,6 +1014,7 @@ class ContactForm(forms.Form):
   def __init__(self, *args, **kwargs):
     CONTACT_REASONS = (
       ("None Entered", _("Choose One")),
+      ("Feedback on ARKetype", _("Feedback on ARKetype")),
       ("I would like to inquire about getting a new account for ARKs", _("I would like to inquire about getting a new account for ARKs *")),
       ("I have a problem or question about existing account", _("I have a problem or question about existing account")),
       ("Other", _("Other")),

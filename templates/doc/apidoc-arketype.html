@@ -20,26 +20,32 @@
    ARKetype's functionality is available through the API. This document
    describes a short version of the Version 2 of the ARKetype API.</p>
 
+   <p>To get the full documentation, please refer to <a href="/doc/apidoc.html">this page</a></p>
+
    <p class="h3 text-primary">Table of contents</p>
    <ul>
-      <li>Operations
+      <li><a href="">Operations</a>
          <ul>
-            <li>Get</li>
-            <li>Create</li>
-            <li>Mint</li>
-            <li>Update</li>
-            <li>Delete</li>
+            <li><a href="">Get identifier metadatas</a></li>
+            <li><a href="">Create identifier</a></li>
+            <li><a href="">Mint identifier</a></li>
+            <li><a href="">Update identifier</a>
+               <ul>
+                  <li><a href="">Update identifier with the create operation</a></li>
+               </ul>
+            </li>
+            <li><a href="">Delete identifier</a></li>
          </ul>
       </li>
-      <li>Metadatas
+      <li><a href="">Metadatas</a>
          <ul>
-            <li>Internal</li>
-            <li>Codes</li>
-            <li>Profiles
+            <li><a href="">Internal</a></li>
+            <li><a href="">Codes</a></li>
+            <li><a href="">Profiles</a>
                <ul>
-                  <li>ERC</li>
-                  <li>DataCite</li>
-                  <li>DublinCore</li>
+                  <li><a href="">ERC</a></li>
+                  <li><a href="">DataCite</a></li>
+                  <li><a href="">DublinCore</a></li>
                </ul>
             </li>
          </ul>
@@ -47,35 +53,68 @@
    </ul>
    <div>
       <p class="h3 text-primary">Operations</p>
-      <p class="h4 text-primary">Get</p>
+      <p class="h5">The API allows those operations</p>
+      <p class="h4 text-primary">Get identifier metadatas</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>GET</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
-      <p class="h4 text-primary">Create</p>
+         <p>This allows to retrieve metadats of an identifier via a GET request
+         to the identifier URL. This requires no identification to use.</p>
+      <p class="h4 text-primary">Create identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>PUT</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
-      <p class="h4 text-primary">Mint</p>
-      <div class="alert alert-info text-left" role="alert">
-         <span class="badge badge-light"><b>POST</b></span>
-         https://arketype.ch/shoulder/ark:/<b>NAAN</b>/<b>shoulder</b>
-      </div>
-      <p class="h4 text-primary">Update</p>
-      <div class="alert alert-info text-left" role="alert">
-         <span class="badge badge-light"><b>POST</b></span>
-         https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
-      </div>
-      <p class="h4 text-primary">Delete</p>
-      <div class="alert alert-info text-left" role="alert">
-         <span class="badge badge-light"><b>DELETE</b></span>
-         https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
-      </div>
+         <p>This allows to create an identifier with a predefinied value via
+            a PUT request. It can be asigned with metadatas or left blank.
+            (to be updated later)</p>
+         <p>User credentials are required and user need to have the permission
+         to create an identifier with the shoulder.</p>
+      <p class="h4 text-primary">Mint identifier</p>
+         <div class="alert alert-info text-left" role="alert">
+            <span class="badge badge-light"><b>POST</b></span>
+            https://arketype.ch/shoulder/ark:/<b>NAAN</b>/<b>shoulder</b>
+         </div>
+         <p>This is the same than the create request above but it differs in
+         the fact that the identifier is randomly generated rather than given
+         and in the kind of request it uses as this one is a POST request.
+         </p>
+      <p class="h4 text-primary">Update identifier</p>
+         <div class="alert alert-info text-left" role="alert">
+            <span class="badge badge-light"><b>POST</b></span>
+            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+         </div>
+         <p>This allows to update metadatas of an already existing identifiers</p>
+         <p>Authentification and only the owner of the identifier or some other
+         users can edit it.</p>
+      <p class="h5 text-primary">Update identifier with the create operation</p>
+         <div class="alert alert-info text-left" role="alert">
+            <span class="badge badge-light"><b>PUT</b></span>
+            https://arketype.ch/id/ark:/NAAN/identifier<b>?update_if_exists=yes</b>
+         </div>
+         <p>An other way to update an identifier is by using the create
+            operation and adding <b>?update_if_exists=yes</b> at the end of the URL.</p>
+         <p>That will create the identifier or update it if it already exists.</p>
+      <p class="h4 text-primary">Delete identifier</p>
+         <div class="alert alert-info text-left" role="alert">
+            <span class="badge badge-light"><b>DELETE</b></span>
+            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+         </div>
+         <p>The current use of the DELETE operation is for identifiers that
+         were created with a reserved status. This means those identifiers aren't
+         yet public and can be fully deleted without much issue.</p>
+         <p>The alternative to deletion is to update an identifier and removes
+            its metadatas.</p>
    </div>
    <div>
       <p class="h3 text-primary">Metadatas</p>
       <p class="h4 text-primary">Internal</p>
+      <p>Those metadatas are reserved and used specifically by ARKetype.
+      They all begin with an underscore as to easily distinguishes them of the
+      other type.</p>
+      <p>The first column, <b>Updatable</b>, indicates if the metadatas can be
+      updated by the user or not.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -145,6 +184,9 @@
          </tbody>
       </table>
       <p class="h4 text-primary">Codes</p>
+      <p>If needed, you can supply one of the following code during creation or
+         update as placeholder.</p>
+      <p>The ARKetype system might uses the as well when needed.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -200,7 +242,10 @@
          </tbody>
       </table>
       <p class="h4 text-primary">Profiles</p>
+      <p class="h5">ARKetype was built on top of three metadatas profile to use
+      when creating an ARK</p>
       <p class="h5 text-primary">ERC</p>
+      <p>ERC is the default profile and required the following metadatas.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -211,19 +256,27 @@
          <tbody>
             <tr class="d-flex">
                <th class="col-3" scope="row">erc.who</th>
-               <td class="col-9">temporarily inaccessible</td>
+               <td class="col-9">The name of the entity responsible for the ARK.
+               (author of a book, creator of a dataset or in some case, the one
+               behind the creation of the ARK itself)</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">erc.what</th>
-               <td class="col-9">unallowed; intentionally suppressed</td>
+               <td class="col-9">A readable name describing the identifier
+                  (can be the name of a book or some title to describe the ARK)</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">erc.when</th>
-               <td class="col-9">not applicable; makes no sense</td>
+               <td class="col-9">A timestamp (yan be only a year, a full date or
+                   a date range)</td>
             </tr>
          </tbody>
       </table>
       <p class="h5 text-primary">DataCite</p>
+      <p>The DataCite profile is commonly used for DOIs but ARKs can use them
+      as well. It allows a better description of an item. The following
+      metadatas are the required one by ARKetype but other can be added,
+      more details <a href="http://schema.datacite.org/">here</a>.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -234,23 +287,54 @@
          <tbody>
             <tr class="d-flex">
                <th class="col-3" scope="row">datacite.creator</th>
-               <td class="col-9">temporarily inaccessible</td>
+               <td class="col-9"><p>The main researchers involved in producing the
+               data, or the authors of the publication in priority order.
+               Each name may be a corporate, institutional, or personal name.</p>
+               <p>In personal names list family name before given name, as in:
+                  Shakespeare, William</p></td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">datacite.title</th>
-               <td class="col-9">unallowed; intentionally suppressed</td>
+               <td class="col-9">A name or title by which the data or publication is known.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">datacite.publisher</th>
-               <td class="col-9">not applicable; makes no sense</td>
+               <td class="col-9">A holder of the data (e.g., an archive) or the
+                  institution which submitted the work. In the case of datasets,
+                  the publisher is the entity primarily responsible for making
+                  the data available to the research community.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">datacite.publicationyear</th>
-               <td class="col-9">unassigned (e.g., untitled)</td>
+               <td class="col-9">The year when the data was or will be made
+               publicly available. If an embargo period is in effect, use the
+               year when the embargo period ends.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">datacite.resourcetype</th>
-               <td class="col-9">unavailable; possibly unknown</td>
+               <td class="col-9">The general type and, optionally, specific
+                  type of the data. The general type must be one of the
+                  controlled vocabulary terms defined in the DataCite Metadata Scheme:
+                  <ul>
+                     <li>Audiovisual</li>
+                     <li>Collection</li>
+                     <li>Dataset</li>
+                     <li>Event</li>
+                     <li>Image</li>
+                     <li>InteractiveResource</li>
+                     <li>Model</li>
+                     <li>PhysicalObject</li>
+                     <li>Service</li>
+                     <li>Software</li>
+                     <li>Sound</li>
+                     <li>Text</li>
+                     <li>Workflow</li>
+                     <li>Other</li>
+                  </ul>
+                  Specific types are unconstrained. If a specific type is given,
+                  it must be separated from the general type by a forward slash ("/"), as in:
+                     Image/Photograph
+               </td>
             </tr>
          </tbody>
       </table>

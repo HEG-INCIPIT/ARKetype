@@ -2,29 +2,31 @@
 {% load i18n %}
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <form method="get" action="{% url primary_page %}">
       {% if filtered %}
-      <input type="hidden" name="filtered" value="t"/> 
+      <input type="hidden" name="filtered" value="t"/>
       {% endif %}
-      <div id="customize-modal__header" class="modal-header login-modal__header">
-        <div class="customize-modal__title" id="myModalLabel">{% trans "Choose Columns to Display" %}</div>
-        <a href="" data-dismiss="modal" aria-label="close"><img src="/static/images/icon_cross.svg" class="close login-modal__close" data-dismiss="modal"></a>
+      <div id="modal-header" class="modal-header login-modal__header">
+        <div class="modal-title text-primary" id="myModalLabel">{% trans "Choose Columns to Display" %}</div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
           <p>{% blocktrans with field_count=field_order|length %}
           You may choose up to {{ field_count }} informational columns to customize the browsing view for your identifiers.
           {% endblocktrans %}</p>
-          {% column_choices field_order fields_mapped fields_selected %}
-        </div>
-          {% rewrite_hidden_nocols REQUEST field_order %}
+          <div class="row">
+             {% autoescape off %}{% column_choices field_order fields_mapped fields_selected %}{% endautoescape %}
+          </div>
+          {% autoescape off %}{% rewrite_hidden_nocols REQUEST field_order %}{% endautoescape %}
       </div>
       <div class="modal-footer">
-        <button type="button" class="button__cancel" id="restore_defaults">{% trans "Restore Defaults" %}</button>
-        <button type="button" class="button__cancel" data-dismiss="modal">{% trans "Cancel" %}</button>
-        <button type="submit" class="button__primary search__action" name="submit_checks" value="Apply Changes">{% trans "Apply Changes" %}</button>
+        <button type="button" class="btn btn-danger" id="restore_defaults">{% trans "Restore Defaults" %}</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal">{% trans "Cancel" %}</button>
+        <button type="submit" class="btn btn-primary" name="submit_checks" value="Apply Changes">{% trans "Apply Changes" %}</button>
       </div>
       </form>
     </div>
@@ -33,14 +35,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
+
 	// reset button checks and unchecks these
 	$('#restore_defaults').click(function(e) {
 		e.preventDefault();
 		$('{{jquery_checked}}').prop('checked', true);
 		$('{{jquery_unchecked}}').prop('checked', false);
 	});
-        
+
 });
 
 </script>

@@ -15,7 +15,7 @@ register = template.Library()
 # Nav that shows up for logged in users
 MENU_USER = (
           (_("DASHBOARD"), 'ui_admin.dashboard', 'admin', ()),
-          (_("MANAGE IDS"), 'ui_manage.index', 'user', ()),
+          (_("MANAGE ID"), 'ui_manage.index', 'user', ()),
           (_("CREATE ID"), 'ui_create.index', 'user',
             ( (_("Simple"), 'ui_create.simple', 'user', ()),
               (_("Advanced"), "ui_create.advanced", 'user', ())

@@ -8,18 +8,19 @@
 <p><br /></p>
 <form method="post" action="/login" class="general__form" role="form">
    <input type="hidden" name="next" value="{{ next }}" />
-   <div class="fcontrol__group-inline general__form-element-group">
-      <label for="username" class="fcontrol__text-label-inline general__form-label">{% trans "Username" %}</label>
-      <input class="fcontrol__text-field-inline" type="text" id="username" name="username" value="{{ username }}" />
+   <div class="form-group">
+      <label for="username" class="form-label">{% trans "Username" %}</label>
+      <input class="form-control" type="text" id="username" name="username" value="{{ username }}" />
       <span class="fcontrol__invalid-flag">This field is required</span>
    </div>
-   <div class="fcontrol__group-inline general__form-element-group">
-      <label for="password" class="fcontrol__text-label-inline general__form-label">{% trans "Password" %}</label>
-      <input class="fcontrol__text-field-inline" type="password" id="password" name="password" value="{{ password }}" />
+   <div class="form-group">
+      <label for="password" class="form-label">{% trans "Password" %}</label>
+      <input class="form-control" type="password" id="password" name="password" value="{{ password }}" />
       <span class="fcontrol__invalid-flag">This field is required</span>
    </div>
-
-   <button class="button__primary general__form-submit">{% trans "Login" %}</button>
+   <div class="form-group text-right">
+      <button class="btn btn-primary">{% trans "Login" %}</button>
+   </div>
 </form>
 
 {% url "ui.contact" as url_contact %}

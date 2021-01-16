@@ -2,8 +2,8 @@
 {% load i18n %}
 
 {% if primary_page == "ui_search.results" or primary_page == "ui_manage.index" and authenticatedUser %}
-<div class="customize-table">
-   <form class="customize-table__heading-wrapper" action="{% url primary_page %}" role="form">
+<div class="alert alert-warning text-left row">
+   <form class="col-sm-8 customize-table__heading-wrapper" action="{% url primary_page %}" role="form">
       <h2 class="customize-table__heading">{{ heading_title }}</h2>
       {% if primary_page == "ui_manage.index" and filtered %}
       <input name="ps" type="hidden" value="{{ ps }}" />
@@ -12,32 +12,36 @@
       <input name="sort" type="hidden" value="{{ sort }}" />
       <input name="owner_selected" type="hidden" value="{{ owner_selected }}" />
       {% autoescape off %}{% column_choices_hidden fields_selected %}{% endautoescape %}
-      <button class="customize-table__button-all">{% trans "See All Identifiers" %}</button>
+      <button class="btn btn-primary">{% trans "See All Identifiers" %}</button>
       {% endif %}
    </form>
    {% if results|length > 0 %}
-   <button class="customize-table__button-customize" data-toggle="modal" data-target="#myModal" type="button">{% trans "Customize View" %}</button>
+   <div class="col-sm-4 text-right">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" type="button">{% trans "Customize View" %}</button>
+   </div>
    {% endif %}
 </div>
 {% include "search/_choose_cols.html" with primary_page=primary_page %}
 {% endif %}
 
 {% if primary_page == "ui_manage.index" and authenticatedUser %}
-<div class="manage__identifiers-submit-controls">
-   <div class="fcontrol__select-group-inline manage__identifiers-select">
+<div class="container">
+   <div class="col-sm-8">
       <form id="owner_filter_form" action="{% url primary_page %}" method="get" role="form">
          {% autoescape off %}{% rewrite_hidden REQUEST %}{% endautoescape %}
-         <label for="owner_selected" class="fcontrol__select-label-inline">{% trans "View identifiers owned by" %}:</label>
+         <label for="owner_selected" class="form-label text-primary">{% trans "View identifiers owned by" %}:</label>
 
          {% include "includes/owner_select.html" %}
 
       </form>
    </div>
    {% if total_results > 0 %}
-   <form action="{% url "ui_manage.download" %}" method="get" role="form">
-      <input name="owner_selected" type="hidden" value="{{ owner_selected }}" />
-      <button id="download" class="button__primary manage__download-button">{% trans "Download All" %}</button>
-   </form>
+   <div class="col-sm-4 text-right">
+      <form action="{% url "ui_manage.download" %}" method="get" role="form">
+         <input name="owner_selected" type="hidden" value="{{ owner_selected }}" />
+         <button id="download" class="btn btn-primary">{% trans "Download All" %}</button>
+      </form>
+   </div>
    {% endif %}
 </div>
 <script type="text/javascript">
@@ -71,7 +75,7 @@
 {% autoescape off %}{% include "search/_pagination.html" with primary_page=primary_page select_position="top" %}{% endautoescape %}
 {% endif %}
 
-<table class="table3">
+<table class="table">
    {% autoescape off %}{% header_row REQUEST fields_selected fields_mapped order_by sort primary_page %}{% endautoescape %}
    <tbody>
       {% for item in results %}

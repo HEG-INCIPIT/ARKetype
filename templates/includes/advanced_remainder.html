@@ -16,21 +16,17 @@
    </div>
    {% endfor %}
    <div id="preview_div" class="fcontrol__group-inline">
-      <div class="card-title text-primary">{% trans "Identifier Preview:" %}</div>
-      <input id="preview_div_value" class="form-control">
+      <div class="card-title text-primary">{% trans "Identifier Preview:" %}
+         <span id="preview_div_value"></span>
+      </div>
    </div>
 </div>
 
 <script type="text/javascript">
-   {
-      %
-      if remainder %
-   }
+   {% if remainder %}
    // Coming from the request, before it's being instantiated by the form object
-   $('#remainder').val('{{ remainder }}'); {
-      %
-      endif %
-   }
+      $('#remainder').val('{{ remainder }}');
+   {% endif %}
    $('#remainder').focus(function() {
       $(this).select();
    }).mouseup(function() {
@@ -64,8 +60,7 @@
             $('#remainder').css('font-style', 'normal');
             $('#remainder').css('color', 'black');
          } else {
-            $('#preview_div_value').html(
-               $('#create_form input:radio[name=shoulder]:checked').val() + $('#remainder').val());
+            $('#preview_div_value').html($('#create_form input:radio[name=shoulder]:checked').val() + $('#remainder').val());
             $('#preview_div').css('display', 'block');
             $('#preview_div_value').css('color', 'black');
             $('#remainder').css('font-style', 'normal');

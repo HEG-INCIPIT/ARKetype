@@ -21,7 +21,7 @@
 
             {% include "includes/owner_select.html" %}
 
-            <a href="{% url "ui_admin.csvStats" %}" class="dashboard__csv-link">Download report in CSV format</a>
+            <a href="{% url "ui_admin.csvStats" %}" class="text-primary dashboard__csv-link">Download report in CSV format</a>
          </div>
       </form>
    </div>
@@ -49,7 +49,7 @@
 
    <div class="col-md-12">
       <hr />
-      <h2 class="heading__icon-6">{% trans "Identifier Issues" %}</h2>
+      <h2 class="h5 text-primary">{% trans "Identifier Issues" %}</h2>
       <div id="error_issues"></div>
       <div id="loading_issues" class="loading"></div>
       <div id="ajax_issues">

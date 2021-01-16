@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 
 register = template.Library()
 
-@register.simple_tag 
+@register.simple_tag
 def column_choices(field_order, fields_mapped, fields_selected):
   """this only works when the following context variables are set from the django view:
   field_order is the ordered list of the fields
@@ -25,10 +25,10 @@ def make_check_tag(item, friendly_names, selected):
     checked_str = " checked='checked' "
   else:
     checked_str = ""
-  return "<input type='checkbox' id='" + escape(item) + "' name='" + escape(item) + "' value='t'" + checked_str + " \> " \
-       + "<label for='" + escape(item) + "'>" + escape(friendly_names[item][1]) + "</label>"
+  return "<div class='form-check'><input class='form-check-input' type='checkbox' id='" + escape(item) + "' name='" + escape(item) + "' value='t'" + checked_str + " \> " \
+       + "<label class='form-check-label' for='" + escape(item) + "'>" + escape(friendly_names[item][1]) + "</label></div>"
 
-@register.simple_tag 
+@register.simple_tag
 def column_choices_hidden(fields_selected):
   """Include column choices in request query as hidden fields"""
   hidden = ''
@@ -36,7 +36,7 @@ def column_choices_hidden(fields_selected):
     hidden += "<input type='hidden' name='" + f + "' value='t'/>"
   return hidden
 
-@register.simple_tag   
+@register.simple_tag
 def rewrite_hidden(request, exclude=None):
   hidden = ''
   for key, value in request.iteritems():
@@ -44,7 +44,7 @@ def rewrite_hidden(request, exclude=None):
       hidden += "<input type='hidden' name='" + escape(key) + "' value='" + escape(value) + "'/>"
   return hidden
 
-@register.simple_tag   
+@register.simple_tag
 def rewrite_hidden_except(request, x):
   if ',' not in x:
     vals = [x]
@@ -52,14 +52,14 @@ def rewrite_hidden_except(request, x):
     vals = x.split(",")
   return rewrite_hidden(request, vals)
 
-@register.simple_tag   
+@register.simple_tag
 def rewrite_hidden_nocols(request, field_order):
   exclude = field_order + ['submit_checks']
   return rewrite_hidden(request, exclude)
 
 @register.simple_tag
 def header_row(request, fields_selected, fields_mapped, order_by, sort, primary_page):
-  r = "<thead><tr>" + ''.join([column_head(request, x, fields_mapped, order_by, sort, \
+  r = "<thead class='bg-info text-light'><tr>" + ''.join([column_head(request, x, fields_mapped, order_by, sort, \
       primary_page) for x in fields_selected]) + '</tr></thead>'
   return r
 
@@ -86,24 +86,24 @@ def column_head(request, field, fields_mapped, order_by, sort, primary_page):
   else:
     r += "<button class='search__action sorting' aria-label='Sort on this column'>"
   r += "</button></form></th>"
-  return r 
+  return r
 
 @register.simple_tag
 def data_row(record, fields_selected, field_display_types, testPrefixes, table_type="table2"):
   assert 'c_identifier' in record
-  id_href_tag_head = "<a href='/id/" + record['c_identifier'] + "' class='link__primary'>" 
+  id_href_tag_head = "<a href='/id/" + record['c_identifier'] + "' class='link__primary'>"
   if table_type == "table2":
     return '<td>' + '</td><td>'.join([ formatted_field(record, f, field_display_types, \
       testPrefixes, id_href_tag_head) for f in fields_selected]) + '</td>'
   if table_type == "table3":
-    r = '' 
+    r = ''
     for f in fields_selected:
       r += '<td class="' + f + '">' + \
             formatted_field(record, f, field_display_types, testPrefixes, id_href_tag_head) + '</td>'
-    return r 
+    return r
 
 FUNCTIONS_FOR_FORMATTING = {
-  'datetime'       : lambda x, tp, href: datetime_disp(x, href), 
+  'datetime'       : lambda x, tp, href: datetime_disp(x, href),
   'identifier'     : lambda x, tp, href: identifier_disp(x, tp),
   'string'         : lambda x, tp, href: string_value(x, href),
 }
@@ -120,13 +120,13 @@ def string_value(x, href):
   else:
     return href + escape(x) + "</a>"
 
-@register.simple_tag  
+@register.simple_tag
 def identifier_disp(x, testPrefixes):
   for pre in testPrefixes:
     if x.startswith(pre['prefix']):
       return "<a href='/id/" + x + "' class='link__primary'>&#42;" + escape(x) + "</a>"
   return "<a href='/id/" + x + "' class='link__primary'>" + escape(x) + "</a>"
-  
+
 def datetime_disp(x, href):
   return href +\
     escape(datetime.datetime.utcfromtimestamp(x).strftime(settings.TIME_FORMAT_UI_METADATA)) +\

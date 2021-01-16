@@ -30,22 +30,22 @@ urlpatterns = i18n_patterns(
 
     # UI - RENDERED FROM TEMPLATES IN INFO REPOSITORY
     url("^$", ui_home.index, name="ui_home.index"),
-    url("^learn/$", ui_home.learn, name="ui_home.learn"),
-    url("^learn/ark_open_faq$", ui_home.ark_open_faq, name="ui_home.ark_open_faq"),
-    url("^learn/crossref_faq$", ui_home.crossref_faq, name="ui_home.crossref_faq"),
-    url(
-        "^learn/doi_services_faq$",
-        ui_home.doi_services_faq,
-        name="ui_home.doi_services_faq",
-    ),
-    url("^learn/id_basics$", ui_home.id_basics, name="ui_home.id_basics"),
-    url("^learn/id_concepts$", ui_home.id_concepts, name="ui_home.id_concepts"),
-    url("^learn/open_source$", ui_home.open_source, name="ui_home.open_source"),
-    url(
-        "^learn/suffix_passthrough$",
-        ui_home.suffix_passthrough,
-        name="ui_home.suffix_passthrough",
-    ),
+    url("^announcement/$", ui_home.learn, name="ui_home.learn"),
+    # url("^learn/ark_open_faq$", ui_home.ark_open_faq, name="ui_home.ark_open_faq"),
+    # url("^learn/crossref_faq$", ui_home.crossref_faq, name="ui_home.crossref_faq"),
+    # url(
+    #     "^learn/doi_services_faq$",
+    #     ui_home.doi_services_faq,
+    #     name="ui_home.doi_services_faq",
+    # ),
+    # url("^learn/id_basics$", ui_home.id_basics, name="ui_home.id_basics"),
+    # url("^learn/id_concepts$", ui_home.id_concepts, name="ui_home.id_concepts"),
+    # url("^learn/open_source$", ui_home.open_source, name="ui_home.open_source"),
+    # url(
+    #     "^learn/suffix_passthrough$",
+    #     ui_home.suffix_passthrough,
+    #     name="ui_home.suffix_passthrough",
+    # ),
     url("^home/(\w+)$", ui_home.no_menu, name="ui_home.no_menu"),
     # UI - OTHER
     url("^account/edit$", ui_account.edit, name="ui_account.edit"),

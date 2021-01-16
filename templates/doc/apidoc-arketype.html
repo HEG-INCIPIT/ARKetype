@@ -24,44 +24,44 @@
 
    <p class="h3 text-primary">Table of contents</p>
    <ul>
-      <li><a href="">Operations</a>
+      <li><a href="#arketype-api-operations">Operations</a>
          <ul>
-            <li><a href="">Get identifier metadatas</a></li>
-            <li><a href="">Create identifier</a></li>
-            <li><a href="">Mint identifier</a></li>
-            <li><a href="">Update identifier</a>
+            <li><a href="#arketype-api-operations-get">Get identifier metadatas</a></li>
+            <li><a href="#arketype-api-operations-create">Create identifier</a></li>
+            <li><a href="#arketype-api-operations-mint">Mint identifier</a></li>
+            <li><a href="#arketype-api-operations-update">Update identifier</a>
                <ul>
-                  <li><a href="">Update identifier with the create operation</a></li>
+                  <li><a href="#arketype-api-operations-create-update">Update identifier with the create operation</a></li>
                </ul>
             </li>
-            <li><a href="">Delete identifier</a></li>
+            <li><a href="#arketype-api-operations-delete">Delete identifier</a></li>
          </ul>
       </li>
-      <li><a href="">Metadatas</a>
+      <li><a href="#arketype-api-metadatas">Metadatas</a>
          <ul>
-            <li><a href="">Internal</a></li>
-            <li><a href="">Codes</a></li>
-            <li><a href="">Profiles</a>
+            <li><a href="#arketype-api-metadatas-internal">Internal</a></li>
+            <li><a href="#arketype-api-metadatas-codes">Codes</a></li>
+            <li><a href="#arketype-api-profiles">Profiles</a>
                <ul>
-                  <li><a href="">ERC</a></li>
-                  <li><a href="">DataCite</a></li>
-                  <li><a href="">DublinCore</a></li>
+                  <li><a href="#arketype-api-profiles-erc">ERC</a></li>
+                  <li><a href="#arketype-api-profiles-datacite">DataCite</a></li>
+                  <li><a href="#arketype-api-profiles-dublincore">DublinCore</a></li>
                </ul>
             </li>
          </ul>
       </li>
    </ul>
    <div>
-      <p class="h3 text-primary">Operations</p>
+      <p id="arketype-api-operations" class="h3 text-primary">Operations</p>
       <p class="h5">The API allows those operations</p>
-      <p class="h4 text-primary">Get identifier metadatas</p>
+      <p id="arketype-api-operations-get" class="h4 text-primary">Get identifier metadatas</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>GET</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>This allows to retrieve metadats of an identifier via a GET request
          to the identifier URL. This requires no identification to use.</p>
-      <p class="h4 text-primary">Create identifier</p>
+      <p id="arketype-api-operations-create" class="h4 text-primary">Create identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>PUT</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
@@ -71,7 +71,7 @@
             (to be updated later)</p>
          <p>User credentials are required and user need to have the permission
          to create an identifier with the shoulder.</p>
-      <p class="h4 text-primary">Mint identifier</p>
+      <p id="arketype-api-operations-mint" class="h4 text-primary">Mint identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>POST</b></span>
             https://arketype.ch/shoulder/ark:/<b>NAAN</b>/<b>shoulder</b>
@@ -80,7 +80,7 @@
          the fact that the identifier is randomly generated rather than given
          and in the kind of request it uses as this one is a POST request.
          </p>
-      <p class="h4 text-primary">Update identifier</p>
+      <p id="arketype-api-operations-update" class="h4 text-primary">Update identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>POST</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
@@ -88,7 +88,7 @@
          <p>This allows to update metadatas of an already existing identifiers</p>
          <p>Authentification and only the owner of the identifier or some other
          users can edit it.</p>
-      <p class="h5 text-primary">Update identifier with the create operation</p>
+      <p id="arketype-api-operations-create-update" class="h5 text-primary">Update identifier with the create operation</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>PUT</b></span>
             https://arketype.ch/id/ark:/NAAN/identifier<b>?update_if_exists=yes</b>
@@ -96,7 +96,7 @@
          <p>An other way to update an identifier is by using the create
             operation and adding <b>?update_if_exists=yes</b> at the end of the URL.</p>
          <p>That will create the identifier or update it if it already exists.</p>
-      <p class="h4 text-primary">Delete identifier</p>
+      <p id="arketype-api-operations-delete" class="h4 text-primary">Delete identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>DELETE</b></span>
             https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
@@ -108,8 +108,8 @@
             its metadatas.</p>
    </div>
    <div>
-      <p class="h3 text-primary">Metadatas</p>
-      <p class="h4 text-primary">Internal</p>
+      <p id="arketype-api-metadatas" class="h3 text-primary">Metadatas</p>
+      <p id="arketype-api-metadatas-internal" class="h4 text-primary">Internal</p>
       <p>Those metadatas are reserved and used specifically by ARKetype.
       They all begin with an underscore as to easily distinguishes them of the
       other type.</p>
@@ -183,7 +183,7 @@
             </tr>
          </tbody>
       </table>
-      <p class="h4 text-primary">Codes</p>
+      <p id="arketype-api-metadatas-codes" class="h4 text-primary">Codes</p>
       <p>If needed, you can supply one of the following code during creation or
          update as placeholder.</p>
       <p>The ARKetype system might uses the as well when needed.</p>
@@ -241,10 +241,10 @@
             </tr>
          </tbody>
       </table>
-      <p class="h4 text-primary">Profiles</p>
+      <p id="arketype-api-profiles" class="h4 text-primary">Profiles</p>
       <p class="h5">ARKetype was built on top of three metadatas profile to use
       when creating an ARK</p>
-      <p class="h5 text-primary">ERC</p>
+      <p id="arketype-api-profiles-erc" class="h5 text-primary">ERC</p>
       <p>ERC is the default profile and required the following metadatas.</p>
       <table class="table table-striped">
          <thead>
@@ -272,7 +272,7 @@
             </tr>
          </tbody>
       </table>
-      <p class="h5 text-primary">DataCite</p>
+      <p id="arketype-api-profiles-datacite" class="h5 text-primary">DataCite</p>
       <p>The DataCite profile is commonly used for DOIs but ARKs can use them
       as well. It allows a better description of an item. The following
       metadatas are the required one by ARKetype but other can be added,
@@ -338,7 +338,8 @@
             </tr>
          </tbody>
       </table>
-      <p class="h5 text-primary">DublinCore</p>
+      <p id="arketype-api-profiles-dublincore" class="h5 text-primary">DublinCore</p>
+      <p>The last profile is base don the <a href="https://www.dublincore.org/specifications/dublin-core/dces/">Dublin Core Metadata Element Set</a>.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -349,23 +350,40 @@
          <tbody>
             <tr class="d-flex">
                <th class="col-3" scope="row">dc.creator</th>
-               <td class="col-9">temporarily inaccessible</td>
+               <td class="col-9">The person or entity responsible for creating
+                  the resource.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">dc.title</th>
-               <td class="col-9">unallowed; intentionally suppressed</td>
+               <td class="col-9">The name of the resource.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">dc.publisher</th>
-               <td class="col-9">not applicable; makes no sense</td>
+               <td class="col-9">The person or entity responsible fot making the
+                   resource available.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">dc.date</th>
-               <td class="col-9">unassigned (e.g., untitled)</td>
+               <td class="col-9"><p>The date the resource was made available
+                  (or when it was updated or any event worth mentioning).</p>
+               <p>The recommanded format is <b>YYYY-MM-DD</b>.</p></td>
             </tr>
             <tr class="d-flex">
                <th class="col-3" scope="row">dc.type</th>
-               <td class="col-9">unavailable; possibly unknown</td>
+               <td class="col-9">One of the following types: <ul>
+                <li>Collection</li>
+                <li>Dataset</li>
+                <li>Event</li>
+                <li>Image</li>
+                <li>InteractiveResource</li>
+                <li>MovingImage</li>
+                <li>PhysicalObject</li>
+                <li>Service</li>
+                <li>Software</li>
+                <li>Sound</li>
+                <li>StillImage</li>
+                <li>Text</li>
+               </ul></td>
             </tr>
          </tbody>
       </table>

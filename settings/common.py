@@ -25,9 +25,7 @@ TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 MANAGERS = ADMINS = [
  ("Amir Alwash", "amir.alwash@hesge.ch"),
- ("Arnaud Gaudinat", "arnaud.gaudinat@hesge.ch"),
- ("Julien Raemy", "julien.raemy@hesge.ch"),
- ("Rene Schneider", "rene.schneider@hesge.ch")]
+ ("Arnaud Gaudinat", "arnaud.gaudinat@hesge.ch")]
 
 if "HOSTNAME" in os.environ:
   # SERVER_EMAIL = "ezid@" + os.environ["HOSTNAME"]

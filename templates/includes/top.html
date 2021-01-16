@@ -1,6 +1,5 @@
 {% load layout_extras %}
 {% load menus %}
-
 <nav class="navbar navbar-expand-lg navbar-light">
    <p class="navbar-brand"><span class="badge bg-danger text-light">ALPHA</span> This is a new service - <a href="/contact">your feedback</a> will help us to improve it.</p>
 </nav>
@@ -15,7 +14,11 @@
       <ul class="navbar-nav mr-auto">
          {% if authenticatedUser %}
          {% autoescape off %}
-         {% menu_user menu_item session %}
+         {% menu_user menu_item user.is_superuser %}
+         {% endautoescape %}
+         {% else %}
+         {% autoescape off %}
+         {% menu_pub menu_item session %}
          {% endautoescape %}
          {% endif %}
       </ul>

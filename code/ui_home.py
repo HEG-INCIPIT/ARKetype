@@ -19,6 +19,11 @@ def index(request):
   elif result.startswith('created_identifier:'):
     return redirect("/id/" + urllib.quote(result.split()[1], ":/"))   # ID Details page
 
+def about_us(request):
+  if request.method != "GET": return uic.methodNotAllowed(request)
+  d = { 'menu_item' : 'ui_about.us' }
+  return uic.render(request, 'info/about_us', d)
+
 def learn(request):
   if request.method != "GET": return uic.methodNotAllowed(request)
   d = { 'menu_item' : 'ui_home.learn' }

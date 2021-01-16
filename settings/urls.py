@@ -46,6 +46,7 @@ urlpatterns = i18n_patterns(
     #     ui_home.suffix_passthrough,
     #     name="ui_home.suffix_passthrough",
     # ),
+    url("^home/about_us$", ui_home.about_us, name="ui_about.us"),
     url("^home/(\w+)$", ui_home.no_menu, name="ui_home.no_menu"),
     # UI - OTHER
     url("^account/edit$", ui_account.edit, name="ui_account.edit"),

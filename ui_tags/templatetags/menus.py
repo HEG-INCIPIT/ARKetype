@@ -22,14 +22,21 @@ MENU_USER = (
             )
           ),
           (_("ACCOUNT SETTINGS"), 'ui_account.edit', 'user', ()),
+          (_("ABOUT US"), 'ui_about.us', 'user', ()),
           (_("CONTACT"), 'ui.contact', 'user', ()),
           (_("API"), 'ui_api.latest', 'user', ()),
         )
 
 # Tertiary nav
 MENU_DEMO = (
-             (_("Simple"), 'ui_demo.simple', 'public', ()),
-             (_("Advanced"), "ui_demo.advanced", 'public', ())
+                (_("DEMO ID"), 'ui_demo.index', 'public',
+                  ( (_("Simple"), 'ui_demo.simple', 'public', ()),
+                    (_("Advanced"), "ui_demo.advanced", 'public', ())
+                  )
+                ),
+                (_("ABOUT US"), 'ui_about.us', 'public', ()),
+                (_("CONTACT"), 'ui.contact', 'public', ()),
+                (_("API"), 'ui_api.latest', 'public', ()),
             )
 
 #Dynamically created menu for subnav; Only displays for logged in users
@@ -37,8 +44,17 @@ MENU_DEMO = (
 def menu_user(current_func, session):
   acc = ''
   for i, menu in enumerate(MENU_USER):
+    if (menu[2] == 'admin' and session) or menu[2] != 'admin':
+        acc += menu_user_item(menu, session,
+      current_func == menu[1])
+  return acc
+
+@register.simple_tag
+def menu_pub(current_func, session):
+  acc = ''
+  for i, menu in enumerate(MENU_DEMO):
     acc += menu_user_item(menu, session,
-      string.split(current_func, '.')[0] == string.split(menu[1], '.')[0])
+      current_func == menu[1])
   return acc
 
 def menu_user_item(tup, session, is_current):

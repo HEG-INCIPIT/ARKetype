@@ -40,20 +40,23 @@
       </div>
       {% endif %}
 
-      {% comment "Proxy User" %}
       <div class="form-group row">
+         {% comment %}
          <label for="account_username" class="col-sm-6 col-form-label text-primary">{% trans "Your Proxy Account(s)" %}</label>
          <div class="col-sm-6">
-            <input disabled="true" class="form-control" value="{{ proxy_for|safe }}" />
+            <input disabled="true" type="hidden" class="form-control" value="{{ proxy_for|safe }}" />
             <div class="fcontrol__caption">{% trans "NOTE: These are identifier groups where you have been designated as proxy user." %}</div>
          </div>
+         {% endcomment %}
       </div>
       {% if proxy_users_choose %}
       <div class="form-group row">
+         {% comment %}
          <label for="{{ form.proxy_users_picked.id_for_label }}" class="col-sm-6 col-form-label text-primary">{{ form.proxy_users_picked.label }}</label>
+         {% endcomment %}
          <div class="col-sm-6">
             <div class="">
-               {{ form.proxy_users_picked|add_attributes:"fcontrol__textarea-inline-noborder"}}
+               {{ form.proxy_users_picked|add_attributes:"d-none fcontrol__textarea-inline-noborder"}}
                {% if form.proxy_users_picked.errors %}
                <span class="fcontrol__invalid-flag">
                   {% for error in form.proxy_users_picked.errors %}
@@ -61,16 +64,19 @@
                   {% endfor %}
                </span>
                {% endif %}
+               {% comment %}
                <button class="btn btn-warning" data-toggle="modal" data-target="#proxyModal" type="button">{% trans "Select Proxy User(s)" %}</button>
+               {% endcomment %}
             </div>
+            {% comment %}
             <div class="fcontrol__caption-tight">NOTE: These are users that you have designated as proxy users for your identifiers. Currently users cannot be deleted from this list. Please <a class="link__primary" href="/contact">contact us</a> if
                you
                need to delete a proxy user.</div>
+            {% endcomment %}
          </div>
          {% include "account/_proxyModal.html" %}
       </div>
       {% endif %}
-      {% endcomment %}
 
       <h2 class="h3 text-primary">{% trans "Change Password" %}</h2>
 

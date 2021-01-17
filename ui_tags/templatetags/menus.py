@@ -53,7 +53,7 @@ def menu_user(current_func, session):
 def menu_pub(current_func, session):
   acc = ''
   for i, menu in enumerate(MENU_DEMO):
-    acc += menu_user_item(menu, session,
+      acc += menu_user_item(menu, session,
       current_func == menu[1])
   return acc
 
@@ -108,3 +108,8 @@ def active(current_func, view_name):
   elif string.split(string.split(current_func, '.')[0], '_')[1] == view_name:
     return 'active'
   return ''
+
+# Simply determines whether an element should be tagged as active; Only used for topmost nav
+@register.simple_tag
+def getOptions(name):
+  return config.get("DEFAULT.ezid_base_url")

@@ -7,7 +7,7 @@
 {% endblock %}{% endblock %}
 {% block heading %}
 {% autoescape off %}
-{% content_heading _("The ARKetype API, Simplified Version 2") %}
+{% content_heading _("The ARKetype API, Quick Version 1") %}
 {% endautoescape %}
 {% endblock %}
 {% block content %}
@@ -20,7 +20,7 @@
    ARKetype's functionality is available through the API. This document
    describes a short version of the Version 2 of the ARKetype API.</p>
 
-   <p>To get the full documentation, please refer to <a href="/doc/apidoc.html">this page</a></p>
+   {# <p>To get the full documentation, please refer to <a href="/doc/apidoc.html">this page</a></p> #}
 
    <p class="h3 text-primary">Table of contents</p>
    <ul>
@@ -57,14 +57,14 @@
       <p id="arketype-api-operations-get" class="h4 text-primary">Get identifier metadatas</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>GET</b></span>
-            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>This allows to retrieve metadats of an identifier via a GET request
          to the identifier URL. This requires no identification to use.</p>
       <p id="arketype-api-operations-create" class="h4 text-primary">Create identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>PUT</b></span>
-            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>This allows to create an identifier with a predefinied value via
             a PUT request. It can be asigned with metadatas or left blank.
@@ -74,7 +74,7 @@
       <p id="arketype-api-operations-mint" class="h4 text-primary">Mint identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>POST</b></span>
-            https://arketype.ch/shoulder/ark:/<b>NAAN</b>/<b>shoulder</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/shoulder/ark:/<b>NAAN</b>/<b>shoulder</b>
          </div>
          <p>This is the same than the create request above but it differs in
          the fact that the identifier is randomly generated rather than given
@@ -83,7 +83,7 @@
       <p id="arketype-api-operations-update" class="h4 text-primary">Update identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>POST</b></span>
-            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>This allows to update metadatas of an already existing identifiers</p>
          <p>Authentification and only the owner of the identifier or some other
@@ -91,7 +91,7 @@
       <p id="arketype-api-operations-create-update" class="h5 text-primary">Update identifier with the create operation</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>PUT</b></span>
-            https://arketype.ch/id/ark:/NAAN/identifier<b>?update_if_exists=yes</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/NAAN/identifier<b>?update_if_exists=yes</b>
          </div>
          <p>An other way to update an identifier is by using the create
             operation and adding <b>?update_if_exists=yes</b> at the end of the URL.</p>
@@ -99,7 +99,7 @@
       <p id="arketype-api-operations-delete" class="h4 text-primary">Delete identifier</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>DELETE</b></span>
-            https://arketype.ch/id/ark:/<b>NAAN</b>/<b>identifier</b>
+            {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>The current use of the DELETE operation is for identifiers that
          were created with a reserved status. This means those identifiers aren't
@@ -155,7 +155,7 @@
                <td class="col-9" colspan="2">The identifier's target URL. Defaults to the
                   identifier's ARKetype URL. That is, the default target URL
                   for identifier foo is the self-referential URL
-                  https://arketype.ch/id/foo.</td>
+                  {% getOptions "DEFAULT.ezid_base_url" %}/id/foo.</td>
             </tr>
             <tr class="d-flex">
                <th class="col-1" scope="row">yes</th>
@@ -339,7 +339,7 @@
          </tbody>
       </table>
       <p id="arketype-api-profiles-dublincore" class="h5 text-primary">DublinCore</p>
-      <p>The last profile is base don the <a href="https://www.dublincore.org/specifications/dublin-core/dces/">Dublin Core Metadata Element Set</a>.</p>
+      <p>The last profile is based on the <a href="https://www.dublincore.org/specifications/dublin-core/dces/">Dublin Core Metadata Element Set</a>.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">

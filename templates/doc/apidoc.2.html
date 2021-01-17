@@ -21,64 +21,62 @@
       ARKetype API.</p>
    <p>Please send mail to the ARKetype discussion list (open to ARKetype customers
       only) to ask questions or report problems:</p>
-   <blockquote>
-      <a class="reference external" href="mailto:"></a></blockquote>
    <div class="section" id="contents">
-      <h1>Contents</h1>
+      <p class="h3 text-primary">Contents</p>
       <ul class="simple">
-         <li><a class="reference internal" href="#framework">Framework</a></li>
-         <li><a class="reference internal" href="#api-vs-ui">API vs. UI</a></li>
-         <li><a class="reference internal" href="#authentication">Authentication</a></li>
-         <li><a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a></li>
-         <li><a class="reference internal" href="#error-reporting">Error reporting</a></li>
-         <li><a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a></li>
-         <li><a class="reference internal" href="#operation-create-identifier">Operation: create identifier</a></li>
-         <li><a class="reference internal" href="#operation-mint-identifier">Operation: mint identifier</a></li>
-         <li><a class="reference internal" href="#operation-update-identifier">Operation: update identifier</a></li>
-         <li><a class="reference internal" href="#operation-create-or-update-identifier">Operation: create or update identifier</a></li>
-         <li><a class="reference internal" href="#operation-delete-identifier">Operation: delete identifier</a></li>
-         <li><a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a></li>
-         <li><a class="reference internal" href="#ownership-model">Ownership model</a></li>
-         <li><a class="reference internal" href="#identifier-status">Identifier status</a></li>
-         <li><a class="reference internal" href="#internal-metadata">Internal metadata</a></li>
-         <li><a class="reference internal" href="#metadata-profiles">Metadata profiles</a>
+         <li><a class="text-primary internal" href="#framework">Framework</a></li>
+         <li><a class="text-primary internal" href="#api-vs-ui">API vs. UI</a></li>
+         <li><a class="text-primary internal" href="#authentication">Authentication</a></li>
+         <li><a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a></li>
+         <li><a class="text-primary internal" href="#error-reporting">Error reporting</a></li>
+         <li><a class="text-primary internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a></li>
+         <li><a class="text-primary internal" href="#operation-create-identifier">Operation: create identifier</a></li>
+         <li><a class="text-primary internal" href="#operation-mint-identifier">Operation: mint identifier</a></li>
+         <li><a class="text-primary internal" href="#operation-update-identifier">Operation: update identifier</a></li>
+         <li><a class="text-primary internal" href="#operation-create-or-update-identifier">Operation: create or update identifier</a></li>
+         <li><a class="text-primary internal" href="#operation-delete-identifier">Operation: delete identifier</a></li>
+         <li><a class="text-primary internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a></li>
+         <li><a class="text-primary internal" href="#ownership-model">Ownership model</a></li>
+         <li><a class="text-primary internal" href="#identifier-status">Identifier status</a></li>
+         <li><a class="text-primary internal" href="#internal-metadata">Internal metadata</a></li>
+         <li><a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a>
             <ul>
-               <li><a class="reference internal" href="#profile-erc">Profile &quot;erc&quot;</a></li>
-               <li><a class="reference internal" href="#profile-datacite">Profile &quot;datacite&quot;</a></li>
-               <li><a class="reference internal" href="#profile-dc">Profile &quot;dc&quot;</a></li>
-               <li><a class="reference internal" href="#profile-crossref">Profile &quot;crossref&quot;</a></li>
+               <li><a class="text-primary internal" href="#profile-erc">Profile &quot;erc&quot;</a></li>
+               <li><a class="text-primary internal" href="#profile-datacite">Profile &quot;datacite&quot;</a></li>
+               <li><a class="text-primary internal" href="#profile-dc">Profile &quot;dc&quot;</a></li>
+               <li><a class="text-primary internal" href="#profile-crossref">Profile &quot;crossref&quot;</a></li>
             </ul>
          </li>
-         <li><a class="reference internal" href="#metadata-requirements-mapping">Metadata requirements &amp; mapping</a></li>
-         <li><a class="reference internal" href="#crossref-registration">Crossref registration</a></li>
-         <li><a class="reference internal" href="#testing-the-api">Testing the API</a></li>
-         <li><a class="reference internal" href="#server-status">Server status</a></li>
-         <li><a class="reference internal" href="#python-command-line-tool">Python command line tool</a></li>
-         <li><a class="reference internal" href="#php-examples">PHP examples</a></li>
-         <li><a class="reference internal" href="#perl-examples">Perl examples</a></li>
-         <li><a class="reference internal" href="#java-example">Java example</a></li>
-         <li><a class="reference internal" href="#curl-examples">curl examples</a></li>
-         <li><a class="reference internal" href="#batch-processing">Batch processing</a></li>
-         <li><a class="reference internal" href="#batch-download">Batch download</a>
+         <li><a class="text-primary internal" href="#metadata-requirements-mapping">Metadata requirements &amp; mapping</a></li>
+         <li><a class="text-primary internal" href="#crossref-registration">Crossref registration</a></li>
+         <li><a class="text-primary internal" href="#testing-the-api">Testing the API</a></li>
+         <li><a class="text-primary internal" href="#server-status">Server status</a></li>
+         <li><a class="text-primary internal" href="#python-command-line-tool">Python command line tool</a></li>
+         <li><a class="text-primary internal" href="#php-examples">PHP examples</a></li>
+         <li><a class="text-primary internal" href="#perl-examples">Perl examples</a></li>
+         <li><a class="text-primary internal" href="#java-example">Java example</a></li>
+         <li><a class="text-primary internal" href="#curl-examples">curl examples</a></li>
+         <li><a class="text-primary internal" href="#batch-processing">Batch processing</a></li>
+         <li><a class="text-primary internal" href="#batch-download">Batch download</a>
             <ul>
-               <li><a class="reference internal" href="#overview">Overview</a></li>
-               <li><a class="reference internal" href="#download-formats">Download formats</a></li>
-               <li><a class="reference internal" href="#parameters">Parameters</a></li>
-               <li><a class="reference internal" href="#using-curl-to-request-a-download">Using curl to request a download</a></li>
+               <li><a class="text-primary internal" href="#overview">Overview</a></li>
+               <li><a class="text-primary internal" href="#download-formats">Download formats</a></li>
+               <li><a class="text-primary internal" href="#parameters">Parameters</a></li>
+               <li><a class="text-primary internal" href="#using-curl-to-request-a-download">Using curl to request a download</a></li>
             </ul>
          </li>
-         <li><a class="reference internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a></li>
+         <li><a class="text-primary internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a></li>
       </ul>
    </div>
    <div class="section" id="framework">
-      <h1>Framework</h1>
+      <p class="h3 text-primary">Framework</p>
       <p>The ARKetype API is available from the base URL</p>
       <blockquote>
-         <a class="reference external" href="http://37.187.98.23">http://37.187.98.23</a></blockquote>
-      <p>Interaction is via <a class="reference external" href="http://oreilly.com/catalog/9780596529260">REST-style</a> <span class="ext-icon"></span> HTTP web services. The
+         <a class="text-primary external" href="{% getOptions "DEFAULT.ezid_base_url" %}">{% getOptions "DEFAULT.ezid_base_url" %}</a></blockquote>
+      <p>Interaction is via <a class="text-primary external" href="http://oreilly.com/catalog/9780596529260">REST-style</a> <span class="ext-icon"></span> HTTP web services. The
          API's central design principle is to treat an identifier as a kind of
-         web resource. Specifically, identifier <span class="hl1">foo</span> is represented as a
-         resource at URL http://37.187.98.23/id/<span class="hl1">foo</span>. In this
+         web resource. Specifically, identifier <span class="text-info font-italic">foo</span> is represented as a
+         resource at URL {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="text-info font-italic">foo</span>. In this
          document we will refer to this URL as the identifier's &quot;ARKetype URL.&quot; A
          client manipulates an identifier by performing HTTP operations on its
          ARKetype URL: PUT to create the identifier, GET to view it, and POST to
@@ -96,15 +94,15 @@
          <tbody valign="top">
             <tr>
                <td>Identifier</td>
-               <td><span class="hl1">doi:10.nnnn/suffix</span></td>
+               <td><span class="text-info font-italic">doi:10.nnnn/suffix</span></td>
             </tr>
             <tr>
                <td>URL form</td>
-               <td>https://doi.org/<span class="hl1">10.nnnn/suffix</span></td>
+               <td>https://doi.org/<span class="text-info font-italic">10.nnnn/suffix</span></td>
             </tr>
             <tr>
                <td>ARKetype URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">doi:10.nnnn/suffix</span></td>
+               <td>{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="text-info font-italic">doi:10.nnnn/suffix</span></td>
             </tr>
          </tbody>
       </table>
@@ -117,15 +115,15 @@
          <tbody valign="top">
             <tr>
                <td>Identifier</td>
-               <td><span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td><span class="text-info font-italic">ark:/nnnnn/suffix</span></td>
             </tr>
             <tr>
                <td>URL form</td>
-               <td>http://n2t.net/<span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td>http://n2t.net/<span class="text-info font-italic">ark:/nnnnn/suffix</span></td>
             </tr>
             <tr>
                <td>ARKetype URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">ark:/nnnnn/suffix</span></td>
+               <td>{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="text-info font-italic">ark:/nnnnn/suffix</span></td>
             </tr>
          </tbody>
       </table>
@@ -138,30 +136,30 @@
          <tbody valign="top">
             <tr>
                <td>Identifier</td>
-               <td><span class="hl1">uuid:suffix</span></td>
+               <td><span class="text-info font-italic">uuid:suffix</span></td>
             </tr>
             <tr>
                <td>URL form</td>
-               <td>http://n2t.net/<span class="hl1">uuid:suffix</span></td>
+               <td>http://n2t.net/<span class="text-info font-italic">uuid:suffix</span></td>
             </tr>
             <tr>
                <td>ARKetype URL</td>
-               <td>http://37.187.98.23/id/<span class="hl1">uuid:suffix</span></td>
+               <td>{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="text-info font-italic">uuid:suffix</span></td>
             </tr>
          </tbody>
       </table>
    </div>
    <div class="section" id="api-vs-ui">
-      <h1>API vs. UI</h1>
+      <p class="h3 text-primary">API vs. UI</p>
       <p>The ARKetype UI and API share some URLs (the base URL is the same for
          both) but their behavior is different. For example, in the API a GET
          operation on an ARKetype URL returns client-parseable metadata (see
-         <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> below), but in the UI it returns
+         <a class="text-primary internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> below), but in the UI it returns
          an HTML page.</p>
-      <p>To distinguish between the two interfaces ARKetype employs HTTP <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">content
+      <p>To distinguish between the two interfaces ARKetype employs HTTP <a class="text-primary external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">content
             negotiation</a> <span class="ext-icon"></span>. If a request comes in with an HTTP
-         Accept header that expresses a preference for any form of HTML or XML,
-         the UI is invoked; otherwise, the API is invoked. A preference for
+         Accept header that expresses a ptext-primary for any form of HTML or XML,
+         the UI is invoked; otherwise, the API is invoked. A ptext-primary for
          the API can be made explicit by omitting any Accept header, or setting
          the Accept header to something like &quot;text/plain&quot;. If using Java, it
          will probably be necessary to override the default Accept header Java
@@ -169,14 +167,14 @@
       <pre class="literal-block">
 import java.net.*;
 
-URL u = new URL(&quot;http://37.187.98.23/...&quot;);
+URL u = new URL(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...&quot;);
 URLConnection c = u.openConnection();
 c.setRequestProperty(&quot;Accept&quot;, &quot;text/plain&quot;);
 c.connect();
 </pre>
    </div>
    <div class="section" id="authentication">
-      <h1>Authentication</h1>
+      <p class="h3 text-primary">Authentication</p>
       <p>Most requests require authentication. The ARKetype API supports two
          methods of authentication:</p>
       <ol class="arabic">
@@ -187,7 +185,7 @@ c.connect();
                be added manually in Python as follows:</p>
             <pre class="literal-block">
 import base64, urllib2
-r = urllib2.Request(&quot;http://37.187.98.23/...&quot;)
+r = urllib2.Request(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...&quot;)
 r.add_header(&quot;Authorization&quot;, &quot;Basic &quot; + base64.b64encode(&quot;<span class="hl2">username</span>:<span class="hl2">password</span>&quot;))
 </pre>
             <p>But most programming libraries provide higher-level support for
@@ -195,21 +193,21 @@ r.add_header(&quot;Authorization&quot;, &quot;Basic &quot; + base64.b64encode(&q
             <pre class="literal-block">
 import urllib2
 h = urllib2.HTTPBasicAuthHandler()
-h.add_password(&quot;ARKetype&quot;, &quot;http://37.187.98.23/&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;)
+h.add_password(&quot;ARKetype&quot;, &quot;{% getOptions "DEFAULT.ezid_base_url" %}/&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;)
 o = urllib2.build_opener(h)
-o.open(&quot;http://37.187.98.23/...&quot;)
+o.open(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...&quot;)
 </pre>
             <p>The downside of using higher-level authentication mechanisms is
                that they often do not supply credentials initially, but only in
                response to a challenge from ARKetype, thus doubling the number of HTTP
                transactions.</p>
-            <p>To manually provide credentials in Java, using <a class="reference external" href="http://commons.apache.org/codec/">Apache Commons
+            <p>To manually provide credentials in Java, using <a class="text-primary external" href="http://commons.apache.org/codec/">Apache Commons
                   Codec</a> <span class="ext-icon"></span> to do the Base64 encoding:</p>
             <pre class="literal-block">
 import java.net.*;
 import org.apache.commons.codec.binary.*;
 
-URL u = new URL(&quot;http://37.187.98.23/...);
+URL u = new URL(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...);
 URLConnection c = u.openConnection();
 c.setRequestProperty(&quot;Accept&quot;, &quot;text/plain&quot;);
 c.setRequestProperty(&quot;Authorization&quot;, &quot;Basic &quot; +
@@ -231,7 +229,7 @@ Authenticator.setDefault(new MyAuthenticator());
          </li>
          <li>
             <p class="first"><strong>One-time login</strong>. Perform a GET operation on
-               http://37.187.98.23/login and supply HTTP Basic credentials as
+               {% getOptions "DEFAULT.ezid_base_url" %}/login and supply HTTP Basic credentials as
                above. In response, ARKetype returns a session cookie. Subsequent
                requests can be made without authentication by supplying the
                session cookie in HTTP Cookie headers. Here's an example
@@ -248,32 +246,32 @@ Authenticator.setDefault(new MyAuthenticator());
 ⇐
 ⇐ success: session cookie returned
 </pre>
-            <p>In Python, cookies can be managed using <a class="reference external" href="http://docs.python.org/library/cookielib.html">cookielib</a> <span class="ext-icon"></span>,
+            <p>In Python, cookies can be managed using <a class="text-primary external" href="http://docs.python.org/library/cookielib.html">cookielib</a> <span class="ext-icon"></span>,
                or manually captured and set using code similar to the following:</p>
             <pre class="literal-block">
 import urllib2
-c = urllib2.urlopen(&quot;http://37.187.98.23/login&quot;)
+c = urllib2.urlopen(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/login&quot;)
 <span class="hl2">cookie</span> = c.headers[&quot;Set-Cookie&quot;].split(&quot;;&quot;)[0]
 ...
-r = urllib2.Request(&quot;http://37.187.98.23/...&quot;)
+r = urllib2.Request(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...&quot;)
 r.add_header(&quot;Cookie&quot;, <span class="hl2">cookie</span>)
 </pre>
             <p>In Java, cookies can be manually captured and set using code
                analogous to the Python code above or, in Java 1.6 and newer,
-               <a class="reference external" href="http://download.oracle.com/javase/6/docs/api/java/net/CookieManager.html">CookieManager</a> <span class="ext-icon"></span> can be used to manage cookies.</p>
-            <p>Perform a GET operation on http://37.187.98.23/logout to
+               <a class="text-primary external" href="http://download.oracle.com/javase/6/docs/api/java/net/CookieManager.html">CookieManager</a> <span class="ext-icon"></span> can be used to manage cookies.</p>
+            <p>Perform a GET operation on {% getOptions "DEFAULT.ezid_base_url" %}/logout to
                invalidate a session.</p>
          </li>
       </ol>
       <p>If authentication is required and credentials are either missing or
          invalid, ARKetype returns a 401 HTTP status code and the status line
-         &quot;error: unauthorized&quot; (see <a class="reference internal" href="#error-reporting">Error reporting</a> below). If
+         &quot;error: unauthorized&quot; (see <a class="text-primary internal" href="#error-reporting">Error reporting</a> below). If
          authentication is successful but the request is still not authorized,
          ARKetype returns a 403 HTTP status code and the status line &quot;error:
          forbidden&quot;.</p>
    </div>
    <div class="section" id="request-response-bodies">
-      <h1>Request &amp; response bodies</h1>
+      <p class="h3 text-primary">Request &amp; response bodies</p>
       <p>Request and response bodies are used to transmit identifier metadata.
          The HTTP content type for all bodies is &quot;text/plain&quot; using UTF-8
          charset encoding. In request bodies, if no charset encoding is
@@ -285,7 +283,7 @@ r.add_header(&quot;Cookie&quot;, <span class="hl2">cookie</span>)
          names nor element values may be empty. (When updating an identifier,
          an uploaded empty value is treated as a command to delete the element
          entirely.)</p>
-      <p>Metadata dictionaries are serialized using a subset of <a class="reference external" href="https://wiki.ucop.edu/display/Curation/Anvl">A Name-Value
+      <p>Metadata dictionaries are serialized using a subset of <a class="text-primary external" href="https://wiki.ucop.edu/display/Curation/Anvl">A Name-Value
             Language (ANVL)</a> <span class="ext-icon"></span> rules:</p>
       <ul class="simple">
          <li>One element name/value pair per line.</li>
@@ -317,11 +315,11 @@ who: Proust, Marcel
       <p>Care must be taken to escape structural characters that appear in
          element names and values, specifically, line terminators (both
          newlines (&quot;\n&quot;, U+000A) and carriage returns (&quot;\r&quot;, U+000D)) and, in
-         element names, colons (&quot;:&quot;, U+003A). ARKetype employs <a class="reference external" href="http://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>
+         element names, colons (&quot;:&quot;, U+003A). ARKetype employs <a class="text-primary external" href="http://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>
          <span class="ext-icon"></span> as the escaping mechanism, and thus percent signs (&quot;%&quot;,
          U+0025) must be escaped as well. In Python, a dictionary of Unicode
-         metadata element names and values, <span class="hl1">metadata</span>, is serialized into
-         a UTF-8 encoded string, <span class="hl1">anvl</span>, with the following code:</p>
+         metadata element names and values, <span class="text-info font-italic">metadata</span>, is serialized into
+         a UTF-8 encoded string, <span class="text-info font-italic">anvl</span>, with the following code:</p>
       <pre class="literal-block">
 import re
 
@@ -331,8 +329,8 @@ def escape (s):
 <span class="hl2">anvl</span> = &quot;\n&quot;.join(&quot;%s: %s&quot; % (escape(name), escape(value)) for name,
   value in <span class="hl2">metadata</span>.items()).encode(&quot;UTF-8&quot;)
 </pre>
-      <p>Conversely, to parse a UTF-8 encoded string, <span class="hl1">anvl</span>, producing
-         a dictionary, <span class="hl1">metadata</span>:</p>
+      <p>Conversely, to parse a UTF-8 encoded string, <span class="text-info font-italic">anvl</span>, producing
+         a dictionary, <span class="text-info font-italic">metadata</span>:</p>
       <pre class="literal-block">
 import re
 
@@ -344,7 +342,7 @@ def unescape (s):
   for l in <span class="hl2">anvl</span>.decode(&quot;UTF-8&quot;).splitlines())
 </pre>
       <p>In Java, to serialize a HashMap of metadata element names and values,
-         <span class="hl1">metadata</span>, into an ANVL-formatted Unicode string, <span class="hl1">anvl</span>:</p>
+         <span class="text-info font-italic">metadata</span>, into an ANVL-formatted Unicode string, <span class="text-info font-italic">anvl</span>:</p>
       <pre class="literal-block">
 import java.util.*;
 
@@ -361,8 +359,8 @@ while (i.hasNext()) {
 }
 String <span class="hl2">anvl</span> = b.toString();
 </pre>
-      <p>And conversely, to parse a Unicode ANVL-formatted string, <span class="hl1">anvl</span>,
-         producing a HashMap, <span class="hl1">metadata</span>:</p>
+      <p>And conversely, to parse a Unicode ANVL-formatted string, <span class="text-info font-italic">anvl</span>,
+         producing a HashMap, <span class="text-info font-italic">metadata</span>:</p>
       <pre class="literal-block">
 import java.util.*;
 
@@ -393,9 +391,9 @@ error: bad request - no such identifier
 </pre>
    </div>
    <div class="section" id="error-reporting">
-      <h1>Error reporting</h1>
+      <p class="h3 text-primary">Error reporting</p>
       <p>An error is indicated by both an HTTP status code and an error status
-         line of the form &quot;error: <span class="hl1">reason</span>&quot;. For example:</p>
+         line of the form &quot;error: <span class="text-info font-italic">reason</span>&quot;. For example:</p>
       <pre class="literal-block">
 ⇒ GET /id/ark:/99999/bogus HTTP/1.1
 ⇒ Host: 37.187.98.23/
@@ -423,7 +421,7 @@ if (c.getResponseCode() &lt; 400) {
 </pre>
    </div>
    <div class="section" id="operation-get-identifier-metadata">
-      <h1>Operation: get identifier metadata</h1>
+      <p class="h3 text-primary">Operation: get identifier metadata</p>
       <p>Metadata can be retrieved for any existing identifier; no
          authentication is required. Simply issue a GET request to the
          identifier's ARKetype URL. Here is a sample interaction:</p>
@@ -445,19 +443,19 @@ if (c.getResponseCode() &lt; 400) {
 ⇐ erc.when: 1922
 </pre>
       <p>The first line of the response body is a status line. Assuming
-         success (see <a class="reference internal" href="#error-reporting">Error reporting</a> above), the remainder of the status
+         success (see <a class="text-primary internal" href="#error-reporting">Error reporting</a> above), the remainder of the status
          line echoes the canonical form of the requested identifier.</p>
       <p>The remaining lines are metadata element name/value pairs serialized
-         per ANVL rules; see <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a> above. The order of
+         per ANVL rules; see <a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a> above. The order of
          elements is undefined. Element names beginning with an underscore
          (&quot;_&quot;, U+005F) are reserved for use by ARKetype; their meanings are
-         described in <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Some elements may be drawn
-         from citation metadata standards; see <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below.</p>
+         described in <a class="text-primary internal" href="#internal-metadata">Internal metadata</a> below. Some elements may be drawn
+         from citation metadata standards; see <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a> below.</p>
       <p>ARKetype also supports a more flexible identifier lookup operation; see
-         <a class="reference internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a> below.</p>
+         <a class="text-primary internal" href="#suffix-passthrough-prefix-matching">Suffix passthrough / prefix matching</a> below.</p>
    </div>
    <div class="section" id="operation-create-identifier">
-      <h1>Operation: create identifier</h1>
+      <p class="h3 text-primary">Operation: create identifier</p>
       <p>An identifier can be &quot;created&quot; by sending a PUT request to the
          identifier's ARKetype URL. Here, identifier creation means establishing a
          record of the identifier in ARKetype (to be successful, no such record can
@@ -472,8 +470,8 @@ if (c.getResponseCode() &lt; 400) {
          starting metadata. There are no restrictions on what metadata
          elements can be submitted, but a convention has been established for
          naming metadata elements, and ARKetype has built-in support for certain
-         sets of metadata elements; see <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below. A few of
-         the internal ARKetype metadata elements may be set; see <a class="reference internal" href="#internal-metadata">Internal
+         sets of metadata elements; see <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a> below. A few of
+         the internal ARKetype metadata elements may be set; see <a class="text-primary internal" href="#internal-metadata">Internal
             metadata</a> below.</p>
       <p>Here's a sample interaction creating an ARK identifier:</p>
       <pre class="literal-block">
@@ -510,13 +508,13 @@ if (c.getResponseCode() &lt; 400) {
 </pre>
    </div>
    <div class="section" id="operation-mint-identifier">
-      <h1>Operation: mint identifier</h1>
+      <p class="h3 text-primary">Operation: mint identifier</p>
       <p>Minting an identifier is the same as creating an identifier, but
          instead of supplying a complete identifier, the client specifies only
          a namespace (or &quot;shoulder&quot;) that forms the identifier's prefix, and
          ARKetype generates an opaque, random string for the identifier's suffix.
          An identifier can be minted by sending a POST request to the URL
-         http://37.187.98.23/shoulder/<span class="hl1">shoulder</span> where <span class="hl1">shoulder</span>
+         {% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="text-info font-italic">shoulder</span> where <span class="text-info font-italic">shoulder</span>
          is the desired namespace. For example:</p>
       <pre class="literal-block">
 ⇒ POST /shoulder/<span class="hl2">ark:/13030/c7</span> HTTP/1.1
@@ -538,21 +536,21 @@ if (c.getResponseCode() &lt; 400) {
          is required; and permissions can be viewed in the ARKetype UI under the
          Create ID tab. The request and response bodies are identical.</p>
       <p>ARKetype automatically embeds the newly-minted identifier in certain types
-         of uploaded metadata. See <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> below for when this is
+         of uploaded metadata. See <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a> below for when this is
          performed. Additionally, ARKetype replaces all occurrences of the string
          &quot;${identifier}&quot; in the target URL with the newly-minted identifier.</p>
    </div>
    <div class="section" id="operation-update-identifier">
-      <h1>Operation: update identifier</h1>
+      <p class="h3 text-primary">Operation: update identifier</p>
       <p>An identifier's metadata can be updated by sending a POST request to
          the identifier's ARKetype URL. Authentication is required; only the
          identifier's owner and certain other users may update the identifier
-         (see <a class="reference internal" href="#ownership-model">Ownership model</a> below).</p>
+         (see <a class="text-primary internal" href="#ownership-model">Ownership model</a> below).</p>
       <p>Metadata elements are operated on individually. If the identifier
          already has a value for a metadata element included in the request
          body, the value is overwritten, otherwise the element and its value
          are added. Only a few of the reserved ARKetype metadata elements may be
-         updated; see <a class="reference internal" href="#internal-metadata">Internal metadata</a> below. Here's a sample interaction:</p>
+         updated; see <a class="text-primary internal" href="#internal-metadata">Internal metadata</a> below. Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ POST /id/ark:/99999/fk4cz3dh0 HTTP/1.1
 ⇒ Host: 37.187.98.23
@@ -567,17 +565,17 @@ if (c.getResponseCode() &lt; 400) {
 ⇐
 ⇐ success: ark:/99999/fk4cz3dh0
 </pre>
-      <p>The return is a status line. Assuming success (see <a class="reference internal" href="#error-reporting">Error reporting</a>
+      <p>The return is a status line. Assuming success (see <a class="text-primary internal" href="#error-reporting">Error reporting</a>
          above), the remainder of the status line echoes the canonical form of
          the identifier in question.</p>
       <p>To delete a metadata element, set its value to the empty string.</p>
    </div>
    <div class="section" id="operation-create-or-update-identifier">
-      <h1>Operation: create or update identifier</h1>
+      <p class="h3 text-primary">Operation: create or update identifier</p>
       <p>An identifier can be created or updated in one interaction; the
          specific operation performed will depend on whether the identifier
          already exists or not. To do so, issue a create operation as
-         described under <a class="reference internal" href="#operation-create-identifier">Operation: create identifier</a> above, but add an
+         described under <a class="text-primary internal" href="#operation-create-identifier">Operation: create identifier</a> above, but add an
          update_if_exists=yes URL query parameter to the PUT request. ARKetype
          returns a 201 HTTP status code if the identifier was created or a 200
          HTTP status code if the identifier already existed and was
@@ -593,12 +591,12 @@ if (c.getResponseCode() &lt; 400) {
 </pre>
    </div>
    <div class="section" id="operation-delete-identifier">
-      <h1>Operation: delete identifier</h1>
+      <p class="h3 text-primary">Operation: delete identifier</p>
       <p>An identifier that has only been reserved can be deleted by sending a
          DELETE request to the identifier's ARKetype URL. We emphasize that only
-         <em>reserved</em> identifiers may be deleted; see <a class="reference internal" href="#identifier-status">Identifier status</a> below.
+         <em>reserved</em> identifiers may be deleted; see <a class="text-primary internal" href="#identifier-status">Identifier status</a> below.
          Authentication is required; only the identifier's owner and certain
-         other users may delete the identifier (see <a class="reference internal" href="#ownership-model">Ownership model</a> below).</p>
+         other users may delete the identifier (see <a class="text-primary internal" href="#ownership-model">Ownership model</a> below).</p>
       <p>Here's a sample interaction:</p>
       <pre class="literal-block">
 ⇒ DELETE /id/ark:/99999/fk4cz3dh0 HTTP/1.1
@@ -610,13 +608,13 @@ if (c.getResponseCode() &lt; 400) {
 ⇐
 ⇐ success: ark:/99999/fk4cz3dh0
 </pre>
-      <p>The return is a status line. Assuming success (see <a class="reference internal" href="#error-reporting">Error reporting</a>
+      <p>The return is a status line. Assuming success (see <a class="text-primary internal" href="#error-reporting">Error reporting</a>
          above), the remainder of the status line echoes the canonical form of
          the identifier just deleted.</p>
    </div>
    <div class="section" id="suffix-passthrough-prefix-matching">
-      <h1>Suffix passthrough / prefix matching</h1>
-      <p>The <a class="reference external" href="https://n2t.net/">N2T</a> <span class="ext-icon"></span> resolver—the principal resolver for
+      <p class="h3 text-primary">Suffix passthrough / prefix matching</p>
+      <p>The <a class="text-primary external" href="https://n2t.net/">N2T</a> <span class="ext-icon"></span> resolver—the principal resolver for
          ARK identifiers—supports &quot;suffix passthrough,&quot; a capability
          that allows an identifier to be resolved even if it has not been
          explicitly registered, so long as some prefix of the identifier has.
@@ -625,12 +623,12 @@ if (c.getResponseCode() &lt; 400) {
          identifier (the &quot;suffix&quot;) to the root identifier's target URL before
          redirecting. For example, if identifier ark:/99999/fk4/root has been
          registered with ARKetype and has target URL http://www.cdlib.org, then N2T
-         resolves ark:/99999/fk4/root<span class="hl1">/andmore</span> to
-         http://www.cdlib.org<span class="hl1">/andmore</span>. The capability is so-named
+         resolves ark:/99999/fk4/root<span class="text-info font-italic">/andmore</span> to
+         http://www.cdlib.org<span class="text-info font-italic">/andmore</span>. The capability is so-named
          because the suffix is effectively &quot;passed through&quot; to the receiving
          server.</p>
       <p>ARKetype supports a similar capability. If a request to view identifier
-         metadata (see <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> above) is
+         metadata (see <a class="text-primary internal" href="#operation-get-identifier-metadata">Operation: get identifier metadata</a> above) is
          accompanied by a prefix_match=yes URL query parameter, then ARKetype
          returns metadata for the longest matching identifier (if there is
          one). If an identifier other than the one requested is returned, the
@@ -650,7 +648,7 @@ if (c.getResponseCode() &lt; 400) {
 </pre>
    </div>
    <div class="section" id="ownership-model">
-      <h1>Ownership model</h1>
+      <p class="h3 text-primary">Ownership model</p>
       <p>ARKetype maintains ownership information about identifiers and uses that
          information to enforce access control.</p>
       <p>The ownership model employed by ARKetype is hierarchical: each identifier
@@ -669,7 +667,7 @@ if (c.getResponseCode() &lt; 400) {
                <li>create identifiers under any shoulder available to the proxied
                   user;</li>
                <li>create identifiers owned by the proxied user, by setting the
-                  &quot;_owner&quot; reserved metadata element (see <a class="reference internal" href="#internal-metadata">Internal metadata</a>
+                  &quot;_owner&quot; reserved metadata element (see <a class="text-primary internal" href="#internal-metadata">Internal metadata</a>
                   below);</li>
                <li>update existing identifiers owned by the proxied user;</li>
                <li>change the ownership of identifiers owned by the proxied user to
@@ -677,7 +675,7 @@ if (c.getResponseCode() &lt; 400) {
                   and vice versa;</li>
                <li>search over the proxied user's identifiers;</li>
                <li>view statistics regarding the proxied user's identifiers; and</li>
-               <li>download the proxied user's identifiers (see <a class="reference internal" href="#batch-download">Batch download</a>
+               <li>download the proxied user's identifiers (see <a class="text-primary internal" href="#batch-download">Batch download</a>
                   below).</li>
             </ul>
          </li>
@@ -701,9 +699,9 @@ if (c.getResponseCode() &lt; 400) {
          administrator may also be a proxy, and may also have proxies.</p>
    </div>
    <div class="section" id="identifier-status">
-      <h1>Identifier status</h1>
+      <p class="h3 text-primary">Identifier status</p>
       <p>Each identifier in ARKetype has a status. The status is recorded as the
-         value of the &quot;_status&quot; reserved metadata element (see <a class="reference internal" href="#internal-metadata">Internal
+         value of the &quot;_status&quot; reserved metadata element (see <a class="text-primary internal" href="#internal-metadata">Internal
             metadata</a> below) and may be one of:</p>
       <dl class="docutils">
          <dt><strong>public</strong></dt>
@@ -714,7 +712,7 @@ if (c.getResponseCode() &lt; 400) {
             identifier's existence to resolvers and other external services. A
             reserved identifier may be deleted.</dd>
          <dt><strong>unavailable</strong></dt>
-         <dd>The identifier is public, but the object referenced by the
+         <dd>The identifier is public, but the object text-primaryd by the
             identifier is not available. A reason for the object's
             unavailability may optionally follow the status separated by a pipe
             character (&quot;|&quot;, U+007C), e.g., &quot;unavailable | withdrawn by author&quot;.
@@ -741,7 +739,7 @@ if (c.getResponseCode() &lt; 400) {
       </ul>
    </div>
    <div class="section" id="internal-metadata">
-      <h1>Internal metadata</h1>
+      <p class="h3 text-primary">Internal metadata</p>
       <p>Metadata element names beginning with an underscore (&quot;_&quot;, U+005F) are
          reserved for use by ARKetype. The reserved elements below are returned by
          the ARKetype API, and have the following meanings. A check mark in the
@@ -768,7 +766,7 @@ if (c.getResponseCode() &lt; 400) {
                   <td>_owner</td>
                   <td>The identifier's owner. Only certain
                      ownership changes are permitted; see
-                     <a class="reference internal" href="#ownership-model">Ownership model</a> above.</td>
+                     <a class="text-primary internal" href="#ownership-model">Ownership model</a> above.</td>
                   <td>jsmith</td>
                </tr>
                <tr>
@@ -798,8 +796,8 @@ if (c.getResponseCode() &lt; 400) {
                   <td>_target</td>
                   <td colspan="2">The identifier's target URL. Defaults to the identifier's
                      ARKetype URL. That is, the default target URL for identifier
-                     <span class="hl1">foo</span> is the self-referential URL
-                     http://37.187.98.23/id/<span class="hl1">foo</span>. Note that creating or
+                     <span class="text-info font-italic">foo</span> is the self-referential URL
+                     {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="text-info font-italic">foo</span>. Note that creating or
                      updating the target URL of a DOI identifier may take up to
                      30 minutes to take effect in the Handle System.</td>
                </tr>
@@ -807,14 +805,14 @@ if (c.getResponseCode() &lt; 400) {
                   <td>✓</td>
                   <td>_profile</td>
                   <td>The identifier's preferred metadata profile
-                     (see <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> next).</td>
+                     (see <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a> next).</td>
                   <td>erc</td>
                </tr>
                <tr>
                   <td>✓</td>
                   <td>_status</td>
                   <td>The identifier's status (see
-                     <a class="reference internal" href="#identifier-status">Identifier status</a> above).</td>
+                     <a class="text-primary internal" href="#identifier-status">Identifier status</a> above).</td>
                   <td>unavailable |
                      withdrawn by
                      author</td>
@@ -846,7 +844,7 @@ if (c.getResponseCode() &lt; 400) {
                      registered), and also indicates the status
                      of the registration process. When setting,
                      must be set to &quot;yes&quot;. See
-                     <a class="reference internal" href="#crossref-registration">Crossref registration</a> below for more
+                     <a class="text-primary internal" href="#crossref-registration">Crossref registration</a> below for more
                      information.</td>
                   <td>yes |
                      successfully
@@ -857,18 +855,18 @@ if (c.getResponseCode() &lt; 400) {
       </blockquote>
    </div>
    <div class="section" id="metadata-profiles">
-      <h1>Metadata profiles</h1>
+      <p class="h3 text-primary">Metadata profiles</p>
       <p>ARKetype allows &quot;citation metadata&quot; to be stored with an identifier, i.e.,
-         metadata that describes the object referenced by the identifier or
+         metadata that describes the object text-primaryd by the identifier or
          that otherwise gives the meaning of the identifier. In certain cases
-         certain metadata elements are required to be present; see <a class="reference internal" href="#metadata-requirements-mapping">Metadata
+         certain metadata elements are required to be present; see <a class="text-primary internal" href="#metadata-requirements-mapping">Metadata
             requirements &amp; mapping</a> below. This section describes only the
          general structure and naming of citation metadata in ARKetype.</p>
       <p>ARKetype supports several citation metadata &quot;profiles,&quot; or standard sets
          of citation metadata elements. By convention, a metadata profile is
          referred to using a simple, lowercase name, e.g., &quot;erc&quot;, and elements
          belonging to that profile are referred to using the syntax
-         &quot;<span class="hl1">profile</span>.<span class="hl1">element</span>&quot;, e.g., &quot;erc.who&quot;.</p>
+         &quot;<span class="text-info font-italic">profile</span>.<span class="text-info font-italic">element</span>&quot;, e.g., &quot;erc.who&quot;.</p>
       <p>Currently ARKetype treats profiles entirely separately, and thus an
          identifier may have values for multiple metadata profiles
          simultaneously. However, we anticipate that ARKetype will provide
@@ -884,7 +882,7 @@ if (c.getResponseCode() &lt; 400) {
          is, and its future metadata cross-walking support will be, limited to
          those profiles that it explicitly supports.</p>
       <ol class="arabic simple" id="profile-erc">
-         <li><strong>Profile &quot;erc&quot;</strong>. These elements are drawn from <a class="reference external" href="https://wiki.ucop.edu/display/Curation/ERC">Kernel Metadata
+         <li><strong>Profile &quot;erc&quot;</strong>. These elements are drawn from <a class="text-primary external" href="https://wiki.ucop.edu/display/Curation/ERC">Kernel Metadata
                and Electronic Resource Citations (ERCs)</a> <span class="ext-icon"></span>. This
             profile aims at universal citations: any kind of object (digital,
             physical, abstract) or agent (person, group, software, satellite)
@@ -959,10 +957,10 @@ if (c.getResponseCode() &lt; 400) {
                </tr>
             </tbody>
          </table>
-         <p>As a special case, an entire <a class="reference external" href="https://wiki.ucop.edu/display/Curation/Anvl">ANVL</a> <span class="ext-icon"></span> document
+         <p>As a special case, an entire <a class="text-primary external" href="https://wiki.ucop.edu/display/Curation/Anvl">ANVL</a> <span class="ext-icon"></span> document
             containing ERC metadata may be bound to the metadata element &quot;erc&quot;.
             Care should be taken to escape line terminators in the document (as
-            is true for all metadata element values; see <a class="reference internal" href="#request-response-bodies">Request &amp; response
+            is true for all metadata element values; see <a class="text-primary internal" href="#request-response-bodies">Request &amp; response
                bodies</a> above). For example, the ANVL document:</p>
          <pre class="literal-block">
 who: Proust, Marcel
@@ -975,7 +973,7 @@ erc: who: Proust, Marcel%0Awhat: Remembrance of Things Past
       </blockquote>
       <ol class="arabic simple" id="profile-datacite" start="2">
          <li><strong>Profile &quot;datacite&quot;</strong>. These elements are drawn from the
-            <a class="reference external" href="http://schema.datacite.org/">DataCite Metadata Scheme for the Publication and Citation of
+            <a class="text-primary external" href="http://schema.datacite.org/">DataCite Metadata Scheme for the Publication and Citation of
                Research Data</a> <span class="ext-icon"></span>. This is the default profile for
             DOI identifiers.</li>
       </ol>
@@ -1084,14 +1082,14 @@ erc: who: Proust, Marcel%0Awhat: Remembrance of Things Past
             document must be set to &quot;ARK&quot; or &quot;UUID&quot; as appropriate.</p>
          <p>Care should be taken to escape line terminators and percent signs
             in the document (as is true for all metadata element values; see
-            <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a> above). Once properly escaped, the
+            <a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a> above). Once properly escaped, the
             uploaded metadata will resemble:</p>
          <pre class="literal-block">
 datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource...
 </pre>
       </blockquote>
       <ol class="arabic simple" id="profile-dc" start="3">
-         <li><strong>Profile &quot;dc&quot;</strong>. These elements are drawn from the <a class="reference external" href="http://dublincore.org/documents/dces/">Dublin Core
+         <li><strong>Profile &quot;dc&quot;</strong>. These elements are drawn from the <a class="text-primary external" href="http://dublincore.org/documents/dces/">Dublin Core
                Metadata Element Set</a> <span class="ext-icon"></span>.</li>
       </ol>
       <!--  -->
@@ -1166,17 +1164,17 @@ datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource...
          &quot;crossref&quot;, whose value is Crossref deposit metadata (an XML
          document). Care should be taken to escape line terminators and
          percent signs in the document (as is true for all metadata element
-         values; see <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a> above). See <a class="reference internal" href="#crossref-registration">Crossref
+         values; see <a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a> above). See <a class="text-primary internal" href="#crossref-registration">Crossref
             registration</a> below for more information on usage of this profile and
          element.</p>
    </div>
    <div class="section" id="metadata-requirements-mapping">
-      <h1>Metadata requirements &amp; mapping</h1>
+      <p class="h3 text-primary">Metadata requirements &amp; mapping</p>
       <p>DOI identifiers must satisfy specific metadata requirements. A
          DataCite DOI created by ARKetype must have title, creator, publisher, and
          publication year metadata any time its status is not reserved (see
-         <a class="reference internal" href="#identifier-status">Identifier status</a> above). A Crossref DOI must have Crossref
-         metadata at all times (see <a class="reference internal" href="#crossref-registration">Crossref registration</a> below), though the
+         <a class="text-primary internal" href="#identifier-status">Identifier status</a> above). A Crossref DOI must have Crossref
+         metadata at all times (see <a class="text-primary internal" href="#crossref-registration">Crossref registration</a> below), though the
          metadata need not be complete if the identifier is reserved. Other
          than that, ARKetype imposes no requirements on the presence or form of
          citation metadata, but uploading at least minimal citation metadata to
@@ -1189,17 +1187,17 @@ datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource...
       <ol class="arabic simple">
          <li>DataCite XML metadata bound to the &quot;datacite&quot; element;</li>
          <li>Individual elements from the &quot;datacite&quot; profile as described in
-            <a class="reference internal" href="#profile-datacite">Profile &quot;datacite&quot;</a> (&quot;datacite.title&quot;, etc.); and lastly</li>
+            <a class="text-primary internal" href="#profile-datacite">Profile &quot;datacite&quot;</a> (&quot;datacite.title&quot;, etc.); and lastly</li>
          <li>Elements from the identifier's preferred metadata profile (see
-            <a class="reference internal" href="#metadata-profiles">Metadata profiles</a> above) that ARKetype is able to map to DataCite
+            <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a> above) that ARKetype is able to map to DataCite
             equivalents. For example, if the preferred profile is &quot;erc&quot;, then
             ARKetype will map element &quot;erc.who&quot; to &quot;datacite.creator&quot;.</li>
       </ol>
       <p>If no meaningful value is available for a required element, clients
          are encouraged to supply a standard machine-readable code drawn from
-         the <a class="reference external" href="https://wiki.ucop.edu/display/Curation/ERC">Kernel Metadata and Electronic Resource Citations (ERCs)</a>
+         the <a class="text-primary external" href="https://wiki.ucop.edu/display/Curation/ERC">Kernel Metadata and Electronic Resource Citations (ERCs)</a>
          <span class="ext-icon"></span> specification. These codes have the common syntactic
-         form &quot;(:<span class="hl1">code</span>)&quot; and include:</p>
+         form &quot;(:<span class="text-info font-italic">code</span>)&quot; and include:</p>
       <blockquote>
          <table border="1" class="docutils">
             <colgroup>
@@ -1267,14 +1265,14 @@ who: (:unkn) anonymous donor
 </pre>
    </div>
    <div class="section" id="crossref-registration">
-      <h1>Crossref registration</h1>
-      <p>A DOI identifier may be registered with either the <a class="reference external" href="http://www.crossref.org/">Crossref</a> <span class="ext-icon"></span> or the <a class="reference external" href="http://www.datacite.org/">DataCite</a>
+      <p class="h3 text-primary">Crossref registration</p>
+      <p>A DOI identifier may be registered with either the <a class="text-primary external" href="http://www.crossref.org/">Crossref</a> <span class="ext-icon"></span> or the <a class="text-primary external" href="http://www.datacite.org/">DataCite</a>
          <span class="ext-icon"></span> registration agency.
          The choice of registration agency is not selectable, but is entirely
          determined by the identifier's shoulder. This section discusses
          registration with Crossref.</p>
       <p>Once registered, an identifier cannot be removed from Crossref. If
-         the identifier's status is set to unavailable (recall <a class="reference internal" href="#identifier-status">Identifier
+         the identifier's status is set to unavailable (recall <a class="text-primary internal" href="#identifier-status">Identifier
             status</a>, above), ARKetype will prepend &quot;WITHDRAWN&quot; to the title of the
          resource associated with the identifier, but the identifier remains in
          Crossref's systems.</p>
@@ -1302,7 +1300,7 @@ who: (:unkn) anonymous donor
          viewed in the ARKetype UI and may also be emailed to a specified mailbox.
          Warnings and errors can be removed only by submitting new metadata and
          re-registering identifiers.</p>
-      <p>Crossref deposit metadata should adhere to the <a class="reference external" href="http://help.crossref.org/deposit_schema">Crossref Deposit
+      <p>Crossref deposit metadata should adhere to the <a class="text-primary external" href="http://help.crossref.org/deposit_schema">Crossref Deposit
             Schema</a> <span class="ext-icon"></span>, version 4.3.0 or later. The metadata should
          consist of the immediate child element of a &lt;body&gt; element, i.e., one
          of the following elements:</p>
@@ -1353,7 +1351,7 @@ who: (:unkn) anonymous donor
 </pre>
       <p>In supplying an XML document as the value of element &quot;crossref&quot;, care
          should be taken to escape line terminators and percent signs in the
-         document (as is true for all metadata element values; see <a class="reference internal" href="#request-response-bodies">Request &amp;
+         document (as is true for all metadata element values; see <a class="text-primary internal" href="#request-response-bodies">Request &amp;
             response bodies</a> above).</p>
       <p>If the identifier's preferred metadata profile is &quot;crossref&quot;, ARKetype
          automatically creates a DataCite Metadata Scheme record from the
@@ -1361,7 +1359,7 @@ who: (:unkn) anonymous donor
          conversion values are missing (e.g., a journal does not have a
          creator) ARKetype supplies the code &quot;(:unav)&quot;. This automatic conversion
          can be overriden by supplying an entire DataCite Metadata Scheme XML
-         record as the value of the &quot;datacite&quot; element (see <a class="reference internal" href="#profile-datacite">Profile
+         record as the value of the &quot;datacite&quot; element (see <a class="text-primary internal" href="#profile-datacite">Profile
             &quot;datacite&quot;</a> above). Additionally, individual DataCite elements
          (e.g., &quot;datacite.title&quot;) may be specified to override selected
          portions of the automatic conversion.</p>
@@ -1375,7 +1373,7 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
 </pre>
    </div>
    <div class="section" id="testing-the-api">
-      <h1>Testing the API</h1>
+      <p class="h3 text-primary">Testing the API</p>
       <p>ARKetype provides three namespaces (or &quot;shoulders&quot;) for testing purposes:
          ark:/99999/fk4 for ARK identifiers, doi:10.5072/FK2 for DataCite DOI
          identifiers, and doi:10.15697/ for Crossref DOI identifiers.
@@ -1383,12 +1381,12 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
          are ordinary long-term identifiers in almost all respects, except that
          ARKetype deletes them after 2 weeks.</p>
       <p>Test ARK identifiers resolve just as real ARK identifiers do through
-         the <a class="reference external" href="https://n2t.net/">N2T</a> resolver, but test DOI identifiers do not resolve and do not
+         the <a class="text-primary external" href="https://n2t.net/">N2T</a> resolver, but test DOI identifiers do not resolve and do not
          appear in any DataCite or Crossref systems.</p>
       <p>All user accounts are permitted to create test identifiers. ARKetype also
          provides an &quot;apitest&quot; account that is permitted to create only test
-         identifiers. <a class="reference external" href="/contact">Contact us</a> for the password for this account.
-         Additionally, please <a class="reference external" href="/contact">contact us</a> before embarking on any large-scale
+         identifiers. <a class="text-primary external" href="/contact">Contact us</a> for the password for this account.
+         Additionally, please <a class="text-primary external" href="/contact">contact us</a> before embarking on any large-scale
          testing, specifically, before creating more than 10,000 test
          identifiers.</p>
       <p>Test identifiers and reserved identifiers are orthogonal concepts. A
@@ -1399,9 +1397,9 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
          identifiers.</p>
    </div>
    <div class="section" id="server-status">
-      <h1>Server status</h1>
+      <p class="h3 text-primary">Server status</p>
       <p>The status of the ARKetype server can be probed by issuing a GET request
-         to the URL http://37.187.98.23/status. If the server is up the
+         to the URL {% getOptions "DEFAULT.ezid_base_url" %}/status. If the server is up the
          response will resemble the following:</p>
       <pre class="literal-block">
 ⇒ GET /status HTTP/1.1
@@ -1415,8 +1413,8 @@ crossref: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;book...
 </pre>
    </div>
    <div class="section" id="python-command-line-tool">
-      <h1>Python command line tool</h1>
-      <p><a class="reference external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/ezid.py">ezid.py</a> <span class="ext-icon"></span> is a command line tool, written in Python,
+      <p class="h3 text-primary">Python command line tool</p>
+      <p><a class="text-primary external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/ezid.py">ezid.py</a> <span class="ext-icon"></span> is a command line tool, written in Python,
          that is capable of exercising all API functions. It serves as an
          example of how to use the API from Python, but it's also useful in its
          own right as an easy, scriptable means of accessing ARKetype
@@ -1444,7 +1442,7 @@ _owner: <span class="hl2">user</span>
 _ownergroup: <span class="hl2">group</span>
 _profile: erc
 _status: public
-_target: http://37.187.98.23/id/ark:/99999/fk4gt78tq
+_target: {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/99999/fk4gt78tq
 _updated: 2013-05-17T18:17:14
 erc.what: Remembrance of Things Past
 erc.when: 1922
@@ -1465,7 +1463,7 @@ erc.when: 1922
       <pre class="literal-block">
 % ezid.py <span class="hl2">username</span>:<span class="hl2">password</span> mint ark:/99999/fk4 &#64; metadata.txt
 </pre>
-      <p>And if a metadata element value has the form &quot;&#64;<span class="hl1">filename</span>&quot;, the
+      <p>And if a metadata element value has the form &quot;&#64;<span class="text-info font-italic">filename</span>&quot;, the
          named file is read and treated as a single value. For example, if
          file metadata.xml contains a DataCite XML document, then a test DOI
          identifier with that document as the value of the &quot;datacite&quot; element
@@ -1475,7 +1473,7 @@ erc.when: 1922
 </pre>
    </div>
    <div class="section" id="php-examples">
-      <h1>PHP examples</h1>
+      <p class="h3 text-primary">PHP examples</p>
       <p>PHP is agnostic with respect to character sets and character set
          encoding; it operates on bytes only. The following examples assume
          that input data is already UTF-8 encoded and hence can be passed
@@ -1485,7 +1483,7 @@ erc.when: 1922
       <pre class="literal-block">
 &lt;?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://37.187.98.23/id/<span class="hl2">identifier</span>');
+curl_setopt($ch, CURLOPT_URL, '{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $output = curl_exec($ch);
 print curl_getinfo($ch, CURLINFO_HTTP_CODE) . &quot;\n&quot;;
@@ -1500,7 +1498,7 @@ $input = '_target: <span class="hl2">url</span>
 <span class="hl2">element1</span>: <span class="hl2">value1</span>
 <span class="hl2">element2</span>: <span class="hl2">value2</span>';
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://37.187.98.23/id/<span class="hl2">identifier</span>');
+curl_setopt($ch, CURLOPT_URL, '{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>');
 curl_setopt($ch, CURLOPT_USERPWD, '<span class="hl2">username</span>:<span class="hl2">password</span>');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 curl_setopt($ch, CURLOPT_HTTPHEADER,
@@ -1521,7 +1519,7 @@ $input = '_target: <span class="hl2">url</span>
 <span class="hl2">element1</span>: <span class="hl2">value1</span>
 <span class="hl2">element2</span>: <span class="hl2">value2</span>';
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>');
+curl_setopt($ch, CURLOPT_URL, '{% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="hl2">shoulder</span>');
 curl_setopt($ch, CURLOPT_USERPWD, '<span class="hl2">username</span>:<span class="hl2">password</span>');
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER,
@@ -1540,7 +1538,7 @@ curl_close($ch);
 &lt;?php
 $input = '_target: <span class="hl2">url</span>';
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://37.187.98.23/id/<span class="hl2">identifier</span>');
+curl_setopt($ch, CURLOPT_URL, '{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>');
 curl_setopt($ch, CURLOPT_USERPWD, '<span class="hl2">username</span>:<span class="hl2">password</span>');
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER,
@@ -1556,16 +1554,16 @@ curl_close($ch);
 </pre>
    </div>
    <div class="section" id="perl-examples">
-      <h1>Perl examples</h1>
-      <p>The following Perl examples use the <a class="reference external" href="http://search.cpan.org/dist/libwww-perl/">libwww-perl (LWP)</a>
+      <p class="h3 text-primary">Perl examples</p>
+      <p>The following Perl examples use the <a class="text-primary external" href="http://search.cpan.org/dist/libwww-perl/">libwww-perl (LWP)</a>
          <span class="ext-icon"></span> library.</p>
       <p>To get identifier metadata, parse and decode it, and store it in a
-         hash, <span class="hl1">%metadata</span>:</p>
+         hash, <span class="text-info font-italic">%metadata</span>:</p>
       <pre class="literal-block">
 use LWP::UserAgent;
 
 $ua = LWP::UserAgent-&gt;new;
-$r = $ua-&gt;get(&quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;);
+$r = $ua-&gt;get(&quot;{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>&quot;);
 if ($r-&gt;is_success) {
   ($statusline, $m) = split(/\n/, $r-&gt;decoded_content, 2);
   %metadata = map { map { s/%([0-9A-F]{2})/pack(&quot;C&quot;, hex($1))/egi; $_ }
@@ -1575,10 +1573,10 @@ if ($r-&gt;is_success) {
 }
 </pre>
       <p>The following example creates an identifier, supplying initial
-         metadata values from a hash, <span class="hl1">%metadata</span>. Note that LWP is
+         metadata values from a hash, <span class="text-info font-italic">%metadata</span>. Note that LWP is
          particular about how https URLs are expressed. In an LWP request the
          protocol should be included but not a port number
-         (&quot;http://37.187.98.23/...&quot;), but conversely when supplying
+         (&quot;{% getOptions "DEFAULT.ezid_base_url" %}/...&quot;), but conversely when supplying
          credentials the https port number should be included but not a
          protocol (&quot;37.187.98.23/:443&quot;).</p>
       <pre class="literal-block">
@@ -1597,21 +1595,21 @@ sub escape {
   &quot;<span class="hl2">element2</span>&quot; =&gt; &quot;<span class="hl2">value2</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
 $ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
-$r = $ua-&gt;request(PUT &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
+$r = $ua-&gt;request(PUT &quot;{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
     map { escape($_) . &quot;: &quot; . escape($metadata{$_}) } keys %metadata)));
 print $r-&gt;code, $r-&gt;decoded_content unless $r-&gt;is_success;
 </pre>
       <p>To mint an identifier (in this case supplying no metadata initially),
-         obtaining a new identifier, <span class="hl1">$identifier</span>:</p>
+         obtaining a new identifier, <span class="text-info font-italic">$identifier</span>:</p>
       <pre class="literal-block">
 use HTTP::Request::Common;
 use LWP::UserAgent;
 
 $ua = LWP::UserAgent-&gt;new;
 $ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
-$r = $ua-&gt;request(POST &quot;http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>&quot;,
+$r = $ua-&gt;request(POST &quot;{% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="hl2">shoulder</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;);
 if ($r-&gt;is_success) {
   $identifier = $r-&gt;decoded_content =~ m/success: ([^ ]*)/ &amp;&amp; $1;
@@ -1619,7 +1617,7 @@ if ($r-&gt;is_success) {
   print $r-&gt;code, $r-&gt;decoded_content;
 }
 </pre>
-      <p>To update an identifier using values from a hash, <span class="hl1">%metadata</span>:</p>
+      <p>To update an identifier using values from a hash, <span class="text-info font-italic">%metadata</span>:</p>
       <pre class="literal-block">
 use Encode;
 use HTTP::Request::Common;
@@ -1634,7 +1632,7 @@ sub escape {
 %metadata = ( &quot;_target&quot; =&gt; &quot;<span class="hl2">url</span>&quot; );
 $ua = LWP::UserAgent-&gt;new;
 $ua-&gt;credentials(&quot;37.187.98.23/:443&quot;, &quot;ARKetype&quot;, &quot;<span class="hl2">username</span>&quot;, &quot;<span class="hl2">password</span>&quot;);
-$r = $ua-&gt;request(POST &quot;http://37.187.98.23/id/<span class="hl2">identifier</span>&quot;,
+$r = $ua-&gt;request(POST &quot;{% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>&quot;,
   &quot;Content-Type&quot; =&gt; &quot;text/plain; charset=UTF-8&quot;,
   Content =&gt; encode(&quot;UTF-8&quot;, join(&quot;\n&quot;,
     map { escape($_) . &quot;: &quot; . escape($metadata{$_}) } keys %metadata)));
@@ -1642,7 +1640,7 @@ print $r-&gt;code, $r-&gt;decoded_content unless $r-&gt;is_success;
 </pre>
    </div>
    <div class="section" id="java-example">
-      <h1>Java example</h1>
+      <p class="h3 text-primary">Java example</p>
       <p>A number of Java code snippets have been presented above. In the
          example below we combine them all into a runnable, end-to-end program
          that mints a test identifier and then retrieves and prints the
@@ -1654,7 +1652,7 @@ import java.util.*;
 
 class harness {
 
-    static String SERVER = &quot;http://37.187.98.23&quot;;
+    static String SERVER = &quot;{% getOptions "DEFAULT.ezid_base_url" %}&quot;;
     static String USERNAME = &quot;<span class="hl2">username</span>&quot;;
     static String PASSWORD = &quot;<span class="hl2">password</span>&quot;;
 
@@ -1797,62 +1795,62 @@ class harness {
 </pre>
    </div>
    <div class="section" id="curl-examples">
-      <h1>curl examples</h1>
-      <p>The ARKetype API can be exercised using the <a class="reference external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command
+      <p class="h3 text-primary">curl examples</p>
+      <p>The ARKetype API can be exercised using the <a class="text-primary external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command
          line tool. The following examples assume metadata is UTF-8 encoded
          throughout.</p>
       <p>To get identifier metadata, obtaining text formatted as described in
-         <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a> above:</p>
+         <a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a> above:</p>
       <pre class="literal-block">
-curl http://37.187.98.23/id/<span class="hl2">identifier</span>
+curl {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 </pre>
       <p>To mint an identifier:</p>
       <pre class="literal-block">
-curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>
+curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST {% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="hl2">shoulder</span>
 </pre>
       <p>A single metadata element can be specified on the command line. For
          example, to mint an identifier and specify a target URL at the same
          time:</p>
       <pre class="literal-block">
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST -H 'Content-Type: text/plain'
-  --data-binary '_target: <span class="hl2">url</span>' http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>
+  --data-binary '_target: <span class="hl2">url</span>' {% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="hl2">shoulder</span>
 </pre>
       <p>To specify more than one metadata element, the metadata must be placed
-         in a file that is formatted as described in <a class="reference internal" href="#request-response-bodies">Request &amp; response
+         in a file that is formatted as described in <a class="text-primary internal" href="#request-response-bodies">Request &amp; response
             bodies</a>. For example, to mint an identifier and upload metadata
-         contained in a file <span class="hl1">metadata.txt</span>:</p>
+         contained in a file <span class="text-info font-italic">metadata.txt</span>:</p>
       <pre class="literal-block">
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST -H 'Content-Type: text/plain'
-  --data-binary &#64;<span class="hl2">metadata.txt</span> http://37.187.98.23/shoulder/<span class="hl2">shoulder</span>
+  --data-binary &#64;<span class="hl2">metadata.txt</span> {% getOptions "DEFAULT.ezid_base_url" %}/shoulder/<span class="hl2">shoulder</span>
 </pre>
       <p>Creating an identifier is similar to minting one, except that the HTTP
          method (-X option) is changed from POST to PUT and an identifier is
          specified instead of a shoulder. Here are the three examples above,
          but now creating an identifier:</p>
       <pre class="literal-block">
-curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X PUT http://37.187.98.23/id/<span class="hl2">identifier</span>
+curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X PUT {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X PUT -H 'Content-Type: text/plain'
-  --data-binary '_target: <span class="hl2">url</span>' http://37.187.98.23/id/<span class="hl2">identifier</span>
+  --data-binary '_target: <span class="hl2">url</span>' {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X PUT -H 'Content-Type: text/plain'
-  --data-binary &#64;<span class="hl2">metadata.txt</span> http://37.187.98.23/id/<span class="hl2">identifier</span>
+  --data-binary &#64;<span class="hl2">metadata.txt</span> {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 </pre>
       <p>To update identifier metadata:</p>
       <pre class="literal-block">
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST -H 'Content-Type: text/plain'
-  --data-binary '_target: <span class="hl2">url</span>' http://37.187.98.23/id/<span class="hl2">identifier</span>
+  --data-binary '_target: <span class="hl2">url</span>' {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -X POST -H 'Content-Type: text/plain'
-  --data-binary &#64;<span class="hl2">metadata.txt</span> http://37.187.98.23/id/<span class="hl2">identifier</span>
+  --data-binary &#64;<span class="hl2">metadata.txt</span> {% getOptions "DEFAULT.ezid_base_url" %}/id/<span class="hl2">identifier</span>
 </pre>
    </div>
    <div class="section" id="batch-processing">
-      <h1>Batch processing</h1>
+      <p class="h3 text-primary">Batch processing</p>
       <p>The API does not directly support batch processing, but ARKetype does
          provide two client tools, linked from this documentation, that can
          simplify the work of scripting a batch job. First and most generally,
-         the <a class="reference internal" href="#python-command-line-tool">Python command line tool</a> can exercise all API functions and is
+         the <a class="text-primary internal" href="#python-command-line-tool">Python command line tool</a> can exercise all API functions and is
          straightforward to script. For example, to mint and print 100 test
          ARK identifiers:</p>
       <pre class="literal-block">
@@ -1861,7 +1859,7 @@ for i in {1..100}; do
   ezid.py <span class="hl2">username</span>:<span class="hl2">password</span> mint ark:/99999/fk4 | awk '{ print $2 }'
 done
 </pre>
-      <p>Second, the <a class="reference external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/batch-register.py">batch-register.py</a> <span class="ext-icon"></span> script automates several
+      <p>Second, the <a class="text-primary external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/batch-register.py">batch-register.py</a> <span class="ext-icon"></span> script automates several
          common types of batch processing. It reads an input CSV file
          containing identifier metadata, one row per identifier; transforms the
          metadata into ARKetype metadata as directed by a configuration file of
@@ -1874,8 +1872,8 @@ done
 title,author,orcid,publisher_name,publisher_place,url
 </pre>
       <p>a possible complete mapping file to mint DOI identifiers is shown
-         below. The mappings reference both ARKetype metadata elements and, using
-         XPath expressions, <a class="reference external" href="http://schema.datacite.org/">DataCite Metadata Scheme</a> <span class="ext-icon"></span> elements
+         below. The mappings text-primary both ARKetype metadata elements and, using
+         XPath expressions, <a class="text-primary external" href="http://schema.datacite.org/">DataCite Metadata Scheme</a> <span class="ext-icon"></span> elements
          and attributes.</p>
       <pre class="literal-block">
 _profile = datacite
@@ -1897,13 +1895,13 @@ _status = public
 </pre>
    </div>
    <div class="section" id="batch-download">
-      <h1>Batch download</h1>
+      <p class="h3 text-primary">Batch download</p>
       <p>The metadata for all identifiers matching a set of constraints can be
          downloaded in one batch operation. Authentication is required, and
          the scope of the identifiers that can be downloaded in this way is
          implicitly restricted to those that are directly owned by or otherwise
          updatable by the requestor.</p>
-      <p>Batch download and harvesting (see <a class="reference internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a> below) are
+      <p>Batch download and harvesting (see <a class="text-primary internal" href="#oai-pmh-harvesting">OAI-PMH harvesting</a> below) are
          similar but different operations. With batch download, the
          identifiers returned are restricted to those updatable by the
          requestor as noted above, but within that scope it is possible to
@@ -1914,22 +1912,22 @@ _status = public
          satisfy several other quality criteria are returned.</p>
       <p><strong>Subsections</strong></p>
       <ul class="simple">
-         <li><a class="reference internal" href="#overview">Overview</a></li>
-         <li><a class="reference internal" href="#download-formats">Download formats</a></li>
-         <li><a class="reference internal" href="#parameters">Parameters</a></li>
-         <li><a class="reference internal" href="#using-curl-to-request-a-download">Using curl to request a download</a></li>
+         <li><a class="text-primary internal" href="#overview">Overview</a></li>
+         <li><a class="text-primary internal" href="#download-formats">Download formats</a></li>
+         <li><a class="text-primary internal" href="#parameters">Parameters</a></li>
+         <li><a class="text-primary internal" href="#using-curl-to-request-a-download">Using curl to request a download</a></li>
       </ul>
       <p id="overview"><strong>Overview</strong></p>
       <p>The batch download process is asynchronous. A download is requested
          by issuing a POST request to</p>
       <blockquote>
-         <a class="reference external" href="http://37.187.98.23/download_request">http://37.187.98.23/download_request</a></blockquote>
+         <a class="text-primary external" href="{% getOptions "DEFAULT.ezid_base_url" %}/download_request">{% getOptions "DEFAULT.ezid_base_url" %}/download_request</a></blockquote>
       <p>The content type of the request body must be
          &quot;application/x-www-form-urlencoded&quot; and the body must include one POST
          parameter, &quot;format&quot;, specifying the download format, and may include
-         additional parameters (see <a class="reference internal" href="#parameters">Parameters</a> below) specifying search
+         additional parameters (see <a class="text-primary internal" href="#parameters">Parameters</a> below) specifying search
          criteria and download format and notification options. The return is
-         a status line indicating either error (see <a class="reference internal" href="#error-reporting">Error reporting</a> above)
+         a status line indicating either error (see <a class="text-primary internal" href="#error-reporting">Error reporting</a> above)
          or success. If successful, the status line includes a URL from which
          the download can be retrieved. Here's a sample interaction:</p>
       <pre class="literal-block">
@@ -1944,7 +1942,7 @@ _status = public
 ⇐ Content-Type: text/plain; charset=UTF-8
 ⇐ Content-Length: 57
 ⇐
-⇐ success: http://37.187.98.23/download/da543b91a0.xml.gz
+⇐ success: {% getOptions "DEFAULT.ezid_base_url" %}/download/da543b91a0.xml.gz
 </pre>
       <p>The download will not be available immediately, but clients can poll
          the returned URL; the server returns HTTP status code 404 (Not Found)
@@ -1955,16 +1953,16 @@ _status = public
       <p id="download-formats"><strong>Download formats</strong></p>
       <p>Identifier metadata is returned in one of three formats; which format
          is determined by the &quot;format&quot; parameter. In all cases, the text
-         encoding is UTF-8 and the metadata is compressed with either <a class="reference external" href="http://www.gzip.org/">gzip</a>
-         <span class="ext-icon"></span> or <a class="reference external" href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP</a> <span class="ext-icon"></span> as determined by the
+         encoding is UTF-8 and the metadata is compressed with either <a class="text-primary external" href="http://www.gzip.org/">gzip</a>
+         <span class="ext-icon"></span> or <a class="text-primary external" href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP</a> <span class="ext-icon"></span> as determined by the
          &quot;compression&quot; parameter.</p>
       <ol class="arabic">
          <li>
             <p class="first"><strong>Format &quot;anvl&quot;</strong>. This format is effectively the concatenation of
-               performing a get metadata operation (see <a class="reference internal" href="#operation-get-identifier-metadata">Operation: get identifier
+               performing a get metadata operation (see <a class="text-primary internal" href="#operation-get-identifier-metadata">Operation: get identifier
                   metadata</a> above) on each selected identifier. Metadata is
                returned in ANVL format and employs percent-encoding as described
-               in <a class="reference internal" href="#request-response-bodies">Request &amp; response bodies</a>. The metadata for an identifier is
+               in <a class="text-primary internal" href="#request-response-bodies">Request &amp; response bodies</a>. The metadata for an identifier is
                preceded by a header line that contains two colons (&quot;:&quot;, U+003A)
                followed by the identifier. Blocks of metadata are separated by
                blank lines. For example:</p>
@@ -1997,13 +1995,13 @@ datacite: &lt;?xml version=&quot;1.0&quot;?&gt;%0A&lt;resource xmlns=&quot;http:
          </li>
          <li>
             <p class="first"><strong>Format &quot;csv&quot;</strong>. Metadata is returned as an Excel-compatible
-               <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> <span class="ext-icon"></span> table, one row per
+               <a class="text-primary external" href="http://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> <span class="ext-icon"></span> table, one row per
                selected identifier. A header row lists column names. The columns
                to return must be specified using one or more &quot;column&quot; parameters;
                the order of columns in the table matches the parameter order. The
                columns that can be returned include all internal ARKetype metadata
-               elements (refer to <a class="reference internal" href="#internal-metadata">Internal metadata</a>) and all citation metadata
-               elements (refer to <a class="reference internal" href="#metadata-profiles">Metadata profiles</a>). Additionally, the
+               elements (refer to <a class="text-primary internal" href="#internal-metadata">Internal metadata</a>) and all citation metadata
+               elements (refer to <a class="text-primary internal" href="#metadata-profiles">Metadata profiles</a>). Additionally, the
                following columns may be requested:</p>
             <ul>
                <li>
@@ -2109,18 +2107,18 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
          </li>
          <li>
             <p class="first">compression={gzip|zip}</p>
-            <p>The compression to use, <a class="reference external" href="http://www.gzip.org/">gzip</a> <span class="ext-icon"></span> or <a class="reference external" href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP</a> <span
+            <p>The compression to use, <a class="text-primary external" href="http://www.gzip.org/">gzip</a> <span class="ext-icon"></span> or <a class="text-primary external" href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP</a> <span
                   class="ext-icon"></span>.
                gzip is the default.</p>
          </li>
          <li>
-            <p class="first">column=<span class="hl1">c</span> <em>(repeatable)</em></p>
-            <p>Return column <span class="hl1">c</span>. Applies to the &quot;csv&quot; format only, in which
+            <p class="first">column=<span class="text-info font-italic">c</span> <em>(repeatable)</em></p>
+            <p>Return column <span class="text-info font-italic">c</span>. Applies to the &quot;csv&quot; format only, in which
                case at least one column is required.</p>
          </li>
          <li>
-            <p class="first">notify=<span class="hl1">address</span> <em>(repeatable)</em></p>
-            <p>Send an email message to <span class="hl1">address</span> when the download becomes
+            <p class="first">notify=<span class="text-info font-italic">address</span> <em>(repeatable)</em></p>
+            <p>Send an email message to <span class="text-info font-italic">address</span> when the download becomes
                available.</p>
          </li>
          <li>
@@ -2142,14 +2140,14 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
          identifiers).</p>
       <ul>
          <li>
-            <p class="first">createdAfter=<span class="hl1">t</span></p>
-            <p>Return identifiers created on or after time <span class="hl1">t</span>. The time may
+            <p class="first">createdAfter=<span class="text-info font-italic">t</span></p>
+            <p>Return identifiers created on or after time <span class="text-info font-italic">t</span>. The time may
                be given as a Unix timestamp or in ISO 8601 YYYY-MM-DDTHH:MM:SSZ
                format. Note that lower time bounds are inclusive.</p>
          </li>
          <li>
-            <p class="first">createdBefore=<span class="hl1">t</span></p>
-            <p>Return identifiers created before time <span class="hl1">t</span>. The time may be
+            <p class="first">createdBefore=<span class="text-info font-italic">t</span></p>
+            <p>Return identifiers created before time <span class="text-info font-italic">t</span>. The time may be
                given as a Unix timestamp or in ISO 8601 YYYY-MM-DDTHH:MM:SSZ
                format. Note that upper time bounds are exclusive.</p>
          </li>
@@ -2168,15 +2166,15 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
             <p>Return identifiers that either are or are not exported.</p>
          </li>
          <li>
-            <p class="first">owner=<span class="hl1">u</span> (<em>repeatable</em>)</p>
-            <p>Return identifiers owned by user <span class="hl1">u</span>, where <span class="hl1">u</span> is an ARKetype
+            <p class="first">owner=<span class="text-info font-italic">u</span> (<em>repeatable</em>)</p>
+            <p>Return identifiers owned by user <span class="text-info font-italic">u</span>, where <span class="text-info font-italic">u</span> is an ARKetype
                username, e.g., &quot;apitest&quot;. All &quot;owner&quot; and &quot;ownergroup&quot; parameters
                are ORed together; if none are specified, the identifiers directly
                owned by the requestor are returned.</p>
          </li>
          <li>
-            <p class="first">ownergroup=<span class="hl1">g</span> <em>(repeatable)</em></p>
-            <p>Return identifiers owned by group <span class="hl1">g</span>, where <span class="hl1">g</span> is an
+            <p class="first">ownergroup=<span class="text-info font-italic">g</span> <em>(repeatable)</em></p>
+            <p>Return identifiers owned by group <span class="text-info font-italic">g</span>, where <span class="text-info font-italic">g</span> is an
                ARKetype group name, e.g., &quot;cdl&quot;. All &quot;owner&quot; and &quot;ownergroup&quot;
                parameters are ORed together; if none are specified, the identifiers
                directly owned by the requestor are returned.</p>
@@ -2186,8 +2184,8 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
             <p>Return only test identifiers or only real identifiers.</p>
          </li>
          <li>
-            <p class="first">profile=<span class="hl1">p</span> <em>(repeatable)</em></p>
-            <p>Return identifiers whose preferred metadata profile is <span class="hl1">p</span>.</p>
+            <p class="first">profile=<span class="text-info font-italic">p</span> <em>(repeatable)</em></p>
+            <p>Return identifiers whose preferred metadata profile is <span class="text-info font-italic">p</span>.</p>
          </li>
          <li>
             <p class="first">status={reserved|public|unavailable} <em>(repeatable)</em></p>
@@ -2198,21 +2196,21 @@ doi:10.5072/FK2S75905Q,apitest,,Montagu Browne
             <p>Return identifiers of the specified type.</p>
          </li>
          <li>
-            <p class="first">updatedAfter=<span class="hl1">t</span>, updatedBefore=<span class="hl1">t</span></p>
+            <p class="first">updatedAfter=<span class="text-info font-italic">t</span>, updatedBefore=<span class="text-info font-italic">t</span></p>
             <p>Constraints against update time; see the comparable &quot;createdAfter&quot;
                and &quot;createdBefore&quot; parameters above.</p>
          </li>
       </ul>
       <p id="using-curl-to-request-a-download"><strong>Using curl to request a download</strong></p>
       <p>A batch download can easily be requested using the
-         <a class="reference external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command line tool. Use curl's &quot;-d&quot; option to
+         <a class="text-primary external" href="http://curl.haxx.se/">curl</a> <span class="ext-icon"></span> command line tool. Use curl's &quot;-d&quot; option to
          specify parameters, and use the &quot;-u&quot; option to supply credentials.
          For example:</p>
       <pre class="literal-block">
 curl -u <span class="hl2">username</span>:<span class="hl2">password</span> -d format=anvl -d type=ark -d type=doi
-  -d permanence=real http://37.187.98.23/download_request
+  -d permanence=real {% getOptions "DEFAULT.ezid_base_url" %}/download_request
 </pre>
-      <p>For even more convenience, a simple Bash script, <a class="reference external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/batch-download.sh">batch-download.sh</a>
+      <p>For even more convenience, a simple Bash script, <a class="text-primary external" href="https://github.com/CDLUC3/ezid-client-tools/blob/master/batch-download.sh">batch-download.sh</a>
          <span class="ext-icon"></span>, turns a batch download into a one-step operation. The
          script issues a download request using curl, waits for the request to
          be processed, and when ready downloads to a file in the current
@@ -2225,22 +2223,22 @@ waiting......
 </pre>
    </div>
    <div class="section" id="oai-pmh-harvesting">
-      <h1>OAI-PMH harvesting</h1>
-      <p>ARKetype supports harvesting of identifiers and citation metadata via <a class="reference external" href="http://www.openarchives.org/OAI/openarchivesprotocol.html">The
+      <p class="h3 text-primary">OAI-PMH harvesting</p>
+      <p>ARKetype supports harvesting of identifiers and citation metadata via <a class="text-primary external" href="http://www.openarchives.org/OAI/openarchivesprotocol.html">The
             Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH)</a>
          <span class="ext-icon"></span>, version 2.0. The base URL for OAI-PMH access is</p>
       <blockquote>
-         <a class="reference external" href="http://37.187.98.23/oai">http://37.187.98.23/oai</a></blockquote>
+         <a class="text-primary external" href="{% getOptions "DEFAULT.ezid_base_url" %}/oai">{% getOptions "DEFAULT.ezid_base_url" %}/oai</a></blockquote>
       <p>Only public, exported, non-test identifiers that have non-default
          target URLs and at least creator, title, and date citation metadata
-         (in <a class="reference internal" href="#profile-erc">ERC</a> terms, who/what/when metadata) are made available through
+         (in <a class="text-primary internal" href="#profile-erc">ERC</a> terms, who/what/when metadata) are made available through
          OAI-PMH.</p>
       <p>Harvesting and batch download are similar but different operations;
-         see <a class="reference internal" href="#batch-download">Batch download</a> for the differences.</p>
+         see <a class="text-primary internal" href="#batch-download">Batch download</a> for the differences.</p>
       <p>In returning an identifier's metadata, ARKetype maps citation metadata
-         from the identifier's preferred metadata profile (see <a class="reference internal" href="#metadata-profiles">Metadata
-            profiles</a> above) to one of two delivery formats: <a class="reference external" href="http://dublincore.org/documents/dces/">Dublin Core</a>
-         <span class="ext-icon"></span> (as required by the protocol) or <a class="reference external" href="http://schema.datacite.org/">DataCite</a>
+         from the identifier's preferred metadata profile (see <a class="text-primary internal" href="#metadata-profiles">Metadata
+            profiles</a> above) to one of two delivery formats: <a class="text-primary external" href="http://dublincore.org/documents/dces/">Dublin Core</a>
+         <span class="ext-icon"></span> (as required by the protocol) or <a class="text-primary external" href="http://schema.datacite.org/">DataCite</a>
          <span class="ext-icon"></span>. In the latter case, older DataCite XML metadata
          records stored in ARKetype are converted to version 4 of the DataCite
          schema for uniformity. Note that, in an extension to the DataCite

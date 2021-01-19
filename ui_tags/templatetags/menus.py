@@ -16,6 +16,7 @@ register = template.Library()
 MENU_USER = (
           (_("DASHBOARD"), 'ui_admin.dashboard', 'admin', ()),
           (_("MANAGE ID"), 'ui_manage.index', 'user', ()),
+          (_("NEWS"), 'ui_home.learn', 'user', ()),
           (_("CREATE ID"), 'ui_create.index', 'user',
             ( (_("Simple"), 'ui_create.simple', 'user', ()),
               (_("Advanced"), "ui_create.advanced", 'user', ())
@@ -29,6 +30,7 @@ MENU_USER = (
 
 # Tertiary nav
 MENU_DEMO = (
+                (_("NEWS"), 'ui_home.learn', 'public', ()),
                 (_("DEMO ID"), 'ui_demo.index', 'public',
                   ( (_("Simple"), 'ui_demo.simple', 'public', ()),
                     (_("Advanced"), "ui_demo.advanced", 'public', ())

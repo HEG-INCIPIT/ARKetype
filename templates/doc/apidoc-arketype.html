@@ -26,7 +26,7 @@
    <ul>
       <li><a href="#arketype-api-operations">Operations</a>
          <ul>
-            <li><a href="#arketype-api-operations-get">Get identifier metadatas</a></li>
+            <li><a href="#arketype-api-operations-get">Get identifier metadata</a></li>
             <li><a href="#arketype-api-operations-create">Create identifier</a></li>
             <li><a href="#arketype-api-operations-mint">Mint identifier</a></li>
             <li><a href="#arketype-api-operations-update">Update identifier</a>
@@ -37,10 +37,10 @@
             <li><a href="#arketype-api-operations-delete">Delete identifier</a></li>
          </ul>
       </li>
-      <li><a href="#arketype-api-metadatas">Metadatas</a>
+      <li><a href="#arketype-api-metadata">Metadata</a>
          <ul>
-            <li><a href="#arketype-api-metadatas-internal">Internal</a></li>
-            <li><a href="#arketype-api-metadatas-codes">Codes</a></li>
+            <li><a href="#arketype-api-metadata-internal">Internal</a></li>
+            <li><a href="#arketype-api-metadata-codes">Codes</a></li>
             <li><a href="#arketype-api-profiles">Profiles</a>
                <ul>
                   <li><a href="#arketype-api-profiles-erc">ERC</a></li>
@@ -54,7 +54,7 @@
    <div>
       <p id="arketype-api-operations" class="h3 text-primary">Operations</p>
       <p class="h5">The API allows those operations</p>
-      <p id="arketype-api-operations-get" class="h4 text-primary">Get identifier metadatas</p>
+      <p id="arketype-api-operations-get" class="h4 text-primary">Get identifier metadata</p>
          <div class="alert alert-info text-left" role="alert">
             <span class="badge badge-light"><b>GET</b></span>
             {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
@@ -67,7 +67,7 @@
             {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
          <p>This allows to create an identifier with a predefinied value via
-            a PUT request. It can be asigned with metadatas or left blank.
+            a PUT request. It can be asigned with metadata or left blank.
             (to be updated later)</p>
          <p>User credentials are required and user need to have the permission
          to create an identifier with the shoulder.</p>
@@ -85,7 +85,7 @@
             <span class="badge badge-light"><b>POST</b></span>
             {% getOptions "DEFAULT.ezid_base_url" %}/id/ark:/<b>NAAN</b>/<b>identifier</b>
          </div>
-         <p>This allows to update metadatas of an already existing identifiers</p>
+         <p>This allows to update metadata of an already existing identifiers</p>
          <p>Authentification and only the owner of the identifier or some other
          users can edit it.</p>
       <p id="arketype-api-operations-create-update" class="h5 text-primary">Update identifier with the create operation</p>
@@ -105,15 +105,15 @@
          were created with a reserved status. This means those identifiers aren't
          yet public and can be fully deleted without much issue.</p>
          <p>The alternative to deletion is to update an identifier and removes
-            its metadatas.</p>
+            its metadata.</p>
    </div>
    <div>
-      <p id="arketype-api-metadatas" class="h3 text-primary">Metadatas</p>
-      <p id="arketype-api-metadatas-internal" class="h4 text-primary">Internal</p>
-      <p>Those metadatas are reserved and used specifically by ARKetype.
+      <p id="arketype-api-metadata" class="h3 text-primary">Metadata</p>
+      <p id="arketype-api-metadata-internal" class="h4 text-primary">Internal</p>
+      <p>Those metadata are reserved and used specifically by ARKetype.
       They all begin with an underscore as to easily distinguishes them of the
       other type.</p>
-      <p>The first column, <b>Updatable</b>, indicates if the metadatas can be
+      <p>The first column, <b>Updatable</b>, indicates if the metadata can be
       updated by the user or not.</p>
       <table class="table table-striped">
          <thead>
@@ -183,7 +183,7 @@
             </tr>
          </tbody>
       </table>
-      <p id="arketype-api-metadatas-codes" class="h4 text-primary">Codes</p>
+      <p id="arketype-api-metadata-codes" class="h4 text-primary">Codes</p>
       <p>If needed, you can supply one of the following code during creation or
          update as placeholder.</p>
       <p>The ARKetype system might uses the as well when needed.</p>
@@ -242,10 +242,10 @@
          </tbody>
       </table>
       <p id="arketype-api-profiles" class="h4 text-primary">Profiles</p>
-      <p class="h5">ARKetype was built on top of three metadatas profile to use
+      <p class="h5">ARKetype was built on top of three metadata profile to use
       when creating an ARK</p>
       <p id="arketype-api-profiles-erc" class="h5 text-primary">ERC</p>
-      <p>ERC is the default profile and required the following metadatas.</p>
+      <p>ERC is the default profile and required the following metadata.</p>
       <table class="table table-striped">
          <thead>
             <tr class="d-flex bg-info text-light">
@@ -275,7 +275,7 @@
       <p id="arketype-api-profiles-datacite" class="h5 text-primary">DataCite</p>
       <p>The DataCite profile is commonly used for DOIs but ARKs can use them
       as well. It allows a better description of an item. The following
-      metadatas are the required one by ARKetype but other can be added,
+      metadata are the required one by ARKetype but other can be added,
       more details <a href="http://schema.datacite.org/">here</a>.</p>
       <table class="table table-striped">
          <thead>

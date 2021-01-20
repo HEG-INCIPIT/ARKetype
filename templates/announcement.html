@@ -2,12 +2,12 @@
 {% load layout_extras %}
 {% load i18n %}
 
-{% block title %}{% block title-twitter %}{% trans "Announcement" %}{% endblock %}{% endblock %}
+{% block title %}{% block title-twitter %}{% trans "News" %}{% endblock %}{% endblock %}
 {% block javascript %}
 
 {% endblock %}
 
-{% block heading %}{% autoescape off %}{% content_heading _("Announcement") %}{% endautoescape %}{% endblock %}
+{% block heading %}{% autoescape off %}{% content_heading _("News") %}{% endautoescape %}{% endblock %}
 {% block content %}
 <div class="container">
    <div class="card">
@@ -16,6 +16,47 @@
          <h5 class="card-title">Ask Me Anything</h5>
          <h6 class="card-subtitle mb-2 text-muted">January 27th, 2021</h6>
           <p class="card-text">We will present our new service ARKetype.</p>
+          <table class="table table-striped">
+             <thead>
+                <tr class="d-flex bg-info text-light">
+                   <th class="col-2" scope="col">Time</th>
+                   <th class="col-6" scope="col">Subject</th>
+                   <th class="col-4" scope="col">Speaker</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">10:30 - 10:35</th>
+                   <td class="col-6">Welcome</td>
+                   <td class="col-4">René Schneider</td>
+                </tr>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">10:35 – 10:40</th>
+                   <td class="col-6">The Swiss PID Landscape and the INCIPIT project</td>
+                   <td class="col-4">René Schneider</td>
+                </tr>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">10:40 – 10:50</th>
+                   <td class="col-6">ARK: scheme and governance</td>
+                   <td class="col-4">Julien Raemy</td>
+                </tr>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">10:50 – 11:10</th>
+                   <td class="col-6">ARKetype</td>
+                   <td class="col-4">Julien Raemy, Amir Alwash</td>
+                </tr>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">11:10 – 11:55</th>
+                   <td class="col-6">Q/A session (FR, DE, EN)</td>
+                   <td class="col-4">All</td>
+                </tr>
+                <tr class="d-flex">
+                   <th class="col-2" scope="row">11:55 – 12:00</th>
+                   <td class="col-6">Wrap-up and perspectives (INCIPIT-CRIS)</td>
+                   <td class="col-4">Arnaud Gaudinat</td>
+                </tr>
+             </tbody>
+          </table>
           <a href="https://app.hesge.ch/enquetes/index.php/447277" class="btn btn-primary">Register</a>
       </div>
    </div>

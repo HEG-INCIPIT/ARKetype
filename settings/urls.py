@@ -30,7 +30,7 @@ urlpatterns = i18n_patterns(
 
     # UI - RENDERED FROM TEMPLATES IN INFO REPOSITORY
     url("^$", ui_home.index, name="ui_home.index"),
-    url("^announcement/$", ui_home.learn, name="ui_home.learn"),
+    url("^news/$", ui_home.learn, name="ui_home.learn"),
     # url("^learn/ark_open_faq$", ui_home.ark_open_faq, name="ui_home.ark_open_faq"),
     # url("^learn/crossref_faq$", ui_home.crossref_faq, name="ui_home.crossref_faq"),
     # url(

@@ -22,11 +22,11 @@
 
 <div class="container vertical-buffer-20">
    {% if allow_update %}
-   <p class="heading_2">{% trans "Edit and add descriptive information to your identifier." %}</p>
+   <p class="h3 text-primary">{% trans "Edit and add descriptive information to your identifier." %}</p>
    {% endif %}
-   <div class="row vertical-buffer-bot">
+   <div class="row m-0 vertical-buffer-bot">
       <div class="inline-header">
-         <h2 class="heading__icon-4">{% trans "About the Identifier" %}</h2>
+         <p class="h4 text-primary">{% trans "About the Identifier" %}</p>
       </div>
    </div>
    <div class="row vertical-buffer-bot">
@@ -37,8 +37,7 @@
             <label class="col-md-4 vertical-buffer-xxs">{% trans "Identifier as URL" %}:</label>
             <div class="col-md-7">
                <div id="id_as_url__box" class="vertical-buffer-xxs">
-                  <span id="url_to_copy">{{ id_as_url }}</span>
-                  <span id="copy_message">{% trans "Link copied to your clipboard" %}</span>
+                  <a href="{{ id_as_url }}" target="_blank"><span id="url_to_copy">{{ id_as_url }}</span></a>
                </div>
                <div class="iddetails__delay-text">
                   {% if recent_creation %}
@@ -51,8 +50,8 @@
          </div>
       </div>
       {% if is_test_id %}
-      <div class="col-md-4 call-out__small">
-         <div class="call-out__small-text">&#42; {% trans "Indicates demo identifier. Demo IDs are subject to deletion two weeks after creation and are only meant for testing purposes." %}
+      <div class="col-md-4">
+         <div class="alert alert-warning">&#42; {% trans "Indicates demo identifier. Demo IDs are subject to deletion two weeks after creation and are only meant for testing purposes." %}
             {% if not authenticatedUser %}
             <br /><br />
             {% blocktrans trimmed %}
@@ -85,9 +84,9 @@
 
    <div class="vertical-buffer-20"> </div>
    <hr />
-   <div class="row vertical-buffer-bot">
+   <div class="row m-0 vertical-buffer-bot">
       <div class="inline-header">
-         <h2 class="heading__icon-9">{% trans "About the Identified Object" %}</h2>
+         <h2 class="h4 text-primary">{% trans "About the Identified Object" %}</h2>
       </div>
    </div>
    <div class="row vertical-buffer-bot">
@@ -122,9 +121,9 @@
 
    <div class="vertical-buffer-20"> </div>
    <hr />
-   <div class="row vertical-buffer-bot">
+   <div class="row m-0 vertical-buffer-bot">
       <div class="inline-header">
-         <h2 class="heading__icon-4">{% trans "About the Identifier's Status" %}</h2>
+         <h2 class="h4 text-primary">{% trans "About the Identifier's Status" %}</h2>
       </div>
    </div>
    <div class="row vertical-buffer-bot">
@@ -168,7 +167,7 @@
       <div class="row">
          <div class="form-group form-group-sm">
             <div class="col-sm-12">
-               <button type="submit" class="button__primary">
+               <button type="submit" class="btn btn-primary">
                   {% trans "Make Changes" %}</button>
             </div>
          </div>

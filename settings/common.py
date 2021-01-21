@@ -29,9 +29,9 @@ MANAGERS = ADMINS = [
 
 if "HOSTNAME" in os.environ:
   # SERVER_EMAIL = "ezid@" + os.environ["HOSTNAME"]
-  SERVER_EMAIL = "amir@alwash.ch"
+  SERVER_EMAIL = "info@arketype.ch"
 else:
-  SERVER_EMAIL = "amir@alwash.ch"
+  SERVER_EMAIL = "info@arketype.ch"
   #SERVER_EMAIL = "ezid@" + socket.gethostname()
 
 DATABASES = {

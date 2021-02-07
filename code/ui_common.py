@@ -40,7 +40,7 @@ def loadConfig():
   reload_templates = hasattr(django.conf.settings, 'RELOAD_TEMPLATES')
   if reload_templates:
     reload_templates = django.conf.settings.RELOAD_TEMPLATES
-  testPrefixes = []
+  testPrefixes = [{"namespace":"test","prefix":"ark:/test/test"}]
   p = ezidapp.models.getArkTestShoulder()
   testPrefixes.append({ "namespace": p.name, "prefix": p.prefix })
   #p = ezidapp.models.getDoiTestShoulder()

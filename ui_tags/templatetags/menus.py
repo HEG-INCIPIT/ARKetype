@@ -41,7 +41,7 @@ MENU_DEMO = (
                 (_("API"), 'ui_api.latest', 'public', ()),
             )
 
-#Dynamically created menu for subnav; Only displays for logged in users
+# Dynamically created menu for subnav; Only displays for logged in users
 @register.simple_tag
 def menu_user(current_func, session):
   acc = ''

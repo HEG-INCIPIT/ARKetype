@@ -71,7 +71,6 @@ urlpatterns = i18n_patterns(
     url("^doc/[-\w.]*\\.(?:html|py|sh)$", ui.doc, name="ui.doc"),
     url("^download_confirm$", ui_manage.download, name="ui_manage.download"),
     url("^download_error$", ui_manage.download_error, name="ui_manage.download_error"),
-
     url("^manage/?$", ui_manage.index, name="ui_manage.index"),
     url("^manage/edit/(.*)", ui_manage.edit, name="ui_manage.edit"),
     url(

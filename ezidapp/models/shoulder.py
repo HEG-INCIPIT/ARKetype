@@ -195,7 +195,7 @@ def loadConfig(acquireLock=True):
             _password = None
 
         _arkTestPrefix = config.get("shoulders.ark_test")
-        _doiTestPrefix = config.get("shoulders.doi_test")
+        #_doiTestPrefix = config.get("shoulders.doi_test")
         _crossrefTestPrefix = config.get("shoulders.crossref_test")
         _agentPrefix = config.get("shoulders.agent")
 
@@ -204,6 +204,11 @@ def loadConfig(acquireLock=True):
             for s in Shoulder.objects.select_related("datacenter").all()
             if s.active and s.manager == 'ezid'
         )
+        # _shoulders = dict(
+        #     (s.prefix, s)
+        #     for s in Shoulder.objects.select_related("datacenter").all()
+        #     if s.active and s.manager == 'ezid'
+        # )
 
         dc = dict((d.symbol, d) for d in store_datacenter.StoreDatacenter.objects.all())
         _datacenters = (dc, dict((d.id, d) for d in dc.values()))

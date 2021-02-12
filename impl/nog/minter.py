@@ -155,7 +155,6 @@ def create_minter_database(shoulder_ns, root_path=None, mask_str='eedk'):
     """
     shoulder_ns = nog.id_ns.IdNamespace.from_str(shoulder_ns)
     bdb_path = nog.bdb.get_path(shoulder_ns, root_path, is_new=True)
-
     with Minter(bdb_path, is_new=True, dry_run=False) as minter:
         full_shoulder_str = '/'.join([shoulder_ns.naan_prefix, shoulder_ns.shoulder])
         minter.create(full_shoulder_str, mask_str)

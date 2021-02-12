@@ -13,39 +13,40 @@ class Startup(django.apps.AppConfig):
         logger.debug('impl.startup: START')
 
         try:
-            logger.debug('impl.startup: Early exit: TEST')
             import config
             config.load()
-            try:
-                import ezidapp.models.shoulder
-                ezidapp.models.shoulder.loadConfig()
-                config.registerReloadListener(ezidapp.models.shoulder.loadConfig)
 
-            except Exception:
-                logger.debug('impl.startup: Early exit: Shoulder not loaded')
-                return
-
-            try:
-                import util2
-                util2.loadConfig()
-                config.registerReloadListener(util2.loadConfig)
-
-            except Exception:
-                logger.debug('impl.startup: Early exit: Utils not loaded')
-                return
-
-            try:
-                import ui_common
-                ui_common.loadConfig()
-                config.registerReloadListener(ui_common.loadConfig)
-
-            except Exception:
-                logger.debug('impl.startup: Early exit: Ui Common not loaded')
-                return
         except Exception:
             # App not ready to be configured yet. This allows running
             # `django-admin migrate` to create the initial databases.
             logger.debug('impl.startup: Early exit: Config not loaded?')
+            return
+
+        try:
+            import ezidapp.models.shoulder
+            ezidapp.models.shoulder.loadConfig()
+            config.registerReloadListener(ezidapp.models.shoulder.loadConfig)
+
+        except Exception:
+            logger.debug('impl.startup: Early exit: Shoulder not loaded')
+            return
+
+        try:
+            import util2
+            util2.loadConfig()
+            config.registerReloadListener(util2.loadConfig)
+
+        except Exception:
+            logger.debug('impl.startup: Early exit: Utils not loaded')
+            return
+
+        try:
+            import ui_common
+            ui_common.loadConfig()
+            config.registerReloadListener(ui_common.loadConfig)
+
+        except Exception:
+            logger.debug('impl.startup: Early exit: Ui Common not loaded')
             return
 
         import log

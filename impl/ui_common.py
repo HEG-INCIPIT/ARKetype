@@ -47,10 +47,14 @@ def loadConfig():
     testPrefixes = []
 
     # Depends on loadConfig() for models.shoulder having been called first.
-    p = ezidapp.models.getArkTestShoulder()
-    testPrefixes.append({"namespace": p.name, "prefix": p.prefix})
-    p = ezidapp.models.getDoiTestShoulder()
-    testPrefixes.append({"namespace": p.name, "prefix": p.prefix})
+    try:
+        p = ezidapp.models.getArkTestShoulder()
+        testPrefixes.append({"namespace": p.name, "prefix": p.prefix})
+        # p = ezidapp.models.getDoiTestShoulder()
+        # testPrefixes.append({"namespace": p.name, "prefix": p.prefix})
+    except Exception:
+        logger.debug("Test Shoulder not registered")
+
     google_analytics_id = config.get("DEFAULT.google_analytics_id")
 
 

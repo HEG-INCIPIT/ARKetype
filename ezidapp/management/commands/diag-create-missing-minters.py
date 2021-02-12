@@ -57,7 +57,7 @@ class Command(django.core.management.BaseCommand):
             if opt.debug:
                 raise
             raise django.core.management.CommandError(
-                'Unable to create missing minter(s). Error: {}'.format(str(e))
+                u'Unable to create missing minter(s). Error: {}'.format(str(e))
             )
 
         log.info('Completed successfully')
@@ -93,14 +93,14 @@ class Command(django.core.management.BaseCommand):
             missing_count += 1
 
             try:
-                nog.minter.create_minter_database(naan_str, shoulder_str)
+                shoulder_ns = nog.id_ns.IdNamespace.from_str(s.prefix)
+                nog.minter.create_minter_database(shoulder_ns, django.conf.settings.MINTERS_PATH)
             except Exception as e:
                 log.warn(
                     u'Unable to create missing minter. prefix="{}" name="{}". Error: {}'.format(
                         s.prefix, s.name, str(e)
                     )
                 )
-
         log.info('Total number of shoulders: {}'.format(total_count))
         log.info('Created missing shoulders: {}'.format(missing_count))
         log.info('Shoulders with unspecified minters: {}'.format(unspecified_count))

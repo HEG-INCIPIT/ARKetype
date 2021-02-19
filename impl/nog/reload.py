@@ -22,7 +22,8 @@ KNOWN_EZID_HOSTNAME_TUP = (
     'uc3-ezidx2-prd.cdlib.org',
     'uc3-ezidx2-stg',
     'uc3-ezidx2-stg.cdlib.org',
-    'Spritium-Home'
+    'Spritium-Home',
+    'incipit'
 )
 
 log = logging.getLogger(__name__)

@@ -30,7 +30,7 @@ def learn(request):
     if request.method != "GET":
         return uic.methodNotAllowed(request)
     d = {'menu_item': 'ui_home.learn'}
-    return uic.render(request, 'learn', d)
+    return uic.render(request, 'announcememnt', d)
 
 
 def ark_open_faq(request):

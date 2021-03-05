@@ -468,7 +468,7 @@ class TitleForm(forms.Form):
             label=_("Title"), error_messages={'required': ERR_TITLE}
         )
         TITLE_TYPES = (
-            ("", _("Main title")),
+            ("Main title", _("Main title")),
             ("AlternativeTitle", _("Alternative title")),
             ("Subtitle", _("Subtitle")),
             ("TranslatedTitle", _("Translated title")),
@@ -477,7 +477,7 @@ class TitleForm(forms.Form):
         self.fields["titleType"] = forms.ChoiceField(
             required=False,
             label=_("Type"),
-            widget=forms.RadioSelect(attrs={'class': 'fcontrol__radio-button-stacked'}),
+            widget=forms.RadioSelect(attrs={'class': 'form-check-input'}),
             choices=TITLE_TYPES,
         )
         self.fields["{http://www.w3.org/XML/1998/namespace}lang"] = forms.RegexField(
@@ -1509,6 +1509,7 @@ class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         CONTACT_REASONS = (
             ("None Entered", _("Choose One")),
+            ("Feedback on ARKetype", _("Feedback on ARKetype")),
             (
                 "I would like to inquire about getting a new account for ARKs",
                 _("I would like to inquire about getting a new account for ARKs *"),
@@ -1533,7 +1534,7 @@ class ContactForm(forms.Form):
         self.fields["contact_reason"] = forms.ChoiceField(
             required=False,
             choices=CONTACT_REASONS,
-            label=_("Reason for contacting EZID"),
+            label=_("Reason for contacting ARKetype"),
         )
         self.fields["your_name"] = forms.CharField(
             max_length=200,
@@ -1561,10 +1562,10 @@ class ContactForm(forms.Form):
             choices=REFERRAL_SOURCES,
             label=_("How did you hear about us?"),
         )
-        if self.localized == False:
-            self.fields["newsletter"] = forms.BooleanField(
-                required=False, label=_("Subscribe to the EZID newsletter")
-            )
+        # if self.localized == False:
+        #     self.fields["newsletter"] = forms.BooleanField(
+        #         required=False, label=_("Subscribe to the ARKetype newsletter")
+        #     )
         self.fields["question"] = forms.CharField(
             max_length=200,
             label=_("Human test: How many drop down menus are in this form?"),

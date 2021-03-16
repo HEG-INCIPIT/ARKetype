@@ -128,7 +128,7 @@ def __emails(request):
     """gets email addresses based on environment settings and also current domain name"""
     host = request.META.get("HTTP_HOST", "default")
     if host not in django.conf.settings.LOCALIZATIONS:
-        host = "default"
+        host = "info"
     return django.conf.settings.LOCALIZATIONS[host][1]
 
 

@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 class Startup(django.apps.AppConfig):
     name = "ezidapp"
 
+
     def ready(self):
         logger.debug('impl.startup: START')
 

@@ -47,7 +47,7 @@ def api(request):
     return uic.error(request, 404)
 
 def contact(request):
-    d = {'menu_item': 'ui_null.contact'}
+    d = {'menu_item': 'ui.contact'}
     localized = False
     host = request.META.get("HTTP_HOST", "default")
     if host not in django.conf.settings.LOCALIZATIONS:

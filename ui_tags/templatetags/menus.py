@@ -75,7 +75,6 @@ def menu_user_item(tup, session, is_current):
       link_class += " dropdown-toggle"
       drop_body += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">'
       for menu in tup[3]:
-          print(menu)
           li = reverse(menu[1])
           drop_body += '<a class="dropdown-item" href="%s">%s</a>' % (li,menu[0])
 
